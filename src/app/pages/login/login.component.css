@@ -1,0 +1,59 @@
+main {
+  min-height: 100vh;
+  padding: 1rem 0;
+}
+
+form {
+  align-self: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+h5 {
+  margin: 0;
+}
+
+i {
+  font-size: 4.5rem;
+}
+
+.main-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 90%;
+  max-width: 1200px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.welcome {
+  margin-top: 3.5rem;
+}
+
+.banner > p {
+  font-size: 1.15rem;
+}
+
+@media (max-width: 992px) {
+  .main-wrapper {
+    width: 95%;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .content:nth-child(1) {
+    order: 2;
+  }
+
+  .content:nth-child(2) {
+    order: 1;
+    padding: 0 1rem;
+  }
+}

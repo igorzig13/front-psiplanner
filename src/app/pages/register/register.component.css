@@ -1,0 +1,41 @@
+main {
+  min-height: 100vh;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  min-width: fit-content;
+}
+
+.type-form {
+  gap: 0.5rem;
+}
+
+form.main-form {
+  max-width: 600px;
+  min-width: 380px;
+}
+
+.buttons {
+  margin-top: 2rem;
+}
+
+/* Button styles. */
+.button-flap {
+  border: 1px solid rgba(51, 51, 51, 0.5);
+  border-bottom: none;
+  border-radius: 0.6rem 0.6rem 0 0;
+  color: rgba(51, 51, 51, 0.5);
+}
+
+.active-button {
+  border-color: rgba(51, 51, 51, 1);
+  color: rgba(51, 51, 51, 1);
+}

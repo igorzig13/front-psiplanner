@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  color: #444;
+}
+
+
+/* - - - -  Style default to form! - - - - */
+.main-form {
+  border: 1px solid #DEE2E6;
+  padding: 40px 50px;
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.main-form > .field-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.main-form > .field-form > label {
+  font-size: 1.15rem;
+}
+
+.main-form > .field-form > input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: none;
+  border-bottom: 1px solid #CCC;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  background-size: 30px;
+  transition: all ease-in-out .05s;
+}
+
+.main-form > .field-form > input:focus {
+  background-image: none !important;
+  border-bottom: 1px solid #222;
+  padding-left: 0;
+}
+
+.main-form > .field-form > input:not(:placeholder-shown) {
+  background: none !important;
+  padding-left: 0;
+}
+
+.main-form > .field-form > input::placeholder {
+  font-style: italic;
+}
+
+.main-form > .buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.is-invalid {
+  border-bottom: 1px solid #F00 !important;
+}
+
+.invalid-field {
+  margin-top: 0.4rem;
+  padding-left: 0.5rem;
+  border-left: 5px solid red;
+  font-size: 0.85rem;
+}
+/* - - - -  - - - - - - - - - - - - */

@@ -1,0 +1,25 @@
+button.btn {
+  border: 2px solid #5B6372;
+  border-radius: 10px;
+  transition: all ease-in .2s;
+}
+
+button.main-button {
+  background-color: #455D51;
+  color: #DCECE6;
+}
+
+button.main-button:hover {
+  background-color: #DCECE6;
+  color: #455D51;
+}
+
+button.secondary-button {
+  background-color: #DCECE6;
+  color: #455D51;
+}
+
+button.secondary-button:hover {
+  background-color: #455D51;
+  color: #DCECE6;
+}
