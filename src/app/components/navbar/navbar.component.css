@@ -1,11 +1,3 @@
-a {
-  font-weight: 300;
-}
-a:hover {
-  text-decoration: underline;
-  color: black;
-}
-
 .nav-centered {
   text-align: center;
   justify-content: center;

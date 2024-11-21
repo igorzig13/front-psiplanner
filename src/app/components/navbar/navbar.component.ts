@@ -1,5 +1,6 @@
-import {Component, Input, numberAttribute} from '@angular/core';
+import {Component, Input, numberAttribute, SimpleChanges} from '@angular/core';
 import {LinkComponent} from '../link/link.component';
+import {RouterLink} from '@angular/router';
 
 export interface TextsAndLinks {
   texts: string[];
@@ -10,7 +11,8 @@ export interface TextsAndLinks {
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    LinkComponent
+    LinkComponent,
+    RouterLink
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -35,8 +37,20 @@ export class NavbarComponent {
     this.navbars.set(1, nav1);
     this.navbars.set(2, nav2);
 
-    this.texts = this.navbars.get(this.navIndex)?.texts
-    this.links = this.navbars.get(this.navIndex)?.links;
+    this.updateNavbarData();
+  }
 
+  private updateNavbarData(): void {
+    const navbar = this.navbars.get(this.navIndex);
+    if (navbar) {
+      this.texts = navbar.texts;
+      this.links = navbar.links;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['navIndex']) {
+      this.updateNavbarData();
+    }
   }
 }
