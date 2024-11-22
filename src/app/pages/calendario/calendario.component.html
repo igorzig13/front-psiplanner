@@ -1,0 +1,54 @@
+<main>
+  <div class="linha-com-icone">
+    <hr class="linha" />
+    <span class="material-symbols-outlined">calendar_month</span>
+    <hr class="linha" />
+  </div>
+
+  <div class="calendar container-sm">
+    <!--Icones por svg mesmo-->
+    <div class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="20px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"></path>
+      </svg>
+      <h2>Fevereiro</h2>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="20px"
+        viewBox="0 -960 960 960"
+        width="24px"
+        fill="#5f6368"
+      >
+        <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+      </svg>
+    </div>
+    <div>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <!--Preenche a linha dos dias da semana com os dias da semana-->
+            @for (day of daysOfWeek; track $index) {
+            <th class="day-week" scope="col">{{ day }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          <!--Da matriz daysOfMonth[][] pegamos cada semana e cada dia e atribuimos o respectivo dia e talvez agendamento-->
+          @for ( week of daysOfMonth; track $index) {
+          <tr>
+            @for (day of week; track $index) {
+            <td class="day" scope="col" [innerHTML]="day | safeHtml"></td>
+            }
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
