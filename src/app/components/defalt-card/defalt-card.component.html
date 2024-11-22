@@ -1,0 +1,14 @@
+<div class="default-card">
+  <div class="top-side">
+    <img src="icons/person.svg" alt="Ícone de pessoa" />
+  </div>    
+  <div class="bottom-side">
+    <p class="text-center">{{ type === 'professional' ? 'Nome do profissional' : 'Nome do paciente' }}</p>
+    <div *ngIf="type === 'professional'" class="rating">
+      <img src="icons/ratingStar.svg" alt="Estrela de Avaliação" class="rating-star" />
+      <span class="rating-text">5/5</span>
+    </div>
+    <button class="btn">{{ btnText }}</button>
+  </div>
+</div>
+
