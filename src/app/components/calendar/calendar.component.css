@@ -1,0 +1,12 @@
+.mes-anterior {
+  color: gray;
+}
+.proximo-mes {
+  color: lightgray;
+}
+.today {
+  font-weight: bold;
+  background-color: yellow;
+}
+
+/* TODO: DEIXAR BONITO */

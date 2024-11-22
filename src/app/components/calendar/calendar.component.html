@@ -1,0 +1,24 @@
+<div>
+  <h3>{{ months[currentMonth] }} de {{ currentYear }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let day of weekDays">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let week of calendar">
+        <td
+          *ngFor="let day of week"
+          [class.mes-anterior]="day.isPrevMonth"
+          [class.proximo-mes]="day.isNextMonth"
+          [class.today]="day.isToday"
+        >
+          {{ day.date }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="prevMonth()">Anterior</button>
+  <button (click)="nextMonth()">Próximo</button>
+</div>

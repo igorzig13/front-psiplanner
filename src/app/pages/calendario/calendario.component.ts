@@ -38,9 +38,9 @@ export class CalendarioComponent {
         week.map((day) => {
           //Retornar os primeiros dias do próximo mês
           if (day > 30) {
-            return `<div class="agendamento "><p>${day}</p></div>`;
+            return `<div class="agendamento "><p>${day - 30}</p></div>`;
           }
-            
+
           if(day==today.getDate()){
             return `<div class="agendamento "><p class="hoje">${day}</p><a href="#">Agendamento</a></div>`;
           }
