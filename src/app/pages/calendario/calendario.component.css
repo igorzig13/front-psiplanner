@@ -55,6 +55,7 @@ main {
 .calendar {
   margin-top: 10px;
   border: solid 2px #5b6372;
+  box-shadow:5px 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   padding-left: 29px;
   padding-right: 29px;
@@ -69,7 +70,7 @@ table {
 
 /*Padronizando a altura pra todos os dias menos para os nomes*/
 tr:has(.day) {
-  height: 81px;
+  height: 88px;
 }
 
 /*Estilo do nome dos dias da semana*/
@@ -130,6 +131,28 @@ tr:has(.day) {
   text-overflow: ellipsis;
   max-width: 100%;
   height: 100%;
+}
+
+.agendamento-realizado{
+  height: 20px;
+  width: 20px;
+  background-color: #bed7dc;
+}
+
+.proximo-agendamento{
+  height: 20px;
+  width: 20px;
+  background-color: #455D51;
+}
+
+.captions{
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.captions p{
+  margin-right: 40px;
 }
 
 /*Estilização do link do agendamento*/
