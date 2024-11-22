@@ -29,6 +29,7 @@ export class CalendarioComponent {
     //Declara 35 dias pois é o tamanho total do calendário com os dias do outro mês
     const totalDays = 35;
     const daysArray = Array.from({ length: totalDays }, (_, i) => i + 1); // Gera [1, 2, ..., totalDays]
+    const today = new Date();
 
     while (daysArray.length) {
       // Agrupa os dias em semanas (7 dias por semana)
@@ -39,9 +40,17 @@ export class CalendarioComponent {
           if (day > 30) {
             return `<div class="agendamento "><p>${day}</p></div>`;
           }
+            
+          if(day==today.getDate()){
+            return `<div class="agendamento "><p class="hoje">${day}</p><a href="#">Agendamento</a></div>`;
+          }
           // Adiciona um agendamento com uma chance de 10% para algum dia da semana
           else if (this.getRandomInt(100) < 10) {
-            return `<div class="agendamento "><p>${day}</p><a href="#">Agendamento</a></div>`;
+            if(day<today.getDate()){
+              return `<div class="agendamento "><p>${day}</p><a href="#">Agendamento</a></div>`;
+            }else{
+              return `<div class="agendamento2 "><p>${day}</p><a href="#">Agendamento</a></div>`;
+            }
           }
           //Retorna um dia sem um agendamento
           return `<div class="agendamento "><p>${day}</p></div>`;
