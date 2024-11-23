@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ButtonComponent } from "../../components/button/button.component";
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule],
+  imports: [ButtonComponent, ReactiveFormsModule, NavbarComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent implements OnInit {
+  navUi: number = 1;
+
   selectForm: string = 'client';
 
   formClient: FormGroup = new FormGroup({});

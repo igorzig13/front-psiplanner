@@ -3,15 +3,17 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 
 import { ButtonComponent } from '../../components/button/button.component';
 import { LinkComponent } from "../../components/link/link.component";
+import { NavbarComponent } from "../../components/navbar/navbar.component";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ButtonComponent, LinkComponent, ReactiveFormsModule],
+  imports: [ButtonComponent, LinkComponent, ReactiveFormsModule, NavbarComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+  navUi: number = 1;
   form: FormGroup = new FormGroup({});
 
   constructor(private formBuilder: FormBuilder) {  }
