@@ -1,0 +1,56 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1.5rem;
+  gap: 1rem;
+  background-color: #455D51;
+  color: #DCECE6;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.main-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.dashboard-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+@media (max-width: 992px) {
+  .main-row {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-group {
+    flex-direction: row;
+  }
+
+  .dashboard-group > app-dashboard-card {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-group {
+    flex-direction: column;
+  }
+}
+
+

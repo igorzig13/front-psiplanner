@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from "../button/button.component";
 
 @Component({
@@ -11,7 +11,7 @@ import { ButtonComponent } from "../button/button.component";
 export class HorizontalCardComponent {
   @Input() typeCard!: string;
 
-  @Input() clickFunction = () => {};
+  @Output() clickEvent = new EventEmitter<void>();
 
   @Input() dataClient!: { name: string, url_img: string, data: string };
   @Input() dataClinicOrUser!: { name: string, url_img: string, description: string, location: string };

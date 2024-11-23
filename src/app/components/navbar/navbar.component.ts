@@ -34,8 +34,14 @@ export class NavbarComponent {
       texts: ['Início', 'Consultas', 'Calendário'],
       links: ['/home', '/appointments', '/calendar']};
 
+    const nav3 : TextsAndLinks = {
+      texts: ['Inicio', 'Profissionais', 'Editar'],
+      links: ['/clinic', '/clinic/professionals', '/clinic/calendar'],
+    };
+
     this.navbars.set(1, nav1);
     this.navbars.set(2, nav2);
+    this.navbars.set(3, nav3);
 
     this.updateNavbarData();
   }

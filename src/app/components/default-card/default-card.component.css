@@ -1,62 +1,115 @@
 .default-card {
-    display: flex; 
-    flex-direction: column; 
-    width: 100%;
-    max-width: 300px;
-    height: auto; 
-    border: 1px  solid #d1d1d1; 
-    box-sizing: border-box; 
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1); 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border: 1px solid #D1D1D1;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.top-side, .bottom-side {
+  flex: 1;
+  width: 100%;
+}
+
+.top-side {
+  background-color: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+
+.top-side img {
+  width: 50%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.bottom-side {
+  background-color: #E6E6E6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+}
+
+.text-center {
+  text-align: left;
+  align-self: flex-start;
+  font-size: clamp(0.875rem, 3vw, 1rem);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 0.3rem;
+}
+
+.rating-star {
+  width: 1.5rem;
+  height: auto;
+  margin-right: 5px;
+}
+
+.rating-text {
+  font-size: 1rem;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .default-card {
+    max-width: 200px;
   }
-  
-  .top-side, .bottom-side {
-    flex: 1;
-    width: 100%;
-  }
-  
-  .top-side {
-    background-color: #f4f4f4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5%;
-  }
-  
+
   .top-side img {
-    width: 40%;
-    height: auto;
+      width: 50%;
   }
-  
-  
+
   .bottom-side {
-    background-color: #e6e6e6;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    padding: 5%;
+      padding: 4%;
   }
-  
+
   .text-center {
-    text-align: left;
-    align-self: flex-start; 
-    font-size: clamp(1rem, 2.5vw, 1.125rem);
+      font-size: 0.9rem;
   }
-  
+
   .rating {
-    display: flex;
-    align-items: center; 
-    justify-content: flex-start; 
-    width: 100%; 
+      font-size: 0.875rem;
   }
-  
+
   .rating-star {
-    width: 1.5rem; 
-    height: auto;
-    margin-right: 5px; 
+      width: 1.25rem;
   }
-  
-  .rating-text {
-    font-size: 1rem;
-    color: #000; 
+}
+
+@media (max-width: 480px) {
+  .default-card {
+      max-width: 180px;
   }
-  
+
+  .top-side img {
+      width: 60%;
+  }
+
+  .bottom-side {
+      padding: 3%;
+  }
+
+  .text-center {
+      font-size: 0.875rem;
+  }
+
+  .rating {
+      font-size: 0.75rem;
+  }
+
+  .rating-star {
+      width: 1rem;
+  }
+}

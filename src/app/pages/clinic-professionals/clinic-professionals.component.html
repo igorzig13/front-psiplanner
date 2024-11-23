@@ -1,0 +1,86 @@
+<app-navbar navIndex="{{navUi}}"></app-navbar>
+
+<main>
+  <div class="main-container">
+    <div class="popup-header">
+      <div class="line"></div>
+      <h2> Profissionais </h2>
+      <div class="line"></div>
+    </div>
+
+    <section class="wrapper-professionals">
+      @for (professional of professionals; track professional) {
+        <app-default-card btnText="Editar"
+                          (onButtonClick)="toogleEdit(professional)"
+                          type="professional"
+                          [name]="professional.name"
+                          [url_img]="professional.url_img"
+                          [rating]="professional.rating"
+                          >
+
+        </app-default-card>
+      }
+    </section>
+  </div>
+
+  <div class="button-container">
+    <app-button btnClass="btn main-button" text="Adicionar" (onClick)="toogleAdd()"></app-button>
+  </div>
+
+  @if (openEdit) {
+    <app-popup title="Profissional">
+      <div>
+        <app-default-card btnText="Remover"
+          (onButtonClick)="removeProfessional()"
+          type='professional'
+          [name]="selectedProfessional.name"
+          [url_img]="selectedProfessional.url_img"
+          [rating]="selectedProfessional.rating"
+          >
+        </app-default-card>
+      </div>
+
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Informações </h5>
+        <div class="line"></div>
+      </div>
+
+      <div class="info-container">
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">location_on</span>
+            <span>Localização</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">phone</span>
+            <span>(84) 00000-0000</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">home</span>
+            <span>Remoto</span>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">email</span>
+            <span>contato&#64;gmail.com</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">calendar_today</span>
+            <span>31/12/2012</span>
+          </div>
+        </div>
+      </div>
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toogleEdit(selectedProfessional)"></app-button>
+    </app-popup>
+  }
+
+  @if (openAdd) {
+    <app-popup title="Adicionar profissional">
+
+    </app-popup>
+  }
+</main>

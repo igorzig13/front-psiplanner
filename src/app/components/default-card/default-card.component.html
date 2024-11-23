@@ -1,15 +1,13 @@
 <div class="default-card">
     <div class="top-side">
-      <img src="icons/person.svg" alt="Ícone de pessoa" />
-    </div>    
+      <img [src]="url_img" alt="Ícone de pessoa" />
+    </div>
     <div class="bottom-side">
-      <p class="text-center">{{ type === 'professional' ? 'Nome do profissional' : 'Nome do paciente' }}</p>
+      <p class="text-center">{{ name }}</p>
       <div *ngIf="type === 'professional'" class="rating">
         <img src="icons/ratingStar.svg" alt="Estrela de Avaliação" class="rating-star" />
-        <span class="rating-text">5/5</span>
+        <span class="rating-text">{{ rating }}/5</span>
       </div>
-      <app-button btnClass="btn main-button" text="{{btnText}}" (onClick)="onButtonClick()"></app-button>
+      <app-button btnClass="btn main-button" text="{{btnText}}" (onClick)="onButtonClick.emit()"></app-button>
     </div>
-  </div>
-  
-  
+</div>

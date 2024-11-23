@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -12,5 +12,10 @@ import { ButtonComponent } from '../button/button.component';
 export class DefaultCardComponent {
   @Input() type: 'professional' | 'client' = 'client';
   @Input() btnText: string = '';
-  @Input() onButtonClick: () => void = () => {};
+
+  @Input() name!: string;
+  @Input() url_img!: string;
+  @Input() rating!: number;
+
+  @Output() onButtonClick = new EventEmitter<void>();
 }
