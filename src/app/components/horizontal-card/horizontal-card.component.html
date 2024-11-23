@@ -1,0 +1,33 @@
+<div class="horizontal-card">
+  <div class="card-content">
+    <div class="img-container">
+      <img
+      [src]="typeCard === 'client' ? dataClient.url_img : dataClinicOrUser.url_img"
+      alt="Imagem do Card"
+      class="card-image"
+      />
+    </div>
+
+    <div class="details">
+      <h3>{{ typeCard === 'client' ? dataClient.name : dataClinicOrUser.name }}</h3>
+      @if (typeCard === 'client') {
+        <p>{{ dataClient.data }}</p>
+      }
+
+      @if (typeCard !== 'client') {
+        <p>{{ dataClinicOrUser.description }}</p>
+      }
+
+      @if (typeCard !== 'client'){
+        <div class="location">
+          <i class="material-icons">location_on</i>
+          <span>{{ dataClinicOrUser.location }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="button">
+    <app-button btnClass="btn main-button expand" text="Detalhes" (onClick)="clickFunction()"></app-button>
+  </div>
+</div>

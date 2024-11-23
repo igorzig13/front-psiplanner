@@ -23,3 +23,7 @@ button.secondary-button:hover {
   background-color: #455D51;
   color: #DCECE6;
 }
+
+button.expand {
+  width: 100% !important;
+}
