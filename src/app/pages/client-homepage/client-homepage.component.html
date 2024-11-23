@@ -1,5 +1,3 @@
-<p>client-homepage works!</p>
-
 
 <!--
 <app-horizontal-card
@@ -12,8 +10,26 @@
     [clickFunction]="test">
     </app-horizontal-card>
 -->
-
-<div class="container">
+<div class="top-container">
+    <div class="top-line">
+        <span class="top-text">Agende sua consulta</span>
+      </div>
+    <form class="form-inline">
+      <div class="input-wrapper">
+        <img src="icons/location_on.svg" alt="Location Icon" class="input-icon">
+        <input type="text" placeholder="Localização">
+      </div>
+      <div class="input-wrapper">
+        <img src="icons/person.svg" alt="Person Icon" class="input-icon">
+        <input type="text" placeholder="Nome">
+      </div>
+      <div class="button-wrapper">
+        <app-button btnClass="btn main-button" text="Pesquisar"></app-button>
+    </div>
+    </form>
+    
+  </div>
+  <div class="main-container">
     <app-horizontal-card
     [typeCard]="'clinic'"
     [dataClinicOrUser]="{
@@ -41,4 +57,40 @@
         location: 'Localização'}"
     [clickFunction]="test">
     </app-horizontal-card>
-</div>
+    <app-horizontal-card
+    [typeCard]="'clinic'"
+    [dataClinicOrUser]="{
+        name: 'Clínica 01',
+        url_img: 'https://via.placeholder.com/150',
+        description: 'Olá, somos a Clínica 01',
+        location: 'Localização'}"
+    [clickFunction]="test">
+    </app-horizontal-card>
+    <app-horizontal-card
+    [typeCard]="'clinic'"
+    [dataClinicOrUser]="{
+        name: 'Clínica 01',
+        url_img: 'https://via.placeholder.com/150',
+        description: 'Olá, somos a Clínica 01',
+        location: 'Localização'}"
+    [clickFunction]="test">
+    </app-horizontal-card>
+    <app-horizontal-card
+    [typeCard]="'clinic'"
+    [dataClinicOrUser]="{
+        name: 'Clínica 01',
+        url_img: 'https://via.placeholder.com/150',
+        description: 'Olá, somos a Clínica 01',
+        location: 'Localização'}"
+    [clickFunction]="test">
+    </app-horizontal-card>
+    <app-horizontal-card
+    [typeCard]="'clinic'"
+    [dataClinicOrUser]="{
+        name: 'Clínica 01',
+        url_img: 'https://via.placeholder.com/150',
+        description: 'Olá, somos a Clínica 01',
+        location: 'Localização'}"
+    [clickFunction]="test">
+    </app-horizontal-card>
+    </div>
