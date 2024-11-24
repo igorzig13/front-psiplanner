@@ -5,13 +5,14 @@ export interface CalendarDay {
  date: number;
  isToday: boolean;
  isPrevMonth: boolean;
- isNextMonth: boolean
+ isNextMonth: boolean;
+ hasAppointment: boolean;
 }
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule],//Incluir import do popup que será utilizado
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
@@ -34,12 +35,29 @@ export class CalendarComponent {
   currentMonth!: number;
   currentYear!: number;
   calendar: CalendarDay[][] = [];
+  Day = new Date();
+
+  mostrarPopup = false; // Estado do popup
+  popupTitle = ''; // Título do popup
+ // popupContent = ''; // Conteúdo do popup
 
   constructor() {
     const today = new Date();
     this.currentMonth = today.getMonth();
     this.currentYear = today.getFullYear();
     this.generateCalendar(this.currentYear, this.currentMonth);
+  }
+
+  abrirPopup(day: CalendarDay): void {
+    this.popupTitle = `Agendamento para o dia ${day.date}`;
+   // this.popupContent = `Você selecionou o dia ${day.date}.`;
+    this.mostrarPopup = true;
+  }
+
+  fecharPopup(): void {
+    this.mostrarPopup = false;
+    this.popupTitle = '';
+   // this.popupContent = '';
   }
 
   generateCalendar(year: number, month: number): void {
@@ -57,6 +75,7 @@ export class CalendarComponent {
         isToday: false,
         isPrevMonth: true,
         isNextMonth: false,
+        hasAppointment: Math.floor(Math.random()*100) < 10
       });
     }
 
@@ -67,6 +86,7 @@ export class CalendarComponent {
         isToday: today.getFullYear() === year && today.getMonth() === month && today.getDate() === i,
         isPrevMonth: false,
         isNextMonth: false,
+        hasAppointment:  Math.floor(Math.random()*100) < 10 // Define aleatoriamente se terá agendamento
       });
     }
 
@@ -78,6 +98,7 @@ export class CalendarComponent {
         isToday: false,
         isPrevMonth: false,
         isNextMonth: true,
+        hasAppointment:  Math.floor(Math.random()*100) < 10
       });
     }
 
