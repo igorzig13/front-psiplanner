@@ -1,15 +1,6 @@
+<app-navbar navIndex = {{navUi}}></app-navbar>
 
-<!--
-<app-horizontal-card
-    [typeCard]="'clinic'"
-    [dataClinicOrUser]="{
-        name: 'Clínica 01',
-        url_img: 'https://via.placeholder.com/150',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização'}"
-    [clickFunction]="test">
-    </app-horizontal-card>
--->
+<main> 
 <div class="top-container">
     <div class="top-line">
         <span class="top-text">Agende sua consulta</span>
@@ -30,67 +21,75 @@
     
   </div>
   <div class="main-container">
+    @for (clinicOrProfessional of clinicsAndProfessionals; track clinicOrProfessional) {
     <app-horizontal-card
-    [typeCard]="'clinic'"
-    [dataClinicOrUser]="{
-        name: 'Clínica 01',
-        url_img: 'https://via.placeholder.com/150',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização'}"
-    [clickFunction]="test">
+      [typeCard]="'clinics'"
+      [dataClinicOrUser]="clinicOrProfessional"
+      (clickEvent)="toggleDetails(clinicOrProfessional)">
     </app-horizontal-card>
-    <app-horizontal-card
-    [typeCard]="'clinic'"
-    [dataClinicOrUser]="{
-        name: 'Clínica 01',
-        url_img: 'https://via.placeholder.com/150',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização'}"
-    [clickFunction]="test">
-    </app-horizontal-card>
-    <app-horizontal-card
-    [typeCard]="'clinic'"
-    [dataClinicOrUser]="{
-        name: 'Clínica 01',
-        url_img: 'https://via.placeholder.com/150',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização'}"
-    [clickFunction]="test">
-    </app-horizontal-card>
-    <app-horizontal-card
-    [typeCard]="'clinic'"
-    [dataClinicOrUser]="{
-        name: 'Clínica 01',
-        url_img: 'https://via.placeholder.com/150',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização'}"
-    [clickFunction]="test">
-    </app-horizontal-card>
-    <app-horizontal-card
-    [typeCard]="'clinic'"
-    [dataClinicOrUser]="{
-        name: 'Clínica 01',
-        url_img: 'https://via.placeholder.com/150',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização'}"
-    [clickFunction]="test">
-    </app-horizontal-card>
-    <app-horizontal-card
-    [typeCard]="'clinic'"
-    [dataClinicOrUser]="{
-        name: 'Clínica 01',
-        url_img: 'https://via.placeholder.com/150',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização'}"
-    [clickFunction]="test">
-    </app-horizontal-card>
-    <app-horizontal-card
-    [typeCard]="'clinic'"
-    [dataClinicOrUser]="{
-        name: 'Clínica 01',
-        url_img: 'https://via.placeholder.com/150',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização'}"
-    [clickFunction]="test">
-    </app-horizontal-card>
+  }
+
+  @if (openDetails) {
+    <app-popup title ="{{selectedClinicOrProfessional.name}}">
+      <!--NÃO FICA ENCAIXADO BONITO FICA FEIO UM EM BAIXO DO OUTRO-->   
+        @if (selectedClinicOrProfessional.professional_list.length > 0) {
+          @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
+            <app-default-card btnText="Agendar"
+              (onButtonClick)="bookAppointment()"
+              type="professional"
+              [name]="professional.name"
+              [url_img]="selectedClinicOrProfessional.url_img"
+              [rating]="professional.rating"
+            ></app-default-card>
+          }
+        }
+        @else {
+          <app-default-card btnText="Agendar"
+            (onButtonClick)="bookAppointment()"
+            type="professional"
+            [name]="selectedClinicOrProfessional.name"
+            [url_img]="selectedClinicOrProfessional.url_img"
+            [rating]="selectedClinicOrProfessional.rating"
+          ></app-default-card>
+        }
+
+        <div class="popup-header">
+          <div class="line"></div>
+          <h5> Informações </h5>
+          <div class="line"></div>
+        </div>
+
+        <div class="info-container">
+          <div class="info-group">
+            <div class="info-item">
+              <span class="material-icons">location_on</span>
+              <span>Localização</span>
+            </div>
+            <div class="info-item">
+              <span class="material-icons">phone</span>
+              <span>(84) 00000-0000</span>
+            </div>
+            <div class="info-item">
+              <span class="material-icons">home</span>
+              <span>Remoto</span>
+            </div>
+          </div>
+  
+          <div class="info-group">
+            <div class="info-item">
+              <span class="material-icons">email</span>
+              <span>contato&#64;gmail.com</span>
+            </div>
+            <div class="info-item">
+              <span class="material-icons">calendar_today</span>
+              <span>31/12/2012</span>
+            </div>
+          </div>
+        </div>
+
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetails(selectedClinicOrProfessional)"></app-button>
+    </app-popup>
+  }
     </div>
+</main>
