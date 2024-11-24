@@ -1,10 +1,10 @@
-<app-navbar navIndex = {{navUi}}></app-navbar>
+<app-navbar navIndex = "{{navUi}}"></app-navbar>
 
-<main> 
-<div class="top-container">
+<main>
+  <div class="top-container">
     <div class="top-line">
-        <span class="top-text">Agende sua consulta</span>
-      </div>
+      <span class="top-text">Agende sua consulta</span>
+    </div>
     <form class="form-inline">
       <div class="input-wrapper">
         <img src="icons/location_on.svg" alt="Location Icon" class="input-icon">
@@ -16,43 +16,43 @@
       </div>
       <div class="button-wrapper">
         <app-button btnClass="btn main-button" text="Pesquisar"></app-button>
-    </div>
+      </div>
     </form>
-    
+
   </div>
   <div class="main-container">
     @for (clinicOrProfessional of clinicsAndProfessionals; track clinicOrProfessional) {
-    <app-horizontal-card
-      [typeCard]="'clinics'"
-      [dataClinicOrUser]="clinicOrProfessional"
-      (clickEvent)="toggleDetails(clinicOrProfessional)">
-    </app-horizontal-card>
-  }
+      <app-horizontal-card
+        [typeCard]="'clinics'"
+        [dataClinicOrUser]="clinicOrProfessional"
+        (clickEvent)="toggleDetails(clinicOrProfessional)">
+      </app-horizontal-card>
+    }
 
-  @if (openDetails) {
-    <app-popup title ="{{selectedClinicOrProfessional.name}}">
-      <div class="professionals-container">
-        @if (selectedClinicOrProfessional.professional_list.length > 0) {
-          @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
+    @if (openDetails) {
+      <app-popup title ="{{selectedClinicOrProfessional.name}}">
+        <div class="professionals-container">
+          @if (selectedClinicOrProfessional.professional_list.length > 0) {
+            @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
+              <app-default-card btnText="Agendar"
+                                (onButtonClick)="toggleBookingAppointment()"
+                                type="professional"
+                                [name]="professional.name"
+                                [url_img]="selectedClinicOrProfessional.url_img"
+                                [rating]="professional.rating"
+              ></app-default-card>
+            }
+          }
+          @else {
             <app-default-card btnText="Agendar"
-              (onButtonClick)="toggleBookingAppointment()"
-              type="professional"
-              [name]="professional.name"
-              [url_img]="selectedClinicOrProfessional.url_img"
-              [rating]="professional.rating"
+                              (onButtonClick)="toggleBookingAppointment()"
+                              type="professional"
+                              [name]="selectedClinicOrProfessional.name"
+                              [url_img]="selectedClinicOrProfessional.url_img"
+                              [rating]="selectedClinicOrProfessional.rating"
             ></app-default-card>
           }
-        }
-        @else {
-          <app-default-card btnText="Agendar"
-            (onButtonClick)="toggleBookingAppointment()"
-            type="professional"
-            [name]="selectedClinicOrProfessional.name"
-            [url_img]="selectedClinicOrProfessional.url_img"
-            [rating]="selectedClinicOrProfessional.rating"
-          ></app-default-card>
-        }
-      </div>
+        </div>
 
         <div class="popup-header">
           <div class="line"></div>
@@ -75,7 +75,7 @@
               <span>Remoto</span>
             </div>
           </div>
-  
+
           <div class="info-group">
             <div class="info-item">
               <span class="material-icons">email</span>
@@ -89,15 +89,15 @@
         </div>
 
 
-      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetails(selectedClinicOrProfessional)"></app-button>
-    </app-popup>
-  }
+        <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetails(selectedClinicOrProfessional)"></app-button>
+      </app-popup>
+    }
 
-  @if (openBookinAppointment) {
-    <app-popup title="Agendamento">
-
-      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleBookingAppointment()"></app-button>
-    </app-popup>
-  }
-    </div>
+    @if (openBookinAppointment) {
+      <app-popup title="Agendamento">
+        <app-calendar type="horarios" (onClick)="toggleBookingAppointment()"></app-calendar>
+        <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleBookingAppointment()"></app-button>
+      </app-popup>
+    }
+  </div>
 </main>

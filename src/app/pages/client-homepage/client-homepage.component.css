@@ -1,12 +1,15 @@
+main {
+  margin-top: 2vh;
+}
 .top-container {
   max-width: 80%;
-  margin: 0 auto; 
+  margin: 0 auto;
   min-height: 100px;
   flex-wrap: wrap;
   padding: 1rem;
   background-color: #FFF;
-  border: 1px solid #ddd; 
-  border-radius: 8px; 
+  border: 1px solid #CCC;
+  border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .main-container {
@@ -47,7 +50,7 @@
 
 .input-wrapper {
   position: relative;
-  flex: 0 1 20%; 
+  flex: 0 1 20%;
 }
 
 .input-icon {
@@ -61,7 +64,7 @@
 
 .form-inline input {
   width: 100%;
-  padding-left: 2rem; 
+  padding-left: 2rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
@@ -81,7 +84,7 @@
 
 .button-wrapper {
   flex: 0 1 auto;
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: 0.75%;
 }
 
@@ -165,5 +168,5 @@ app-default-card {
   .info-item span {
     font-size: 0.9rem;
   }
-  
+
 }

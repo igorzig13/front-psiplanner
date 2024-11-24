@@ -5,11 +5,12 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { DefaultCardComponent } from '../../components/default-card/default-card.component';
+import {CalendarComponent} from '../../components/calendar/calendar.component';
 
 @Component({
   selector: 'app-client-homepage',
   standalone: true,
-  imports: [ NavbarComponent , HorizontalCardComponent , ButtonComponent , CommonModule , PopupComponent , DefaultCardComponent],
+  imports: [NavbarComponent, HorizontalCardComponent, ButtonComponent, CommonModule, PopupComponent, DefaultCardComponent, CalendarComponent],
   templateUrl: './client-homepage.component.html',
   styleUrl: './client-homepage.component.css'
 })
