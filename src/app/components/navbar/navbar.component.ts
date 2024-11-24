@@ -39,9 +39,15 @@ export class NavbarComponent {
       links: ['/clinic', '/clinic/professionals', '/clinic/perfil'],
     };
 
+    const nav4 : TextsAndLinks = {
+      texts: ['Inicio', 'Calendário', 'Consultas', 'Agenda' ,'Perfil'],
+      links: ['/professional', '/professional/calendar', '/professional/consults', "/professional/agenda" , "/professional/perfil"],
+    };
+
     this.navbars.set(1, nav1);
     this.navbars.set(2, nav2);
     this.navbars.set(3, nav3);
+    this.navbars.set(4, nav4);
 
     this.texts = this.navbars.get(this.navIndex)?.texts
     this.links = this.navbars.get(this.navIndex)?.links;

@@ -1,0 +1,115 @@
+<app-navbar navIndex="{{navUi}}"></app-navbar>
+
+<main>
+  <div class="popup-header">
+    <div class="line"></div>
+    <i class="material-icons">edit</i>
+    <div class="line"></div>
+  </div>
+
+  <div class="main-wrapper">
+    <form [formGroup]="formUpdate" class="main-form">
+      <div class="profile-section">
+        <img src="https://placehold.co/400" alt="Imagem de Perfil" class="profile-image">
+        <app-button btnClass="btn main-button" text="Selecionar imagem"></app-button>
+      </div>
+
+      <div class="field-form">
+        <label for="description">Descrição (Opcional)</label>
+        <p>Profissional com 50 anos de experiência!</p>
+        <input type="text"
+               id="description"
+               formControlName="description"
+               placeholder="Nova descrição">
+      </div>
+
+      <div class="field-form">
+        <label for="name">Nome</label>
+        <p>Nome atual: Carlos Queiroz Menezes</p>
+        <input type="text"
+               id="name"
+               formControlName="name"
+               style="background-image: url('icons/person.svg');"
+               placeholder="Novo nome">
+      </div>
+
+      <div class="field-form">
+        <label for="email">Email</label>
+        <p>Email atual: emailatual&#64;gmail.com</p>
+        <input type="email"
+               id="email"
+               formControlName="email"
+               style="background-image: url('icons/mail.svg');"
+               placeholder="Novo email">
+      </div>
+
+      <div class="field-form">
+        <label for="telephone">Contato</label>
+        <p>Contato atual: (84) 00000-0000</p>
+        <input type="text"
+               id="telephone"
+               formControlName="telephone"
+               style="background-image: url('icons/call.svg');"
+               placeholder="Novo contato">
+      </div>
+
+      <div class="field-form">
+        <label for="location">Localização</label>
+        <p>Localização atual: Natal - RN</p>
+        <input type="text"
+               id="location"
+               formControlName="location"
+               style="background-image: url('icons/location_on.svg');"
+               placeholder="Nova localização">
+      </div>
+
+      <div class="field-form">
+        <label>Senha</label>
+        <div class="password-fields">
+          <input type="text"
+                 formControlName="password"
+                 style="background-image: url('icons/password.svg');"
+                 placeholder="Nova senha">
+          <input type="text"
+                 style="background-image: url('icons/password.svg');"
+                 placeholder="Confirmar senha">
+        </div>
+      </div>
+
+      <div class="field-form">
+        <label for="crp">CRP</label>
+        <p>CRP atual: 0000000/000-00</p>
+        <input type="text"
+               id="crp"
+               formControlName="crp"
+               style="background-image: url('icons/fingerprint.svg');"
+               placeholder="Novo CRP">
+      </div>
+
+      <div class="field-form">
+        <label for="approach">Abordagem</label>
+        <p>Abordagem atual: Psicanálise</p>
+        <input type="text"
+               id="approach"
+               formControlName="approach"
+               style="background-image: url('icons/psychology.svg');"
+               placeholder="Nova abordagem">
+      </div>
+
+      <div class="field-form">
+        <label for="model">Modelo</label>
+        <p>Modelo atual: Presencial</p>
+        <input type="text"
+               id="model"
+               formControlName="model"
+               style="background-image: url('icons/home.svg');"
+               placeholder="Novo modelo">
+      </div>
+
+      <div class="buttons">
+        <app-button btnClass="btn secondary-button" text="Cancelar" (onClick)="cancel()"></app-button>
+        <app-button btnClass="btn main-button" text="Salvar" (onClick)="send()"></app-button>
+      </div>
+    </form>
+  </div>
+</main>
