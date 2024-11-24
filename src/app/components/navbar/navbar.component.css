@@ -1,9 +1,10 @@
 a {
-  font-weight: 300;
+  padding: 0.2rem 0.5rem;
+  transition: all ease-in-out .2s;
 }
+
 a:hover {
-  text-decoration: underline;
-  color: black;
+  transform: scale(1.04);
 }
 
 .nav-centered {

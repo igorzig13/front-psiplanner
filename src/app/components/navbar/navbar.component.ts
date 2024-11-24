@@ -1,5 +1,6 @@
 import {Component, Input, numberAttribute} from '@angular/core';
 import {LinkComponent} from '../link/link.component';
+import {RouterLink} from '@angular/router';
 
 export interface TextsAndLinks {
   texts: string[];
@@ -10,7 +11,8 @@ export interface TextsAndLinks {
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    LinkComponent
+    LinkComponent,
+    RouterLink
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
