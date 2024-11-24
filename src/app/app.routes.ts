@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ClinicHomeComponent } from './pages/clinic-home/clinic-home.component';
 import { ClinicProfessionalsComponent } from './pages/clinic-professionals/clinic-professionals.component';
+import { ClientHomepageComponent } from './pages/client-homepage/client-homepage.component';
 
 export const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'clinic', component: ClinicHomeComponent },
-  { path: 'clinic/professionals', component: ClinicProfessionalsComponent }
+  { path: 'clinic/professionals', component: ClinicProfessionalsComponent },
+  { path: 'client', component: ClientHomepageComponent}
 ];
