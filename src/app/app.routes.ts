@@ -8,6 +8,7 @@ import { ClinicProfessionalsComponent } from './pages/clinic-professionals/clini
 import { ClinicPerfilComponent } from './pages/clinic-perfil/clinic-perfil.component';
 import { ProfessionalHomeComponent } from './pages/professional-home/professional-home.component';
 import { ProfessionalConsultsComponent } from './pages/professional-consults/professional-consults.component';
+import { ProfessionalPerfilComponent } from './pages/professional-perfil/professional-perfil.component';
 
 export const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: 'clinic/professionals', component: ClinicProfessionalsComponent },
   { path: 'clinic/perfil', component: ClinicPerfilComponent },
   { path: 'professional', component: ProfessionalHomeComponent },
-  { path: 'professional/consults', component: ProfessionalConsultsComponent }
+  { path: 'professional/consults', component: ProfessionalConsultsComponent },
+  { path: 'professional/perfil', component: ProfessionalPerfilComponent }
 ];
