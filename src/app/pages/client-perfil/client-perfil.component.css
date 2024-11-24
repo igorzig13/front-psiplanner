@@ -1,0 +1,96 @@
+main {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  
+  .popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .line {
+    height: 1px;
+    background-color: #ccc;
+    flex-grow: 1;
+    margin: 0 10px;
+  }
+  
+  .main-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-section{
+    display: flex;
+    align-items: center;
+  }
+
+  .nome-e-imagem{
+    display: inline;
+  }
+.nome-e-imagem p{
+  color: #5B6372;
+}
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-right: 1rem;
+    object-fit: cover;
+  }
+  
+  /* Conteúdo do formulário */
+  
+  .main-form {
+    max-width: 80%;
+    min-width: 300px;
+  }
+  
+  .main-form .field-form p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .main-form .password-fields {
+    display: flex;
+    gap: 0.8rem;
+  }
+  
+  @media (max-width: 500px) {
+    .profile-section {
+      display: flex;
+      flex-direction: column  ;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 620px) {
+    .main-form {
+      max-width: 100%;
+    }
+  
+    .main-form .password-fields {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .main-form {
+      max-width: 95%;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .main-form {
+      max-width: 90%;
+    }
+  }
+  
