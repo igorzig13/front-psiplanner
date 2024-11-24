@@ -7,6 +7,7 @@ import { ClinicHomeComponent } from './pages/clinic-home/clinic-home.component';
 import { ClinicProfessionalsComponent } from './pages/clinic-professionals/clinic-professionals.component';
 import { ClinicPerfilComponent } from './pages/clinic-perfil/clinic-perfil.component';
 import { ClientPerfilComponent } from './pages/client-perfil/client-perfil.component';
+import { ClientCalendarioConsultaAgendadaComponent } from './pages/client-calendario-consulta-agendada/client-calendario-consulta-agendada.component';
 import { ClientHomepageComponent } from './pages/client-homepage/client-homepage.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProfessionalHomeComponent } from './pages/professional-home/professional-home.component';
@@ -25,7 +26,8 @@ export const routes: Routes = [
   { path: 'clinic/perfil', component: ClinicPerfilComponent },
   { path: 'client', component: ClientHomepageComponent},
   { path: 'client/perfil', component: ClientPerfilComponent },
-  { path: 'cliente/calendario', component: CalendarComponent },
+  { path: 'client/calendario', component: CalendarComponent },
+  { path: 'client/calendario/agendadas', component:ClientCalendarioConsultaAgendadaComponent },
   { path: 'professional', component: ProfessionalHomeComponent },
   { path: 'professional/consults', component: ProfessionalConsultsComponent },
   { path: 'professional/perfil', component: ProfessionalPerfilComponent },
