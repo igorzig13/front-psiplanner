@@ -80,7 +80,36 @@
 
   @if (openAdd) {
     <app-popup title="Adicionar profissional">
+      <div class="wrapper">
+        <form [formGroup]="formRegister" class="main-form">
+          <h5>Informe os dados para cadastrar um psicólogo:</h5>
+          <div class="field-form">
+            <label for="crp">CRP</label>
+            <input type="text"
+                   id="crp"
+                   formControlName="crp"
+                   style="background-image: url('icons/fingerprint.svg');"
+                   placeholder="Digite o CRP">
+          </div>
 
+          <div class="field-form">
+            <label for="email">Email</label>
+            <input type="text"
+                   id="email"
+                   formControlName="email"
+                   style="background-image: url('icons/mail.svg');"
+                   placeholder="Digite o email">
+          </div>
+          <div class="buttons">
+            <app-button btnClass="btn secondary-button" text="Voltar" (onClick)="toogleAdd()"></app-button>
+            <app-button btnClass="btn main-button" text="Cadastrar" (onClick)="registerProfessionar()"></app-button>
+          </div>
+        </form>
+
+        <div class="info">
+          <p>O profissional não possui conta? </p> <app-link router="/register" text="Cadastre-se"></app-link>
+        </div>
+      </div>
     </app-popup>
   }
 </main>

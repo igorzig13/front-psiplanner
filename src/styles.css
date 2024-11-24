@@ -27,7 +27,7 @@
   font-size: 1.15rem;
 }
 
-.main-form > .field-form > input {
+.main-form > .field-form  input  {
   width: 100%;
   padding: 10px 10px 10px 40px;
   border: none;
@@ -41,7 +41,7 @@
   transition: all ease-in-out .05s;
 }
 
-.main-form > .field-form > input:focus {
+.main-form > .field-form  input:focus {
   background-image: none !important;
   border-bottom: 1px solid #222;
   padding-left: 0;
@@ -52,8 +52,9 @@
   padding-left: 0;
 }
 
-.main-form > .field-form > input::placeholder {
+.main-form > .field-form  input::placeholder {
   font-style: italic;
+  font-size: 0.9rem;
 }
 
 .main-form > .buttons {

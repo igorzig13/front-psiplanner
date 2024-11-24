@@ -35,8 +35,8 @@ export class NavbarComponent {
       links: ['/home', '/appointments', '/calendar']};
 
     const nav3 : TextsAndLinks = {
-      texts: ['Inicio', 'Profissionais', 'Editar'],
-      links: ['/clinic', '/clinic/professionals', '/clinic/calendar'],
+      texts: ['Inicio', 'Profissionais', 'Pefil'],
+      links: ['/clinic', '/clinic/professionals', '/clinic/perfil'],
     };
 
     this.navbars.set(1, nav1);
