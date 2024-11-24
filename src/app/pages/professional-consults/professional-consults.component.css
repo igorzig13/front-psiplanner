@@ -1,0 +1,48 @@
+main {
+  width: 90%;
+  margin: 1rem auto;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.line {
+  height: 1px;
+  background-color: #ccc;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+section {
+  width: 90%;
+  margin: 1rem auto;
+}
+
+.title:hover {
+  background: #DDD;
+  transition: all ease-in-out 0.2s;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: .3rem;
+}
+
+
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.title .value_icon {
+  display: flex;
+  gap: 0.4rem;
+}

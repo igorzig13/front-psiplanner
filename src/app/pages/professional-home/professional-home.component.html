@@ -1,0 +1,56 @@
+<app-navbar navIndex="{{navUi}}"></app-navbar>
+
+<main>
+  <div class="banner">
+    <h1>  Oi, {{ nameProfessional }}! Seja muito bem vindo ao seu perfil! </h1>
+
+    <h4>
+      Gerencia suas consultas de maneira rápida, fácil e ágil.
+    </h4>
+  </div>
+
+  <section class="dashboard">
+    <div class="container py-5">
+      <div class="title">
+        <span class="material-icons icon">insert_chart</span>
+        <h2>Dashboard</h2>
+      </div>
+
+      <div class="main-row">
+        <div class="dashboard-group">
+          <app-dashboard-card
+            icon="calendar_month"
+            value="{{monthConsults}}"
+            description="Consultas Neste Mês">
+          </app-dashboard-card>
+
+          <app-dashboard-card
+            icon="event_available"
+            value="{{allConsults}}"
+            description="Consultas Totais">
+          </app-dashboard-card>
+        </div>
+
+        <div class="dashboard-group">
+          <app-dashboard-card
+            icon="cancel"
+            value="{{monthCancel}}"
+            description="Consultas Canceladas Neste Mês">
+          </app-dashboard-card>
+
+          <app-dashboard-card
+            icon="star_half"
+            value="{{allAvailable}}"
+            description="Média das Avaliações da Clínica">
+          </app-dashboard-card>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="buttons">
+    <app-button btnClass="btn main-button" text="Agendamentos" (onClick)="appointmentsFunction()"></app-button>
+    <app-button btnClass="btn main-button" text="Editar Agenda"></app-button>
+  </div>
+</main>

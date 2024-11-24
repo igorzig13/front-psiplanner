@@ -1,0 +1,45 @@
+<app-navbar navIndex="{{navUi}}"></app-navbar>
+
+<main>
+  <div class="popup-header">
+    <div class="line"></div>
+    <i class="material-icons">event</i>
+    <div class="line"></div>
+  </div>
+
+  <div>
+    <section>
+      <div (click)="toogleNext()" class="title">
+        <h4>Próximas</h4>
+
+        <div class="value_icon">
+          <h4> {{ pacientsNext.length }} </h4>
+          <i class="material-icons"> {{ showNext ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
+        </div>
+      </div>
+
+      @if (showNext) {
+        @for (pacient of pacientsNext; track pacient) {
+          <app-horizontal-card typeCard="client" [dataClient]="pacient" ></app-horizontal-card>
+        }
+      }
+    </section>
+
+    <section>
+      <div (click)="toogleDone()" class="title">
+        <h4>Próximas</h4>
+
+        <div class="value_icon">
+          <h4> {{ pacientsDone.length }} </h4>
+          <i class="material-icons"> {{ showDone ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
+        </div>
+      </div>
+
+      @if (showDone) {
+        @for (pacient of pacientsDone; track pacient) {
+          <app-horizontal-card typeCard="client" [dataClient]="pacient" ></app-horizontal-card>
+        }
+      }
+    </section>
+  </div>
+</main>
