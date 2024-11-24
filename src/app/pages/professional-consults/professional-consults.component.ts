@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { HorizontalCardComponent } from '../../components/horizontal-card/horizontal-card.component';
+import { PopupComponent } from '../../components/popup/popup.component';
+import { ButtonComponent } from "../../components/button/button.component";
+import { DefaultCardComponent } from '../../components/default-card/default-card.component';
 
 @Component({
   selector: 'app-professional-consults',
   standalone: true,
-  imports: [NavbarComponent, HorizontalCardComponent],
+  imports: [NavbarComponent, HorizontalCardComponent, PopupComponent, ButtonComponent, DefaultCardComponent],
   templateUrl: './professional-consults.component.html',
   styleUrl: './professional-consults.component.css'
 })
@@ -14,6 +17,10 @@ export class ProfessionalConsultsComponent {
 
   showNext: boolean = false;
   showDone: boolean = false;
+  showDetailsNext: boolean = false;
+  showDetailsDone: boolean = false;
+
+  selectedPacient: any = null;
 
   pacientsNext = [
     { name: 'Vitor Emanuel', url_img: 'https://placehold.co/400', data: '27/06/2003' },
@@ -33,5 +40,29 @@ export class ProfessionalConsultsComponent {
 
   toogleDone() {
     this.showDone = !this.showDone;
+  }
+
+  toogleDetailsNext(pacient: any) {
+    this.showDetailsNext = !this.showDetailsNext;
+
+    if (this.showDetailsNext) { this.selectedPacient = pacient; }
+    else { this.selectedPacient = null; }
+  }
+
+  toogleDetailsDone(pacient: any) {
+    this.showDetailsDone = !this.showDetailsDone;
+
+    if (this.showDetailsDone) { this.selectedPacient = pacient; }
+    else { this.selectedPacient = null; }
+  }
+
+  removePacient () {
+    if (this.selectedPacient) {
+      const index = this.pacientsNext.findIndex(p => p.name === this.selectedPacient.name);
+
+      if (index !== -1) {
+        this.pacientsNext.splice(index, 1);
+      }
+    }
   }
 }

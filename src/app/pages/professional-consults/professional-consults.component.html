@@ -20,7 +20,7 @@
 
       @if (showNext) {
         @for (pacient of pacientsNext; track pacient) {
-          <app-horizontal-card typeCard="client" [dataClient]="pacient" ></app-horizontal-card>
+          <app-horizontal-card typeCard="client" [dataClient]="pacient" (clickEvent)="toogleDetailsNext(pacient)"></app-horizontal-card>
         }
       }
     </section>
@@ -37,9 +37,99 @@
 
       @if (showDone) {
         @for (pacient of pacientsDone; track pacient) {
-          <app-horizontal-card typeCard="client" [dataClient]="pacient" ></app-horizontal-card>
+          <app-horizontal-card typeCard="client" [dataClient]="pacient" (clickEvent)="toogleDetailsDone(pacient)"></app-horizontal-card>
         }
       }
     </section>
   </div>
+
+  @if (showDetailsNext) {
+    <app-popup title="Dados da Consulta">
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Paciente </h5>
+        <div class="line"></div>
+      </div>
+
+      <div>
+        <app-default-card btnText="Remover"
+          type='client'
+          btnText="Cancelar Consulta"
+          (onButtonClick)="removePacient()"
+          [name]="selectedPacient?.name"
+          [url_img]="selectedPacient?.url_img"
+          >
+        </app-default-card>
+      </div>
+
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Informações </h5>
+        <div class="line"></div>
+      </div>
+
+      <div class="info-container">
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">email</span>
+            <span>contato&#64;gmail.com</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">phone</span>
+            <span>(84) 00000-0000</span>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">home</span>
+            <span>Remoto</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">calendar_today</span>
+            <span>31/12/2012</span>
+          </div>
+        </div>
+      </div>
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toogleDetailsNext(selectedPacient)" ></app-button>
+    </app-popup>
+  }
+
+  @if (showDetailsDone) {
+    <app-popup title="Informações">
+      <div class="info-container">
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">person</span>
+            <span>{{ selectedPacient?.name }}</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">phone</span>
+            <span>(84) 00000-0000</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">schedule</span>
+            <span>00:00</span>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">email</span>
+            <span>contato&#64;gmail.com</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">home</span>
+            <span>Remoto</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">calendar_today</span>
+            <span>31/12/2012</span>
+          </div>
+        </div>
+      </div>
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toogleDetailsDone(selectedPacient)" ></app-button>
+    </app-popup>
+  }
 </main>
