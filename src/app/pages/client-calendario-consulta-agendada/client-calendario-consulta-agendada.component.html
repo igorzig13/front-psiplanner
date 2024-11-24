@@ -3,15 +3,19 @@
 <main>
     <button (click)="toggleAgendamento()"  style="height:200px; width:200px;"></button>
     @if (openAgendamento){
-      <app-popup title="Profissional">
-        
-        <h1>Dados da consulta</h1>
+      <app-popup title="Dados da Consulta">
 
+       <div class="popup-header">
+      <div class="line"></div>
+      <h3 style="font-weight: 300;"> Profissional </h3>
+      <div class="line"></div>
+    </div>
+      
         <div>
             <app-default-card
             btnText="Cancelar Consulta"
             type="professional"
-            name="Joseph"
+            name="Aldo Queiroz"
             url_img="https://placehold.co/300"
             [rating]="rating">
     
@@ -19,6 +23,9 @@
         </div>
     
         <div class="popup-header">
+          
+        
+
             <div class="line"></div>
             <h5> Informações </h5>
             <div class="line"></div>
