@@ -7,6 +7,7 @@ import { ClinicHomeComponent } from './pages/clinic-home/clinic-home.component';
 import { ClinicProfessionalsComponent } from './pages/clinic-professionals/clinic-professionals.component';
 import { ClinicPerfilComponent } from './pages/clinic-perfil/clinic-perfil.component';
 import { ClientPerfilComponent } from './pages/client-perfil/client-perfil.component';
+import { ClientCalendarioConsultaAgendadaComponent } from './pages/client-calendario-consulta-agendada/client-calendario-consulta-agendada.component';
 
 export const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -18,4 +19,5 @@ export const routes: Routes = [
   { path: 'clinic/professionals', component: ClinicProfessionalsComponent },
   { path: 'clinic/perfil', component: ClinicPerfilComponent },
   { path: 'client/perfil', component: ClientPerfilComponent },
+  { path: 'client/calendario/agendadas', component:ClientCalendarioConsultaAgendadaComponent },
 ];
