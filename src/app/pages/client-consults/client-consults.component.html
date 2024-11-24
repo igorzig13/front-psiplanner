@@ -1,0 +1,172 @@
+<app-navbar navIndex="{{navUi}}"></app-navbar>
+
+<main>
+    <div class="popup-header">
+        <div class="line"></div>
+        <i class="material-icons">event</i>
+        <div class="line"></div>
+    </div>
+    <div>
+        <section>
+            <div (click)="toggleNext()" class="title">
+                <h4>Próximas</h4>
+                <div class="value_icon">
+                    <h4> {{ professionalsNext.length }} </h4>
+                    <i class="material-icons"> {{ showNext ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
+                </div>
+            </div>
+            @if (showNext) {
+                @for (professional of professionalsNext; track professional) {
+                <app-horizontal-card [typeCard]="'professional'" [dataClinicOrUser]="professional"
+                    (clickEvent)="toggleDetailsNext(professional)">
+                </app-horizontal-card>
+                }
+            }
+        </section>
+        
+
+        <section>
+            <div (click)="toggleDone()" class="title">
+                <h4>Realizados</h4>
+        
+                <div class="value_icon">
+                  <h4> {{ professionalsDone.length }} </h4>
+                  <i class="material-icons"> {{ showDone ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
+                </div>
+              </div>
+            @if (showDone) {
+                @for (professional of professionalsDone; track professional) {
+                <app-horizontal-card [typeCard]="'professional'" [dataClinicOrUser]="professional"
+                    (clickEvent)="toggleDetailsDone(professional)">
+                </app-horizontal-card>
+                }
+            }
+            
+        </section>
+    </div>
+    @if (showDetailsNext) {
+        <app-popup title="Dados da Consulta">
+          <div class="popup-header">
+            <div class="line"></div>
+            <h5> Profissional </h5>
+            <div class="line"></div>
+          </div>
+    
+          <div>
+            <app-default-card btnText="test"
+                (onButtonClick)="test()"
+                type="professional"
+                [name]="selectedProfessional.name"
+                [url_img]="selectedProfessional.url_img"
+                [rating]="selectedProfessional.rating"
+              >
+            </app-default-card>
+            <!--
+            <app-default-card btnText="Agendar"
+              (onButtonClick)="toggleBookingAppointment()"
+              type="professional"
+              [name]="professional.name"
+              [url_img]="selectedClinicOrProfessional.url_img"
+              [rating]="professional.rating"
+            ></app-default-card>
+            -->
+          </div>
+    
+          <div class="popup-header">
+            <div class="line"></div>
+            <h5> Informações </h5>
+            <div class="line"></div>
+          </div>
+    
+          <div class="info-container">
+            <div class="info-group">
+              <div class="info-item">
+                <span class="material-icons">email</span>
+                <span>contato&#64;gmail.com</span>
+              </div>
+              <div class="info-item">
+                <span class="material-icons">phone</span>
+                <span>(84) 00000-0000</span>
+              </div>
+            </div>
+    
+            <div class="info-group">
+              <div class="info-item">
+                <span class="material-icons">home</span>
+                <span>Remoto</span>
+              </div>
+              <div class="info-item">
+                <span class="material-icons">calendar_today</span>
+                <span>31/12/2012</span>
+              </div>
+            </div>
+          </div>
+    
+          <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsNext(selectedProfessional)" ></app-button>
+        </app-popup>
+      }
+
+      @if (showDetailsDone) {
+        <app-popup title="Dados da consulta">
+            <div>
+                <app-default-card btnText="Avaliar"
+                    (onButtonClick)="rate()"
+                    type="professional"
+                    [name]="selectedProfessional.name"
+                    [url_img]="selectedProfessional.url_img"
+                    [rating]="selectedProfessional.rating"
+                  >
+                </app-default-card>
+                <!--
+                <app-default-card btnText="Agendar"
+                  (onButtonClick)="toggleBookingAppointment()"
+                  type="professional"
+                  [name]="professional.name"
+                  [url_img]="selectedClinicOrProfessional.url_img"
+                  [rating]="professional.rating"
+                ></app-default-card>
+                -->
+              </div>
+
+              <div class="popup-header">
+                <div class="line"></div>
+                <h5> Informações </h5>
+                <div class="line"></div>
+              </div>
+
+           <div class="info-container">
+            <div class="info-group">
+              <div class="info-item">
+                <span class="material-icons">person</span>
+                <span>{{ selectedProfessional?.name }}</span>
+              </div>
+              <div class="info-item">
+                <span class="material-icons">phone</span>
+                <span>(84) 00000-0000</span>
+              </div>
+              <div class="info-item">
+                <span class="material-icons">schedule</span>
+                <span>00:00</span>
+              </div>
+            </div>
+    
+            <div class="info-group">
+              <div class="info-item">
+                <span class="material-icons">email</span>
+                <span>contato&#64;gmail.com</span>
+              </div>
+              <div class="info-item">
+                <span class="material-icons">home</span>
+                <span>Remoto</span>
+              </div>
+              <div class="info-item">
+                <span class="material-icons">calendar_today</span>
+                <span>31/12/2012</span>
+              </div>
+            </div>
+          </div>
+          <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsDone(selectedProfessional)" ></app-button>
+        </app-popup>
+      }
+
+</main>
