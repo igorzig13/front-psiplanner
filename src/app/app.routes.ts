@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ClinicHomeComponent } from './pages/clinic-home/clinic-home.component';
 import { ClinicProfessionalsComponent } from './pages/clinic-professionals/clinic-professionals.component';
 import { ClinicPerfilComponent } from './pages/clinic-perfil/clinic-perfil.component';
+import { ClientPerfilComponent } from './pages/client-perfil/client-perfil.component';
 
 export const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'clinic', component: ClinicHomeComponent },
   { path: 'clinic/professionals', component: ClinicProfessionalsComponent },
-  { path: 'clinic/perfil', component: ClinicPerfilComponent }
+  { path: 'clinic/perfil', component: ClinicPerfilComponent },
+  { path: 'client/perfil', component: ClientPerfilComponent },
 ];
