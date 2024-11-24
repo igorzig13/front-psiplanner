@@ -1,0 +1,151 @@
+<app-navbar navIndex="{{navUi}}"></app-navbar>
+
+<main>
+  <div>
+    <h4 style="color: red;">Calendário será adicionado aqui.</h4>
+    <p>
+      botões de teste
+    </p>
+
+    <button (click)="toggleDoneConsults()">Consultas realizadas</button>
+    <button (click)="toggleNextConsults()">Consultas agendadas</button>
+  </div>
+
+  @if (openDoneConsults) {
+    <app-popup title="16/12/2024">
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Pacientes Atendidos </h5>
+        <div class="line"></div>
+      </div>
+
+      <div class="wrapper-pacients">
+        @for (pacient of previousPacients; track pacient) {
+          <app-default-card btnText="Detalhes"
+            type='client'
+            [name]="pacient.name"
+            [url_img]="pacient.url_img"
+            (onButtonClick)="toggleDetailsDone(pacient)"
+            >
+          </app-default-card>
+        }
+      </div>
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDoneConsults()"></app-button>
+    </app-popup>
+  }
+
+  @if (openNextConsults) {
+    <app-popup title="16/12/2024">
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Pacientes Agendados </h5>
+        <div class="line"></div>
+      </div>
+
+      <div class="wrapper-pacients">
+        @for (pacient of nextPacients; track pacient) {
+          <app-default-card btnText="Detalhes"
+            type='client'
+            [name]="pacient.name"
+            [url_img]="pacient.url_img"
+            (onButtonClick)="toggleDetailsNext(pacient)"
+            >
+          </app-default-card>
+        }
+      </div>
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleNextConsults()"></app-button>
+    </app-popup>
+  }
+
+  @if (openDetailsDone) {
+    <app-popup title="Informações">
+      <div class="info-container">
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">person</span>
+            <span>{{ selectedPacient?.name }}</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">phone</span>
+            <span>(84) 00000-0000</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">schedule</span>
+            <span>00:00</span>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">email</span>
+            <span>contato&#64;gmail.com</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">home</span>
+            <span>Remoto</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">calendar_today</span>
+            <span>31/12/2012</span>
+          </div>
+        </div>
+      </div>
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsDone(selectedPacient)" ></app-button>
+    </app-popup>
+  }
+
+  @if (openDetailsNext) {
+    <app-popup title="Dados da Consulta">
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Paciente </h5>
+        <div class="line"></div>
+      </div>
+
+      <div>
+        <app-default-card btnText="Remover"
+          type='client'
+          btnText="Cancelar Consulta"
+          (onButtonClick)="removePacient()"
+          [name]="selectedPacient?.name"
+          [url_img]="selectedPacient?.url_img"
+          >
+        </app-default-card>
+      </div>
+
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Informações </h5>
+        <div class="line"></div>
+      </div>
+
+      <div class="info-container">
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">email</span>
+            <span>contato&#64;gmail.com</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">phone</span>
+            <span>(84) 00000-0000</span>
+          </div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">home</span>
+            <span>Remoto</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">calendar_today</span>
+            <span>31/12/2012</span>
+          </div>
+        </div>
+      </div>
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsNext(selectedPacient)" ></app-button>
+    </app-popup>
+  }
+</main>

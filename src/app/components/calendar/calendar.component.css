@@ -1,0 +1,187 @@
+main {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.mes-anterior {
+  color: gray;
+}
+.proximo-mes {
+  color: lightgray;
+}
+
+/*Estilo do google icon do calendário*/
+.linha-com-icone svg {
+ height: 92px;
+ width: 92px;
+ margin-left: 15px;
+ margin-right: 15px;
+}
+/*Estilo da linha com o ícone de calendário*/
+.linha-com-icone {
+  margin-top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+/*Estilo das linhas do ícone de calendário*/
+.linha {
+  width: 100%;
+  border: 0;
+  border-top: 2px solid #5b6372;
+  opacity: 100;
+}
+
+/*Centralizando o mês e as setas*/
+.icon {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  vertical-align: middle;
+}
+
+/*Espaçamento entre o mês e as setas*/
+.icon h3 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*Estilo dos botões do mês*/
+.icon button {
+  border: none;
+  background-color: transparent;
+}
+
+/*Estilo do container do calendário*/
+.calendar {
+  margin-top: 10px;
+  border: solid 2px #5b6372;
+  box-shadow:5px 5px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  padding-left: 29px;
+  padding-right: 29px;
+  padding-bottom: 50px;
+}
+
+/* Para a width dos elementos não ficar mudando*/
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/*Padronizando a altura pra todos os dias menos para os nomes*/
+tr:has(.day) {
+  height: 88px;
+}
+
+/*Estilo do nome dos dias da semana*/
+.day-week {
+  font-weight: 500;
+  color: #5b6372;
+  padding-bottom: 17px;
+}
+
+/*Centralizar e padding pros dias*/
+.day {
+  text-align: center;
+  font-weight: 0;
+}
+
+/*Evitar o agendamento ficar por cima das linhas da tabela*/
+.agendamento {
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  height: 100%;
+}
+
+/*Estilização do link do agendamento*/
+.agendamento a {
+  display: block;
+  text-decoration: none;
+  color: #5b6372;
+  border: solid 1px #bed7dc;
+  border-radius: 0.5rem;
+  background-color: #bed7dc;
+  padding: 2px 20px 2px 10px;
+}
+
+.today {
+  background-color: #455D51;
+  border-radius:50%;
+  color: #FFFFFF;
+}
+
+.agendamento p{
+  width: 25px; 
+  height: 25px; 
+}
+
+.agendamento2 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  height: 100%;
+}
+
+.agendamento2 p{
+  width: 25px; 
+  height: 25px; 
+}
+
+.agendamento2 a {
+  display: block;
+  text-decoration: none;
+  color: #FFFFFF;
+  border: solid 1px #455D51;
+  border-radius: 0.5rem;
+  background-color: #455D51;
+  padding: 2px 20px 2px 10px;
+}
+
+.agendamento-realizado{
+  height: 20px;
+  width: 20px;
+  background-color: #bed7dc;
+}
+
+.proximo-agendamento{
+  height: 20px;
+  width: 20px;
+  background-color: #455D51;
+}
+
+
+.captions{
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.captions p{
+  margin-right: 40px;
+}
+
+
+
+@media (max-width: 680px){
+  main {
+    margin-left: 0;
+    margin-right: 0;
+  }  
+  .calendar{
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    width: 99%;
+  }
+}

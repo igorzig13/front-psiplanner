@@ -1,0 +1,135 @@
+<main>
+  <div class="linha-com-icone">
+    <hr class="linha" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 -960 960 960"
+      fill="#5f6368"
+    >
+      <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/>
+    </svg>
+    <hr class="linha" />
+  </div>
+
+  <div class="calendar container-sm">
+    <div class="icon">
+      <button (click)="prevMonth()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#5f6368"
+        >
+          <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"></path>
+        </svg>
+      </button>
+      <h3>{{ months[currentMonth] }} de {{ currentYear }}</h3>
+      <button (click)="nextMonth()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="20px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#5f6368"
+        >
+          <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+        </svg>
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            @for(day of weekDays;track $index){
+            <th class="day-week" scope="col">{{ day }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for(week of calendar; track $index){
+          <tr>
+            @for(day of week;track $index){
+            <td class="day" scope="col">
+             @if(day.hasAppointment && (day.date <= Day.getDate()) &&
+              currentMonth<=Day.getMonth() && currentYear<=Day.getFullYear() &&
+              day.isNextMonth===false) {
+              <!--Se 
+                       o dia têm um agendamento
+                       o dia for menor ou igual ao dia atual
+                       o mês for menor que o atual
+                       o ano for menor ou igual ao ano atual
+                       não é um dia do próximo mês
+                        -->
+              <div class="agendamento">
+                <p
+                  [class.mes-anterior]="day.isPrevMonth"
+                  [class.proximo-mes]="day.isNextMonth"
+                  [class.today]="day.isToday"
+                >
+                  {{ day.date }}
+                </p>
+                <a href="javascript:void(0);" 
+                class="agendamento" 
+                (click)="abrirPopup(day)">Agendamento</a>
+              </div>    
+              }@else if ((day.hasAppointment && (day.date> Day.getDate() && day.isPrevMonth===false) && currentMonth>=Day.getMonth()) ||
+                           (day.hasAppointment && currentMonth > Day.getMonth() ) ||
+                           (day.hasAppointment && currentYear>Day.getFullYear())) {
+              <!--Se 
+                      O dia têm agendamento, o dia é maior que o dia atual e não é do mês passado 
+                      ou
+                      O mês é maior que o mês atual
+                      ou
+                      O ano é maior que o ano atual
+              -->
+   
+              <div class="agendamento2">
+                <p
+                  [class.mes-anterior]="day.isPrevMonth"
+                  [class.proximo-mes]="day.isNextMonth"
+                  [class.today]="day.isToday"
+                >
+                  {{ day.date }}
+                </p>
+                <a href="javascript:void(0);" 
+                class="agendamento" 
+                (click)="abrirPopup(day)">Agendamento</a>
+              </div>
+              }@else{
+                <div class="agendamento">
+                  <p
+                    [class.mes-anterior]="day.isPrevMonth"
+                    [class.proximo-mes]="day.isNextMonth"
+                    [class.today]="day.isToday"
+                  >
+                    {{ day.date }}
+                  </p>
+                </div>
+              }
+            </td>
+            }
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <!--Adicionar o popup no template?
+    Ex:
+    <app-popup
+    *ngIf="mostrarPopup"
+    [title]="popupTitle"
+    >
+    <p>{{ popupContent }}</p>
+    <button (click)="fecharPopup()">Fechar</button>
+    </app-popup>
+    -->
+      <div class="captions">
+        <div class="agendamento-realizado"></div>
+        <p>Realizados</p>
+        
+        <div class="proximo-agendamento"></div>
+        <p>Próximos</p>
+      </div>
+  </div>
+</main>

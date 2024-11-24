@@ -8,6 +8,12 @@ import { ClinicProfessionalsComponent } from './pages/clinic-professionals/clini
 import { ClinicPerfilComponent } from './pages/clinic-perfil/clinic-perfil.component';
 import { ClientPerfilComponent } from './pages/client-perfil/client-perfil.component';
 import { ClientCalendarioConsultaAgendadaComponent } from './pages/client-calendario-consulta-agendada/client-calendario-consulta-agendada.component';
+import { ClientHomepageComponent } from './pages/client-homepage/client-homepage.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ProfessionalHomeComponent } from './pages/professional-home/professional-home.component';
+import { ProfessionalConsultsComponent } from './pages/professional-consults/professional-consults.component';
+import { ProfessionalPerfilComponent } from './pages/professional-perfil/professional-perfil.component';
+import { ProfessionalCalendarComponent } from './pages/professional-calendar/professional-calendar.component';
 
 export const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -18,6 +24,12 @@ export const routes: Routes = [
   { path: 'clinic', component: ClinicHomeComponent },
   { path: 'clinic/professionals', component: ClinicProfessionalsComponent },
   { path: 'clinic/perfil', component: ClinicPerfilComponent },
+  { path: 'client', component: ClientHomepageComponent},
   { path: 'client/perfil', component: ClientPerfilComponent },
+  { path: 'client/calendario', component: CalendarComponent },
   { path: 'client/calendario/agendadas', component:ClientCalendarioConsultaAgendadaComponent },
+  { path: 'professional', component: ProfessionalHomeComponent },
+  { path: 'professional/consults', component: ProfessionalConsultsComponent },
+  { path: 'professional/perfil', component: ProfessionalPerfilComponent },
+  { path: 'professional/calendar', component: ProfessionalCalendarComponent }
 ];

@@ -1,0 +1,103 @@
+<app-navbar navIndex = {{navUi}}></app-navbar>
+
+<main> 
+<div class="top-container">
+    <div class="top-line">
+        <span class="top-text">Agende sua consulta</span>
+      </div>
+    <form class="form-inline">
+      <div class="input-wrapper">
+        <img src="icons/location_on.svg" alt="Location Icon" class="input-icon">
+        <input type="text" placeholder="Localização">
+      </div>
+      <div class="input-wrapper">
+        <img src="icons/person.svg" alt="Person Icon" class="input-icon">
+        <input type="text" placeholder="Nome">
+      </div>
+      <div class="button-wrapper">
+        <app-button btnClass="btn main-button" text="Pesquisar"></app-button>
+    </div>
+    </form>
+    
+  </div>
+  <div class="main-container">
+    @for (clinicOrProfessional of clinicsAndProfessionals; track clinicOrProfessional) {
+    <app-horizontal-card
+      [typeCard]="'clinics'"
+      [dataClinicOrUser]="clinicOrProfessional"
+      (clickEvent)="toggleDetails(clinicOrProfessional)">
+    </app-horizontal-card>
+  }
+
+  @if (openDetails) {
+    <app-popup title ="{{selectedClinicOrProfessional.name}}">
+      <div class="professionals-container">
+        @if (selectedClinicOrProfessional.professional_list.length > 0) {
+          @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
+            <app-default-card btnText="Agendar"
+              (onButtonClick)="toggleBookingAppointment()"
+              type="professional"
+              [name]="professional.name"
+              [url_img]="selectedClinicOrProfessional.url_img"
+              [rating]="professional.rating"
+            ></app-default-card>
+          }
+        }
+        @else {
+          <app-default-card btnText="Agendar"
+            (onButtonClick)="toggleBookingAppointment()"
+            type="professional"
+            [name]="selectedClinicOrProfessional.name"
+            [url_img]="selectedClinicOrProfessional.url_img"
+            [rating]="selectedClinicOrProfessional.rating"
+          ></app-default-card>
+        }
+      </div>
+
+        <div class="popup-header">
+          <div class="line"></div>
+          <h5> Informações </h5>
+          <div class="line"></div>
+        </div>
+
+        <div class="info-container">
+          <div class="info-group">
+            <div class="info-item">
+              <span class="material-icons">location_on</span>
+              <span>Localização</span>
+            </div>
+            <div class="info-item">
+              <span class="material-icons">phone</span>
+              <span>(84) 00000-0000</span>
+            </div>
+            <div class="info-item">
+              <span class="material-icons">home</span>
+              <span>Remoto</span>
+            </div>
+          </div>
+  
+          <div class="info-group">
+            <div class="info-item">
+              <span class="material-icons">email</span>
+              <span>contato&#64;gmail.com</span>
+            </div>
+            <div class="info-item">
+              <span class="material-icons">calendar_today</span>
+              <span>31/12/2012</span>
+            </div>
+          </div>
+        </div>
+
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetails(selectedClinicOrProfessional)"></app-button>
+    </app-popup>
+  }
+
+  @if (openBookinAppointment) {
+    <app-popup title="Agendamento">
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleBookingAppointment()"></app-button>
+    </app-popup>
+  }
+    </div>
+</main>

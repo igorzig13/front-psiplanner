@@ -1,4 +1,4 @@
-import {Component, Input, numberAttribute, SimpleChanges} from '@angular/core';
+import {Component, Input, numberAttribute} from '@angular/core';
 import {LinkComponent} from '../link/link.component';
 import {RouterLink} from '@angular/router';
 
@@ -39,24 +39,18 @@ export class NavbarComponent {
       links: ['/clinic', '/clinic/professionals', '/clinic/perfil'],
     };
 
+    const nav4 : TextsAndLinks = {
+      texts: ['Inicio', 'Calendário', 'Consultas', 'Agenda' ,'Perfil'],
+      links: ['/professional', '/professional/calendar', '/professional/consults', "/professional/agenda" , "/professional/perfil"],
+    };
+
     this.navbars.set(1, nav1);
     this.navbars.set(2, nav2);
     this.navbars.set(3, nav3);
+    this.navbars.set(4, nav4);
 
-    this.updateNavbarData();
-  }
+    this.texts = this.navbars.get(this.navIndex)?.texts
+    this.links = this.navbars.get(this.navIndex)?.links;
 
-  private updateNavbarData(): void {
-    const navbar = this.navbars.get(this.navIndex);
-    if (navbar) {
-      this.texts = navbar.texts;
-      this.links = navbar.links;
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['navIndex']) {
-      this.updateNavbarData();
-    }
   }
 }

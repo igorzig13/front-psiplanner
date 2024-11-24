@@ -1,0 +1,169 @@
+.top-container {
+  max-width: 80%;
+  margin: 0 auto; 
+  min-height: 100px;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: #FFF;
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.main-container {
+  max-width: 80%;
+  margin: 0 auto;
+  min-height: 300px;
+}
+
+.top-line {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.top-line::before,
+.top-line::after {
+  content: "";
+  flex-grow: 1;
+  border-bottom: 2px solid #333;
+}
+
+.top-text {
+  padding: 0 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #5B6372;
+}
+
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 0 1 20%; 
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
+
+.form-inline input {
+  width: 100%;
+  padding-left: 2rem; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-inline input:focus {
+  border-color: #666;
+}
+
+.form-inline input::placeholder {
+  font-style: italic;
+  color: #aaa;
+}
+
+.button-wrapper {
+  flex: 0 1 auto;
+  margin-left: auto; 
+  margin-right: 0.75%;
+}
+
+.professionals-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+app-default-card {
+  width: 17%;
+  min-width: 200px;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.line {
+  height: 1px;
+  background-color: #ccc;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.info-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+}
+
+.info-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.info-item span.material-icons {
+  font-size: 1.2rem;
+  color: #666;
+  margin-right: 0.6rem;
+}
+
+
+@media (max-width: 768px) {
+  .form-inline input {
+    flex: 1 1 calc(50% - 1rem);
+  }
+
+  .info-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-group {
+    width: 100%;
+  }
+
+  .info-item {
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .form-inline input {
+    flex: 1 1 100%;
+  }
+
+  .info-item span {
+    font-size: 0.9rem;
+  }
+  
+}
