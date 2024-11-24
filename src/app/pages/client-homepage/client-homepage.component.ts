@@ -17,6 +17,7 @@ export class ClientHomepageComponent {
 
   navUi: number = 2;
   openDetails: boolean = false;
+  openBookinAppointment: boolean = false;
 
   selectedClinicOrProfessional: any = null;
 
@@ -90,7 +91,8 @@ export class ClientHomepageComponent {
     }
   }
 
-  bookAppointment() {
-    console.log('Booked appointment');
+  toggleBookingAppointment() {
+    this.openBookinAppointment = !this.openBookinAppointment;
+    console.log('test');
   }
 }

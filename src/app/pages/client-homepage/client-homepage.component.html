@@ -31,11 +31,11 @@
 
   @if (openDetails) {
     <app-popup title ="{{selectedClinicOrProfessional.name}}">
-      <!--NÃO FICA ENCAIXADO BONITO FICA FEIO UM EM BAIXO DO OUTRO-->   
+      <div class="professionals-container">
         @if (selectedClinicOrProfessional.professional_list.length > 0) {
           @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
             <app-default-card btnText="Agendar"
-              (onButtonClick)="bookAppointment()"
+              (onButtonClick)="toggleBookingAppointment()"
               type="professional"
               [name]="professional.name"
               [url_img]="selectedClinicOrProfessional.url_img"
@@ -45,13 +45,14 @@
         }
         @else {
           <app-default-card btnText="Agendar"
-            (onButtonClick)="bookAppointment()"
+            (onButtonClick)="toggleBookingAppointment()"
             type="professional"
             [name]="selectedClinicOrProfessional.name"
             [url_img]="selectedClinicOrProfessional.url_img"
             [rating]="selectedClinicOrProfessional.rating"
           ></app-default-card>
         }
+      </div>
 
         <div class="popup-header">
           <div class="line"></div>
@@ -89,6 +90,13 @@
 
 
       <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetails(selectedClinicOrProfessional)"></app-button>
+    </app-popup>
+  }
+
+  @if (openBookinAppointment) {
+    <app-popup title="Agendamento">
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleBookingAppointment()"></app-button>
     </app-popup>
   }
     </div>
