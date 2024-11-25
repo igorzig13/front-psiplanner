@@ -95,7 +95,7 @@
 
     @if (openBookinAppointment) {
       <app-popup title="Agendamento">
-        <app-calendar type="horarios" (onClick)="toggleBookingAppointment()"></app-calendar>
+        <app-calendar type="horarios" (onClick)="makeAppointment($event)"></app-calendar>
         <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleBookingAppointment()"></app-button>
       </app-popup>
     }

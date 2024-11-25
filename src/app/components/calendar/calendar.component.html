@@ -31,10 +31,10 @@
                     {{ day.date }}
                   </p>
                     @if(day.hasEvent && earlierThanToday(day)) {
-                      <a (click)="onClick.emit()" class="eventUnavailable"
+                      <a (click)="onClick.emit(getDateFromClick(day))" class="eventUnavailable"
                       >{{ eventText }}</a>
                     } @else if (day.hasEvent && laterThanToday(day)){
-                      <a (click)="onClick.emit()" [ngClass]="{'horarioDisponivel': type === 'horarios', 'eventUnavailable': type === 'agendamentos'}"
+                      <a (click)="onClick.emit(getDateFromClick(day))" [ngClass]="{'horarioDisponivel': type === 'horarios', 'eventUnavailable': type === 'agendamentos'}"
                       > {{eventText}} </a>
                     }
                 </div>

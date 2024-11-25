@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 export interface CalendarDay {
  date: number;
@@ -7,6 +7,14 @@ export interface CalendarDay {
  isPrevMonth: boolean;
  isNextMonth: boolean;
  hasEvent: boolean;
+}
+
+export interface CalendarDate {
+  day: number;
+  month: number;
+  year: number;
+  fullName: string;
+  monthName: string;
 }
 
 @Component({
@@ -39,7 +47,7 @@ export class CalendarComponent {
 
   @Input() eventText: string = 'Disponível';
   @Input() type: 'agendamentos' | 'horarios' = 'horarios';
-  @Output() onClick = new EventEmitter<void>();
+  @Output() onClick = new EventEmitter<CalendarDate>();
 
   constructor() {
     const today = new Date();
@@ -131,5 +139,36 @@ export class CalendarComponent {
     return (day.hasEvent && day.date > this.Day.getDate() && !day.isPrevMonth && this.currentMonth>=this.Day.getMonth()) ||
       (day.hasEvent && this.currentMonth > this.Day.getMonth() ) ||
       (day.hasEvent && this.currentYear>this.Day.getFullYear())
+  }
+
+  getDateFromClick(day: CalendarDay): CalendarDate {
+    let year = this.currentYear;
+    let month = this.currentMonth;
+
+    if (day.isPrevMonth) {
+      if (month === 0){
+        month = 11;
+        year--;
+      } else {
+        month--;
+      }
+    }
+
+    if (day.isNextMonth) {
+      if (month === 11){
+        month = 0;
+        year++;
+      } else {
+        month++;
+      }
+    }
+
+    return {
+      day: day.date,
+      month: month,
+      year: year,
+      monthName: this.months[month],
+      fullName: day.date + ' de ' + this.months[month] + ' de ' + year
+    };
   }
 }
