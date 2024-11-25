@@ -110,7 +110,7 @@
         <app-popup title="Dados da consulta">
             <div>
                 <app-default-card btnText="Avaliar"
-                    (onButtonClick)="rate()"
+                    (onButtonClick)="toggleRate(selectedProfessional)"
                     type="professional"
                     [name]="selectedProfessional.name"
                     [url_img]="selectedProfessional.url_img"
@@ -160,6 +160,16 @@
           
           <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsDone(selectedProfessional)" ></app-button>
         </app-popup>
+      }
+
+      @if (showRate) {
+        <app-popup title="Avaliação">
+          <!--IMPLEMENTAR AVALIAÇÃO-->
+
+
+          <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
+        </app-popup>
+        
       }
 
 </main>
