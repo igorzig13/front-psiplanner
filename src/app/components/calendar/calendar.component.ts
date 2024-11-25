@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 export interface CalendarDay {
  date: number;
  isToday: boolean;
  isPrevMonth: boolean;
  isNextMonth: boolean;
- hasAppointment: boolean;
+ hasEvent: boolean;
+}
+
+export interface CalendarDate {
+  day: number;
+  month: number;
+  year: number;
+  fullName: string;
+  monthName: string;
 }
 
 @Component({
@@ -37,27 +45,15 @@ export class CalendarComponent {
   calendar: CalendarDay[][] = [];
   Day = new Date();
 
-  mostrarPopup = false; // Estado do popup
-  popupTitle = ''; // Título do popup
- // popupContent = ''; // Conteúdo do popup
+  @Input() eventText: string = 'Disponível';
+  @Input() type: 'agendamentos' | 'horarios' = 'horarios';
+  @Output() onClick = new EventEmitter<CalendarDate>();
 
   constructor() {
     const today = new Date();
     this.currentMonth = today.getMonth();
     this.currentYear = today.getFullYear();
     this.generateCalendar(this.currentYear, this.currentMonth);
-  }
-
-  abrirPopup(day: CalendarDay): void {
-    this.popupTitle = `Agendamento para o dia ${day.date}`;
-   // this.popupContent = `Você selecionou o dia ${day.date}.`;
-    this.mostrarPopup = true;
-  }
-
-  fecharPopup(): void {
-    this.mostrarPopup = false;
-    this.popupTitle = '';
-   // this.popupContent = '';
   }
 
   generateCalendar(year: number, month: number): void {
@@ -75,7 +71,7 @@ export class CalendarComponent {
         isToday: false,
         isPrevMonth: true,
         isNextMonth: false,
-        hasAppointment: Math.floor(Math.random()*100) < 10
+        hasEvent: Math.floor(Math.random()*100) < 10
       });
     }
 
@@ -86,7 +82,7 @@ export class CalendarComponent {
         isToday: today.getFullYear() === year && today.getMonth() === month && today.getDate() === i,
         isPrevMonth: false,
         isNextMonth: false,
-        hasAppointment:  Math.floor(Math.random()*100) < 10 // Define aleatoriamente se terá agendamento
+        hasEvent:  Math.floor(Math.random()*100) < 10 // Define aleatoriamente se terá agendamento
       });
     }
 
@@ -98,7 +94,7 @@ export class CalendarComponent {
         isToday: false,
         isPrevMonth: false,
         isNextMonth: true,
-        hasAppointment:  Math.floor(Math.random()*100) < 10
+        hasEvent:  Math.floor(Math.random()*100) < 10
       });
     }
 
@@ -127,5 +123,52 @@ export class CalendarComponent {
       this.currentMonth++;
     }
     this.generateCalendar(this.currentYear, this.currentMonth);
+  }
+
+  /**
+   * Indicates if the day is earlier than today
+   * @param day
+   */
+  earlierThanToday(day: CalendarDay): boolean {
+    return (day.date <= this.Day.getDate()) &&
+      this.currentMonth<=this.Day.getMonth() && this.currentYear<=this.Day.getFullYear() &&
+      !day.isNextMonth
+  }
+
+  laterThanToday(day: CalendarDay): boolean {
+    return (day.hasEvent && day.date > this.Day.getDate() && !day.isPrevMonth && this.currentMonth>=this.Day.getMonth()) ||
+      (day.hasEvent && this.currentMonth > this.Day.getMonth() ) ||
+      (day.hasEvent && this.currentYear>this.Day.getFullYear())
+  }
+
+  getDateFromClick(day: CalendarDay): CalendarDate {
+    let year = this.currentYear;
+    let month = this.currentMonth;
+
+    if (day.isPrevMonth) {
+      if (month === 0){
+        month = 11;
+        year--;
+      } else {
+        month--;
+      }
+    }
+
+    if (day.isNextMonth) {
+      if (month === 11){
+        month = 0;
+        year++;
+      } else {
+        month++;
+      }
+    }
+
+    return {
+      day: day.date,
+      month: month,
+      year: year,
+      monthName: this.months[month],
+      fullName: day.date + ' de ' + this.months[month] + ' de ' + year
+    };
   }
 }
