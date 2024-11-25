@@ -164,7 +164,6 @@
 
       @if (showRate) {
         <app-popup title="Avaliação">
-          <!--IMPLEMENTAR AVALIAÇÃO-->
           <div class="rating-text">
             <h4>Olá, nome do paciente!</h4>
             <h5>Faça sua avaliação do {{selectedProfessional.name}}:</h5>
@@ -188,7 +187,7 @@
             <textarea class="comment-input"placeholder="Comentário"></textarea>
           </div>
           <div class="button-group">
-            <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
+            <app-button btnClass="btn main-button" text="Avaliar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
             <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
           </div>
         </app-popup>
