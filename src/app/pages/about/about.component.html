@@ -1,2 +1,49 @@
-<app-navbar navIndex="{{navUi}}"></app-navbar>
-<p>about works!</p>
+<app-navbar navIndex="{{ navUi }}"></app-navbar>
+<main>
+  <section class="title">
+      <h1>
+        Nós amamos a psicologia, por isso, mais de 2500 profissionais amam nosso
+        site!
+      </h1>
+        <div class="botao">
+            <app-button class="button" btnClass="btn main-button" text="Faça Parte" (onClick)="navigateTo()"></app-button>
+        </div>
+  </section>
+
+  <div class="image-container">
+    
+    <figure id="woman">
+      <img src="mulheres.svg" alt="" />
+      <figcaption>
+        <b>Marina Silva</b> — “Usar o Psi Planner mudou completamente a forma
+        como eu lido com meus pacientes. Pra melhor!”
+      </figcaption>
+    </figure>
+    <figure id="man">
+      <img src="rapaz.svg" alt="" />
+      <figcaption>
+        <b>José Bezerra</b> — Um dos nossos melhores psicólogos, já atendeu mais
+        de 500 clientes e têm uma avaliação de 4.9 estrelas!
+      </figcaption>
+    </figure>
+  </div>
+
+  <section class="beliefs">
+    <h2>No Que Acreditamos?</h2>
+    <p class="intro">
+      Acreditamos em força, amor e autoconhecimento.
+    </p>
+    <p class="details">
+      Temos o compromisso, tanto com as empresas quanto com seus clientes, de 
+      providenciar o melhor serviço possível. Se um cliente não se dá por satisfeito 
+      após uma consulta, nós reembolsamos o valor completo de seu atendimento.
+    </p>
+    <h3>Por quê?</h3>
+    <p class="why">
+      Acreditamos na necessidade de ajudar os nossos clientes com todo amor e atenção 
+      possível, por isso nossos profissionais dão sempre o melhor de si para que 
+      nossos clientes saiam total e completamente satisfeitos.
+    </p>
+  </section>
+
+</main>
