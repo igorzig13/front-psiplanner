@@ -86,7 +86,6 @@
     align-items: flex-end;
     justify-content: right;
     width: 40%;
-    min-width: 500px;
     flex-wrap: wrap;
     gap: 2rem;
 }
@@ -156,7 +155,6 @@
 
 .mid-img-container img {
     width: auto;
-    max-height: 350px;
     min-width: 200px;
     object-fit: cover;
 }
@@ -223,6 +221,7 @@
     }
 
     .content-text {
+        width: 100%;
         font-size: 0.9rem;
     }
 
@@ -233,6 +232,19 @@
     .top-img-container img {
         flex: 1 1 100%; 
         max-width: 100%;
+    }
+
+    .content-text-underline {
+        width: 100%;
+    }
+
+    .mid-content-container {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .mid-img-container {
+        width: 100%;
     }
 }
 
