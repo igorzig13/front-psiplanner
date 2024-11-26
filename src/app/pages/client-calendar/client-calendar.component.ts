@@ -1,0 +1,71 @@
+import { Component } from '@angular/core';
+import { ButtonComponent } from '../../components/button/button.component';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { CalendarComponent, CalendarDate } from '../../components/calendar/calendar.component';
+import { PopupComponent } from '../../components/popup/popup.component';
+import { DefaultCardComponent } from '../../components/default-card/default-card.component';
+
+@Component({
+  selector: 'app-client-calendar',
+  standalone: true,
+  imports: [ButtonComponent, NavbarComponent, CalendarComponent, PopupComponent, DefaultCardComponent],
+  templateUrl: './client-calendar.component.html',
+  styleUrl: './client-calendar.component.css'
+})
+export class ClientCalendarComponent {
+  navUi: number = 2;
+
+  selectedPacient: any = null;
+
+  openNextConsults: boolean = false;
+  openDoneConsults: boolean = false;
+  openDetailsNext: boolean = false;
+  openDetailsDone: boolean = false;
+
+  previousProfessional = { name: 'Aldo Queiroz', url_img: 'https://placehold.co/450', rating: 5 };
+
+  nextProfessional = { name: 'João Pedro', url_img: 'https://placehold.co/300', rating: 4.9 };
+
+  toggleNextConsults() {
+    this.openNextConsults = !this.openNextConsults;
+  }
+
+  toggleDoneConsults() {
+    this.openDoneConsults = !this.openDoneConsults;
+  }
+
+  toggleDetailsDone(pacient: any) {
+    this.openDetailsDone = !this.openDetailsDone;
+
+    if (this.openDetailsDone) {
+      this.selectedPacient = pacient;
+    } else { this.selectedPacient = null; }
+  }
+
+  toggleDetailsNext(pacient: any) {
+    this.openDetailsNext = !this.openDetailsNext;
+
+    if (this.openDetailsNext) {
+      this.selectedPacient = pacient;
+    } else { this.selectedPacient = null; }
+  }
+
+  calendarEventListener(day: CalendarDate) {
+    const clickedDate = new Date(day.year, day.month, day.day);
+    const today = new Date();
+
+    today.setHours(0, 0, 0 , 0);
+
+    if (clickedDate < today) {
+      this.toggleDoneConsults();
+    } else {
+      this.toggleNextConsults();
+    }
+  }
+
+  cancelConsultPacient () {
+    if (this.selectedPacient) {
+      this.nextProfessional = { name: '', url_img: '', rating: 0 };
+    }
+  }
+}

@@ -13,10 +13,9 @@ import { ProfessionalHomeComponent } from './pages/professional-home/professiona
 import { ProfessionalConsultsComponent } from './pages/professional-consults/professional-consults.component';
 import { ProfessionalPerfilComponent } from './pages/professional-perfil/professional-perfil.component';
 import { ProfessionalCalendarComponent } from './pages/professional-calendar/professional-calendar.component';
-import { ClientCalendarioConsultaRealizadaComponent } from './pages/client-calendario-consulta-realizada/client-calendario-consulta-realizada.component';
 import { ClientConsultsComponent } from './pages/client-consults/client-consults.component';
 import { ProfessionalScheduleComponent } from './pages/professional-schedule/professional-schedule.component';
-import { ClientCalendarComponent } from './components/client-calendar/client-calendar.component';
+import { ClientCalendarComponent } from './pages/client-calendar/client-calendar.component';
 
 export const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -32,7 +31,6 @@ export const routes: Routes = [
   { path: 'client/consultas', component: ClientConsultsComponent},
   { path: 'client/calendario', component: ClientCalendarComponent },
   { path: 'client/calendario/agendadas', component:ClientCalendarioConsultaAgendadaComponent },
-  { path: 'client/calendario/realizadas', component:ClientCalendarioConsultaRealizadaComponent },
   { path: 'professional', component: ProfessionalHomeComponent },
   { path: 'professional/consults', component: ProfessionalConsultsComponent },
   { path: 'professional/perfil', component: ProfessionalPerfilComponent },
