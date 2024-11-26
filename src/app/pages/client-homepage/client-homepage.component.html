@@ -108,9 +108,21 @@
 
         <div class="buttons">
           <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDailyAppointment($event)"></app-button>
-          <app-button btnClass="btn main-button" text="Agendar"></app-button>
+          <app-button btnClass="btn main-button" text="Agendar" (onClick)="toggleConfirmation()"></app-button>
         </div>
       </app-popup>
+    }
+
+    @if (openConfirmation) {
+      <app-popup title="Confirmação">
+        <app-confirmation-form (cancelFunction)="toggleConfirmation()" (actionFunction)="confirmation($event)"></app-confirmation-form>
+      </app-popup>
+    }
+
+    @if (openMessage) {
+      <app-message>
+        {{ message }}
+      </app-message>
     }
   </div>
 </main>

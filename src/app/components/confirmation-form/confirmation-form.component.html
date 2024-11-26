@@ -1,0 +1,28 @@
+<form [formGroup]="formConfirmation" class="main-form">
+  <div class="field-form">
+    <label>Senha</label>
+    <div class="password-fields">
+      <input
+        type="password"
+        formControlName="password"
+        style="background-image: url('icons/password.svg');"
+        placeholder="Nova senha">
+      <input
+        type="password"
+        formControlName="confirm_password"
+        style="background-image: url('icons/password.svg');"
+        placeholder="Confirmar senha">
+    </div>
+
+    @if (formConfirmation.hasError('passwordMismatch')) {
+      <div class="error">
+        As senhas não coincidem.
+      </div>
+    }
+  </div>
+
+  <div class="buttons">
+    <app-button btnClass="btn secondary-button" text="Cancelar" (onClick)="cancelFunction.emit()"></app-button>
+    <app-button btnClass="btn main-button" text="Salvar" (onClick)="eventAction()"></app-button>
+  </div>
+</form>

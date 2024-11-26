@@ -1,0 +1,11 @@
+.container {
+  position: fixed;
+  z-index: 99999999;
+  top: 0;
+  right: 0;
+  color: #FFF;
+  background-color: #6D7E02;
+  width: 30%;
+  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+}
