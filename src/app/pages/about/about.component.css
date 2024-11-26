@@ -24,7 +24,7 @@ main{
     margin-top: 100px;
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     width: 100%;
     gap: 70px;
 }
@@ -50,7 +50,7 @@ main{
 
 h1{
     margin-top: 4rem;
-    font-family: "Newsreader, serif";
+    font-family: "Newsreader", serif;
     color: #5B6372;
     text-align: center;
     font-size: 3.5rem;
@@ -63,11 +63,9 @@ figcaption{
 }
 
 .beliefs {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    padding: 20px;
+  width: 80%;
+  margin: 4rem auto;
+  padding: 20px;
     border-left: 2px solid #cccccc; /* A linha vertical no lado esquerdo */
     color: #555555;
   }
