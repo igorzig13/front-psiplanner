@@ -1,14 +1,14 @@
 <app-navbar navIndex="{{navUi}}"></app-navbar>
 
 <main>
-  <div>
-    <h4 style="color: red;">Calendário será adicionado aqui.</h4>
-    <p>
-      botões de teste
-    </p>
+  <div class="popup-header">
+    <div class="line"></div>
+    <h5 class="material-icons">event</h5>
+    <div class="line"></div>
+  </div>
 
-    <button (click)="toggleDoneConsults()">Consultas realizadas</button>
-    <button (click)="toggleNextConsults()">Consultas agendadas</button>
+  <div>
+    <app-calendar type="agendamentos" eventText="Agendamento" (onClick)="calendarEventListener($event)"></app-calendar>
   </div>
 
   @if (openDoneConsults) {

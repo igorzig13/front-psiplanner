@@ -31,8 +31,8 @@ export class NavbarComponent {
       links: ['/about', '/register', '/login']};
 
     const nav2 : TextsAndLinks = {
-      texts: ['Início', 'Consultas', 'Calendário'],
-      links: ['/home', '/appointments', '/calendar']};
+      texts: ['Início', 'Consultas', 'Calendário', 'Perfil'],
+      links: ['/client', '/client/consultas', '/client/calendario', '/client/perfil']};
 
     const nav3 : TextsAndLinks = {
       texts: ['Inicio', 'Profissionais', 'Pefil'],

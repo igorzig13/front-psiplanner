@@ -1,0 +1,137 @@
+.scheduler {
+  padding: 1rem;
+  max-width: 100%;
+  margin-top: 2rem;
+  border: solid 2px #5B6372;
+  box-shadow:5px 5px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  padding-left: 5px;
+  padding-right: 29px;
+  padding-bottom: 20px;
+  margin-bottom: 1rem;
+}
+
+.scheduler table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.scheduler th, .scheduler td {
+  border: 3px solid #FFF;
+  text-align: center;
+  padding: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 3rem;
+}
+
+.scheduler th.info, .scheduler td.info {
+  border: none;
+  cursor: unset;
+  text-align: left;
+}
+
+.lateral {
+  width: 100px;
+}
+
+.scheduler td.info {
+  text-align: center;
+  max-width: fit-content;
+}
+
+.scheduler td.enabled {
+  background-color: #C8E6C9;
+  color: #2E7D32;
+}
+
+.scheduler td.disabled {
+  background-color: #F97070;
+  color: #C62828;
+}
+
+/* Legenda */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.legend div {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.legend span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+  border: 1px solid #CCC;
+}
+
+.legend .enabled {
+  background-color: #c8e6c9;
+}
+
+.legend .disabled {
+  background-color: #ffcdd2;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  i {
+    font-size: 0.9rem;
+  }
+
+  .scheduler table {
+    font-size: 0.8rem;
+  }
+
+  .scheduler th, .scheduler td {
+    height: 2.5rem;
+  }
+
+  .lateral {
+    width: 55px;
+  }
+
+  .scheduler {
+    padding-left: 5px;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scheduler table {
+    font-size: 0.7rem; /* Mais compacto para telas pequenas */
+  }
+  .legend {
+    flex-direction: column; /* Empilha os itens da legenda */
+    align-items: center;
+  }
+  i {
+    font-size: 0.8  rem;
+  }
+
+  .scheduler {
+    max-width: 100%;
+    margin-top: 2rem;
+    border: solid 2px #5B6372;
+    box-shadow:5px 5px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .lateral {
+    width: 50px;
+  }
+}
+
+

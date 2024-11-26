@@ -9,13 +9,14 @@ import { ClinicPerfilComponent } from './pages/clinic-perfil/clinic-perfil.compo
 import { ClientPerfilComponent } from './pages/client-perfil/client-perfil.component';
 import { ClientCalendarioConsultaAgendadaComponent } from './pages/client-calendario-consulta-agendada/client-calendario-consulta-agendada.component';
 import { ClientHomepageComponent } from './pages/client-homepage/client-homepage.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProfessionalHomeComponent } from './pages/professional-home/professional-home.component';
 import { ProfessionalConsultsComponent } from './pages/professional-consults/professional-consults.component';
 import { ProfessionalPerfilComponent } from './pages/professional-perfil/professional-perfil.component';
 import { ProfessionalCalendarComponent } from './pages/professional-calendar/professional-calendar.component';
 import { ClientCalendarioConsultaRealizadaComponent } from './pages/client-calendario-consulta-realizada/client-calendario-consulta-realizada.component';
 import { ClientConsultsComponent } from './pages/client-consults/client-consults.component';
+import { ProfessionalScheduleComponent } from './pages/professional-schedule/professional-schedule.component';
+import { ClientCalendarComponent } from './components/client-calendar/client-calendar.component';
 
 export const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -29,11 +30,12 @@ export const routes: Routes = [
   { path: 'client', component: ClientHomepageComponent},
   { path: 'client/perfil', component: ClientPerfilComponent },
   { path: 'client/consultas', component: ClientConsultsComponent},
-  { path: 'client/calendario', component: CalendarComponent },
+  { path: 'client/calendario', component: ClientCalendarComponent },
   { path: 'client/calendario/agendadas', component:ClientCalendarioConsultaAgendadaComponent },
   { path: 'client/calendario/realizadas', component:ClientCalendarioConsultaRealizadaComponent },
   { path: 'professional', component: ProfessionalHomeComponent },
   { path: 'professional/consults', component: ProfessionalConsultsComponent },
   { path: 'professional/perfil', component: ProfessionalPerfilComponent },
-  { path: 'professional/calendar', component: ProfessionalCalendarComponent }
+  { path: 'professional/calendar', component: ProfessionalCalendarComponent },
+  { path: 'professional/agenda', component: ProfessionalScheduleComponent }
 ];

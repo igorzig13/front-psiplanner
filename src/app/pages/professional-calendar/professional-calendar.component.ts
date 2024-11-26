@@ -3,11 +3,12 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { PopupComponent } from '../../components/popup/popup.component';
 import { ButtonComponent } from "../../components/button/button.component";
 import { DefaultCardComponent } from '../../components/default-card/default-card.component';
+import { CalendarComponent, CalendarDate } from "../../components/calendar/calendar.component";
 
 @Component({
   selector: 'app-professional-calendar',
   standalone: true,
-  imports: [NavbarComponent, PopupComponent, ButtonComponent, DefaultCardComponent],
+  imports: [NavbarComponent, PopupComponent, ButtonComponent, DefaultCardComponent, CalendarComponent],
   templateUrl: './professional-calendar.component.html',
   styleUrl: './professional-calendar.component.css'
 })
@@ -54,6 +55,19 @@ export class ProfessionalCalendarComponent {
     if (this.openDetailsNext) {
       this.selectedPacient = pacient;
     } else { this.selectedPacient = null; }
+  }
+
+  calendarEventListener(day: CalendarDate) {
+    const clickedDate = new Date(day.year, day.month, day.day);
+    const today = new Date();
+
+    today.setHours(0, 0, 0 , 0);
+
+    if (clickedDate < today) {
+      this.toggleDoneConsults();
+    } else {
+      this.toggleNextConsults();
+    }
   }
 
   removePacient () {

@@ -1,0 +1,39 @@
+<div class="scheduler">
+  <table>
+    <thead>
+      <tr>
+        <th class="info lateral"></th>
+        @for (day of days; track day) {
+          <th class="info">{{ day }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (time of times; track time) {
+        <tr>
+          <td class="info lateral">{{ time }}</td>
+          @for (day of days; track $index) {
+            <td
+
+            [class.enabled]="schedule[time][$index]"
+            [class.disabled]="!schedule[time][$index]"
+            (click)="toggleAvailability(time, $index)"
+            >
+
+            @if (schedule[time][$index]) {
+              <i class="material-icons">check_circle</i>
+            } @else {
+              <i class="material-icons">cancel</i>
+            }
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <div><span class="enabled"></span> Horário disponível</div>
+    <div><span class="disabled"></span> Horário indisponível</div>
+  </div>
+</div>

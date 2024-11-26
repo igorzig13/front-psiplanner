@@ -1,0 +1,35 @@
+main {
+  width: 100%;
+  min-height: 90vh;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.line {
+  height: 2px;
+  background-color: #ccc;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.buttons {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 590px) {
+  main {
+    padding: 1rem 0.4rem;
+  }
+}
