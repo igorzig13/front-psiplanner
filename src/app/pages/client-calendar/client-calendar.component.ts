@@ -19,11 +19,9 @@ export class ClientCalendarComponent {
 
   openNextConsults: boolean = false;
   openDoneConsults: boolean = false;
-  openDetailsNext: boolean = false;
-  openDetailsDone: boolean = false;
+  openAvailable: boolean = false;
 
   previousProfessional = { name: 'Aldo Queiroz', url_img: 'https://placehold.co/450', rating: 5 };
-
   nextProfessional = { name: 'João Pedro', url_img: 'https://placehold.co/300', rating: 4.9 };
 
   toggleNextConsults() {
@@ -32,22 +30,6 @@ export class ClientCalendarComponent {
 
   toggleDoneConsults() {
     this.openDoneConsults = !this.openDoneConsults;
-  }
-
-  toggleDetailsDone(pacient: any) {
-    this.openDetailsDone = !this.openDetailsDone;
-
-    if (this.openDetailsDone) {
-      this.selectedPacient = pacient;
-    } else { this.selectedPacient = null; }
-  }
-
-  toggleDetailsNext(pacient: any) {
-    this.openDetailsNext = !this.openDetailsNext;
-
-    if (this.openDetailsNext) {
-      this.selectedPacient = pacient;
-    } else { this.selectedPacient = null; }
   }
 
   calendarEventListener(day: CalendarDate) {

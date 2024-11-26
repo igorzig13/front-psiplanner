@@ -27,7 +27,7 @@ export class NavbarComponent {
   constructor() {
 
     const nav1 : TextsAndLinks = {
-      texts: ['Sobre', 'Cadastre-se', 'Login'],
+      texts: ['Sobre', 'Cadastrar', 'Login'],
       links: ['/about', '/register', '/login']};
 
     const nav2 : TextsAndLinks = {
@@ -35,7 +35,7 @@ export class NavbarComponent {
       links: ['/client', '/client/consultas', '/client/calendario', '/client/perfil']};
 
     const nav3 : TextsAndLinks = {
-      texts: ['Inicio', 'Profissionais', 'Pefil'],
+      texts: ['Inicio', 'Profissionais', 'Perfil'],
       links: ['/clinic', '/clinic/professionals', '/clinic/perfil'],
     };
 
