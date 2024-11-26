@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800');
 
 main{
-    margin-left:257px ;
-    margin-right: 257px;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title{
@@ -10,9 +12,20 @@ main{
     flex-direction: column;
 }
 
-.image-container{
+#woman img {
+  width: 100%;
+}
+
+#man img {
+  width: 100%;
+}
+
+.image-container {
     margin-top: 100px;
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
     gap: 70px;
 }
 
@@ -22,56 +35,63 @@ main{
     align-items: center;
     margin-top: 30px;
 }
+
 #woman{
     width: 556px;
+    text-align: center;
+
 }
 
 #man{
-    margin-top: 20px;
-    width: 751px;
+  text-align: center;
+  margin-top: 20px;
+  width: 751px;
 }
 
 h1{
-    margin-top: 150px;
+    margin-top: 4rem;
     font-family: "Newsreader, serif";
     color: #5B6372;
     text-align: center;
-    font-size: 64px;
+    font-size: 3.5rem;
 }
 
 
 figcaption{
     color: #5B6372;
+    text-align: justify;
 }
 
 .beliefs {
     width: 80%;
-    margin: 200px auto;
+    margin: 0 auto;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
     padding: 20px;
     border-left: 2px solid #cccccc; /* A linha vertical no lado esquerdo */
     color: #555555;
   }
-  
+
   .beliefs h2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
     color: #333333;
   }
-  
+
   .beliefs .intro {
     font-size: 18px;
     font-style: italic;
     color: #666666;
     margin-bottom: 15px;
   }
-  
+
   .beliefs .details, .beliefs .why {
     font-size: 16px;
     color: #555555;
     margin-bottom: 20px;
   }
-  
+
   .beliefs h3 {
     font-size: 20px;
     font-weight: bold;
@@ -80,13 +100,19 @@ figcaption{
     color: #333333;
   }
 
+@media(max-width:1510px){
+  .image-container{
+    justify-content: center ;
+  }
+}
+
 @media(max-width:1000px){
     main{
         margin-left:0 ;
         margin-right: 0;
     }
     h1{
-        font-size: 48px;
+        font-size: 2.8rem;
     }
     .image-container{
         display: flex;
@@ -96,18 +122,68 @@ figcaption{
     }
 }
 
-@media(max-width:480px){
-    #woman img{
-        width: 350px;
-    }
-    #woman{
-        width: 350px;
-    }
+@media (max-width: 922px) {
+  main {
+    padding: 2rem;
+  }
 
-    #man{
-        width: 350px;
-    }
-    #man img{
-        width: 350px;
-    }
+  h1{
+    font-size: 2.3rem;
+  }
+
+  #woman {
+    width: 400px;
+  }
+
+  #man {
+    width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  #woman {
+    width: 300px;
+  }
+
+  #man {
+    width: 400px;
+  }
+}
+
+@media(max-width:480px){
+  #woman {
+    width: 275px;
+  }
+
+  #man {
+    width: 300px;
+  }
+}
+
+@media(max-width:480px){
+  main {
+    padding: 1rem;
+  }
+
+  #woman {
+    width: 275px;
+  }
+
+  #man {
+    width: 300px;
+  }
+}
+
+@media(max-width: 360px){
+  main {
+    padding: 1rem;
+  }
+
+  #woman {
+    width: 230px;
+  }
+
+  #man {
+    width: 245px;
+  }
 }
