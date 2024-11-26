@@ -110,7 +110,7 @@
         <app-popup title="Dados da consulta">
             <div>
                 <app-default-card btnText="Avaliar"
-                    (onButtonClick)="rate()"
+                    (onButtonClick)="toggleRate(selectedProfessional)"
                     type="professional"
                     [name]="selectedProfessional.name"
                     [url_img]="selectedProfessional.url_img"
@@ -162,4 +162,35 @@
         </app-popup>
       }
 
+      @if (showRate) {
+        <app-popup title="Avaliação">
+          <div class="rating-text">
+            <h4>Olá, nome do paciente!</h4>
+            <h5>Faça sua avaliação do {{selectedProfessional.name}}:</h5>
+          </div>
+          <div class="rating-container">
+            <h5>Recomendação</h5>
+            <div class="rating-input">
+              <img src="icons/ratingStar.svg" alt="Estrela">
+              <select class="rating-select">
+                <option value="1">5</option>
+                <option value="2">4</option>
+                <option value="3">3</option>
+                <option value="4">2</option>
+                <option value="5">1</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="comment-section">
+            <h5>Faça um comentário</h5>
+            <textarea class="comment-input"placeholder="Comentário"></textarea>
+          </div>
+          <div class="button-group">
+            <app-button btnClass="btn main-button" text="Avaliar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
+            <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
+          </div>
+        </app-popup>
+        
+      }
 </main>

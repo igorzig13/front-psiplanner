@@ -19,6 +19,7 @@ export class ClientConsultsComponent {
   showDone: boolean = false;
   showDetailsNext: boolean = false;
   showDetailsDone: boolean = false;
+  showRate: boolean = false;
 
   selectedProfessional: any = null;
 
@@ -60,7 +61,8 @@ export class ClientConsultsComponent {
     console.log('Test');
   }
 
-  rate(){
+  toggleRate(professional: any) {
     console.log('Rate');
+    this.showRate = !this.showRate;
   }
 }
