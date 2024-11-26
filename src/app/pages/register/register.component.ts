@@ -41,7 +41,8 @@ export class RegisterComponent implements OnInit {
       cnpj: ['', []],
       email: ['', []],
       telephone: ['', []],
-      location: ['', []]
+      location: ['', []],
+      password: ['', []]
     });
 
     this.formProfessional = this.formBuilder.group({
@@ -49,7 +50,8 @@ export class RegisterComponent implements OnInit {
       crp: ['', []],
       email: ['', []],
       telephone: ['', []],
-      approach: ['', []]
+      approach: ['', []],
+      password: ['', []]
     });
   }
 

@@ -31,8 +31,7 @@ export class ProfessionalPerfilComponent {
       password: ['', []],
       crp: ['', []],
       approach: ['', []],
-      model: ['', []]
-
+      model: ['', []],
     });
   }
 

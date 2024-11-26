@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { ButtonComponent } from '../../components/button/button.component';
 import { LinkComponent } from "../../components/link/link.component";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,13 @@ export class LoginComponent implements OnInit {
   navUi: number = 1;
   form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {  }
+  users = [
+    { email: 'cliente@gmail.com', password: '123456', role: 'cliente' },
+    { email: 'profissional@gmail.com', password: '123456', role: 'profissional' },
+    { email: 'clinica@gmail.com', password: '123456', role: 'clinica' }
+  ];
+
+  constructor(private formBuilder: FormBuilder, private router: Router) {  }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -31,9 +38,22 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+      const { email, password } = this.form.value;
+      const user = this.users.find(u => u.email === email && u.password === password);
+
+      if (user) {
+        if (user.role === 'cliente') {
+          this.router.navigate(['/client']);
+        } else if (user.role === 'profissional') {
+          this.router.navigate(['/professional']);
+        } else if (user.role === 'clinica') {
+          this.router.navigate(['/clinic']);
+        }
+      } else {
+        console.log('Credenciais inválidas');
+      }
     } else {
-      console.log("Invalid form");
+      console.log("Formulário inválido");
     }
     this.form.reset();
   }

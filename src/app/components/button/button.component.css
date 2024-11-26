@@ -27,3 +27,10 @@ button.secondary-button:hover {
 button.expand {
   width: 100% !important;
 }
+
+@media (max-width: 768px) {
+  .btn {
+    font-size: 0.8rem;
+    padding: 0.1rem 0.5rem;
+  }
+}
