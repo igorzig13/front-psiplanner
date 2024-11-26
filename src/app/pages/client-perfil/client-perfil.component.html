@@ -29,13 +29,12 @@
       </div>
 
       <div class="field-form">
-        <label for="email">Email</label>
-        <p>Email atual: emailatual&#64;gmail.com</p>
-        <input type="email"
-               id="email"
-               formControlName="email"
-               style="background-image: url('icons/mail.svg');"
-               placeholder="Novo email">
+        <label for="telephone">Telefone</label>
+        <input type="number"
+               id="telephone"
+               formControlName="telephone"
+               style="background-image: url('icons/smartphone.svg');"
+               placeholder="Digite seu telefone (apenas números)">
       </div>
 
       <div class="field-form">
@@ -58,4 +57,10 @@
       </div>
     </form>
   </div>
+
+  @if (openMessage) {
+    <app-message>
+      {{ message }}
+    </app-message>
+  }
 </main>
