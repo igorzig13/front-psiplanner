@@ -23,12 +23,12 @@
                 }
             }
         </section>
-        
+
 
         <section>
             <div (click)="toggleDone()" class="title">
                 <h4>Realizadas</h4>
-        
+
                 <div class="value_icon">
                   <h4> {{ professionalsDone.length }} </h4>
                   <i class="material-icons"> {{ showDone ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
@@ -41,7 +41,7 @@
                 </app-horizontal-card>
                 }
             }
-            
+
         </section>
     </div>
     @if (showDetailsNext) {
@@ -51,7 +51,7 @@
             <h5> Profissional </h5>
             <div class="line"></div>
           </div>
-    
+
           <div>
             <app-default-card btnText="Cancelar consulta"
                 (onButtonClick)="test()"
@@ -61,15 +61,15 @@
                 [rating]="selectedProfessional.rating"
               >
             </app-default-card>
-            
+
           </div>
-    
+
           <div class="popup-header">
             <div class="line"></div>
             <h5> Informações </h5>
             <div class="line"></div>
           </div>
-    
+
           <div class="info-container">
             <div class="info-group">
               <div class="info-item">
@@ -85,7 +85,7 @@
                 <span>00:00</span>
               </div>
             </div>
-    
+
             <div class="info-group">
               <div class="info-item">
                 <span class="material-icons">email</span>
@@ -101,7 +101,7 @@
               </div>
             </div>
           </div>
-    
+
           <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsNext(selectedProfessional)" ></app-button>
         </app-popup>
       }
@@ -117,7 +117,7 @@
                     [rating]="selectedProfessional.rating"
                   >
                 </app-default-card>
-                
+
               </div>
 
               <div class="popup-header">
@@ -141,7 +141,7 @@
                 <span>00:00</span>
               </div>
             </div>
-    
+
             <div class="info-group">
               <div class="info-item">
                 <span class="material-icons">email</span>
@@ -157,7 +157,7 @@
               </div>
             </div>
           </div>
-          
+
           <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsDone(selectedProfessional)" ></app-button>
         </app-popup>
       }

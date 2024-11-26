@@ -1,4 +1,4 @@
-import {Component, SimpleChanges} from '@angular/core';
+import {Component, Input } from '@angular/core';
 import { HorizontalCardComponent } from '../../components/horizontal-card/horizontal-card.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { PopupComponent } from '../../components/popup/popup.component';
 import { DefaultCardComponent } from '../../components/default-card/default-card.component';
 import {CalendarComponent, CalendarDate} from '../../components/calendar/calendar.component';
+import { DailySchedulerComponent } from "../../components/daily-scheduler/daily-scheduler.component";
 
 @Component({
   selector: 'app-client-homepage',
   standalone: true,
-  imports: [NavbarComponent, HorizontalCardComponent, ButtonComponent, CommonModule, PopupComponent, DefaultCardComponent, CalendarComponent],
+  imports: [NavbarComponent, HorizontalCardComponent, ButtonComponent, CommonModule, PopupComponent, DefaultCardComponent, CalendarComponent, DailySchedulerComponent],
   templateUrl: './client-homepage.component.html',
   styleUrl: './client-homepage.component.css'
 })
@@ -19,12 +20,12 @@ export class ClientHomepageComponent {
   navUi: number = 2;
   openDetails: boolean = false;
   openBookinAppointment: boolean = false;
+  openDailyAppointment: boolean = false;
 
   selectedClinicOrProfessional: any = null;
 
-  test() {
-    console.log('test');
-  }
+  selectedDay: CalendarDate = { day: 0, month: 0, year: 0, monthName: '', fullName: '' };
+  selectedHour: string = '';
 
   //sample data
   clinicsAndProfessionals = [
@@ -96,7 +97,30 @@ export class ClientHomepageComponent {
     this.openBookinAppointment = !this.openBookinAppointment;
   }
 
-  makeAppointment(day: CalendarDate) {
-    alert("Você fez um agendamento para o dia: " + day.fullName);
+  toggleDailyAppointment(day: CalendarDate) {
+
+    if (!this.openDailyAppointment) {
+      const dayDate = new Date(day.year, day.month, day.day);
+      const today = new Date();
+      today.setHours(0, 0, 0 , 0);
+
+      this.selectedDay = day;
+
+      if (dayDate > today) {
+        this.openDailyAppointment = true;
+      }
+      return;
+    }
+
+    if (this.openDailyAppointment) {
+      this.openDailyAppointment = false;
+      return;
+    }
+  }
+
+  makeAppointment(selectedHour: string) {
+    this.selectedHour = selectedHour;
+
+    console.log('Consulta agendada para: ' + this.selectedDay.fullName + ' às ' + this.selectedHour);
   }
 }

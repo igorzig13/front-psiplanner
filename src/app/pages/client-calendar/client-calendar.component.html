@@ -12,10 +12,10 @@
   </div>
 
   @if (openDoneConsults) {
-    <app-popup title="Dados da Consulta">
+    <app-popup title="{{dateString}}">
       <div class="popup-header">
         <div class="line"></div>
-        <h3 style="font-weight: 300;"> Profissional </h3>
+        <h5> Profissional </h5>
         <div class="line"></div>
       </div>
 
@@ -82,10 +82,10 @@
   }
 
   @if (openNextConsults) {
-    <app-popup title="Dados da Consulta">
+    <app-popup title="{{dateString}}">
       <div class="popup-header">
         <div class="line"></div>
-        <h3 style="font-weight: 300;"> Profissional </h3>
+        <h5> Profissional </h5>
         <div class="line"></div>
       </div>
 

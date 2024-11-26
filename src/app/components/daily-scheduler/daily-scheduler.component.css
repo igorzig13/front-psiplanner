@@ -1,0 +1,96 @@
+.scheduler-container {
+  max-width: 100%;
+  border: solid 2px #5B6372;
+  box-shadow:5px 5px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 2rem;
+  padding-bottom: 0.6rem;
+}
+
+.header span {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.day-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-info .day {
+  font-size: 1.6rem;
+}
+
+.scheduler table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scheduler td {
+  border: 1px solid #CCC;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.scheduler .time-label {
+  width: 100px;
+  font-weight: bold;
+  border: none;
+}
+
+.scheduler .time-slot {
+  background-color: #fff;
+}
+
+.scheduler .time-slot.available {
+  background-color: rgb(39, 213, 92);
+}
+
+.scheduler .time-slot.unavailable {
+  background-color: #FFF;
+  cursor: unset;
+}
+
+.legend {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.legend div {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+}
+
+.legend span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #CCC;
+}
+
+.legend .available {
+  background-color: rgb(39, 213, 92);
+}
+
+.scheduler .time-slot.selected {
+  background-color: rgb(10, 162, 56);
+  color: white;
+  font-weight: bold;
+}

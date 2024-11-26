@@ -26,13 +26,13 @@ main {
   overflow-x: auto;
   gap: 0.4rem;
   margin-bottom: 1rem;
-  scroll-behavior: smooth;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 0 2rem;
 }
 
 app-default-card {
   min-width: 200px;
-  margin: 0 auto;
 }
 
 .info-container {

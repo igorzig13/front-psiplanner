@@ -1,0 +1,38 @@
+<div class="scheduler-container">
+  <div class="header">
+    <div class="day-info">
+      <span>{{ day.monthName.substring(0, 3).toUpperCase() }}</span>
+      <span class="day">{{ day.day <= 9 ? '0' + day.day : day.day }}</span>
+    </div>
+  </div>
+
+  <div class="scheduler">
+    <table>
+      <tbody>
+        @for (hour of hours; track hour) {
+          <tr>
+            <td class="time-label">{{ hour }}</td>
+            @if (isAvailable(hour)) {
+              <td
+                class="time-slot available"
+                [class.selected]="selectedHour === hour"
+                (click)="selectHour(hour)">
+              </td>
+            } @else {
+              <td class="time-slot unavailable"></td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <div>
+      <span class="available"></span> Horário disponível
+    </div>
+    <div>
+      <span class="selected"></span> Horário indisponível
+    </div>
+  </div>
+</div>

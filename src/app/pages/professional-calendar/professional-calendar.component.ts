@@ -16,6 +16,7 @@ export class ProfessionalCalendarComponent {
   navUi: number = 4;
 
   selectedPacient: any = null;
+  dateString: string = '';
 
   openNextConsults: boolean = false;
   openDoneConsults: boolean = false;
@@ -59,6 +60,11 @@ export class ProfessionalCalendarComponent {
 
   calendarEventListener(day: CalendarDate) {
     const clickedDate = new Date(day.year, day.month, day.day);
+
+    this.dateString = ( day.day + 1 <= 10 ? '0' + day.day : day.day ) + '/' +
+                      ( day.month + 1 <= 10 ? '0' + (day.month + 1) : day.month + 1 ) + '/' +
+                      day.year;
+
     const today = new Date();
 
     today.setHours(0, 0, 0 , 0);

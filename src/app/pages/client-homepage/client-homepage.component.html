@@ -95,8 +95,21 @@
 
     @if (openBookinAppointment) {
       <app-popup title="Agendamento">
-        <app-calendar type="horarios" (onClick)="makeAppointment($event)"></app-calendar>
+        <app-calendar type="horarios" (onClick)="toggleDailyAppointment($event)"></app-calendar>
         <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleBookingAppointment()"></app-button>
+      </app-popup>
+    }
+
+    @if (openDailyAppointment) {
+      <app-popup title="Horários Disponíveis">
+        <app-daily-scheduler (onSelectHour)="makeAppointment($event)" [day]="selectedDay">
+
+        </app-daily-scheduler>
+
+        <div class="buttons">
+          <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDailyAppointment($event)"></app-button>
+          <app-button btnClass="btn main-button" text="Agendar"></app-button>
+        </div>
       </app-popup>
     }
   </div>

@@ -139,6 +139,12 @@ app-default-card {
   margin-right: 0.6rem;
 }
 
+.buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
 
 @media (max-width: 768px) {
   .form-inline input {
