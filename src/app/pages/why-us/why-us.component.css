@@ -78,13 +78,14 @@
     align-items: flex-end;
     justify-content: right;
     width: 40%;
+    min-width: 500px;
     flex-wrap: wrap;
     gap: 2rem;
 }
 
 .mid-content-1 {
-
     width: 40%;
+    min-width: 250px;
     height: auto;
     margin-bottom: 2rem;
     background-color: #9DC0CB;
@@ -110,6 +111,7 @@
 
 .mid-content-2 {
     width: 40%;
+    min-width: 250px;
     height: auto;
     flex-wrap: wrap;
     margin-bottom: 2rem;
@@ -146,6 +148,7 @@
 .mid-img-container img {
     width: auto;
     max-height: 350px;
+    min-width: 200px;
     object-fit: cover;
 }
 
@@ -223,6 +226,7 @@
         max-width: 100%;
     }
 }
+
 
 @media (max-width: 480px) {
     .content-title {
