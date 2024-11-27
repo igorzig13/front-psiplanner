@@ -25,7 +25,8 @@
           type="professional"
           [name]="previousProfessional.name"
           [url_img]="previousProfessional.url_img"
-          [rating]="previousProfessional.rating">
+          [rating]="previousProfessional.rating"
+          (onButtonClick)="toggleAvailable(previousProfessional)">
         </app-default-card>
       </div>
 
@@ -136,94 +137,53 @@
       <app-button btnClass="btn main-button" text="Voltar" (click)="toggleNextConsults()"></app-button>
     </app-popup>
   }
-<!--
-  @if (openDetailsDone) {
-    <app-popup title="Informações">
-      <div class="info-container">
-        <div class="info-group">
-          <div class="info-item">
-            <span class="material-icons">person</span>
-            <span>{{ selectedPacient?.name }}</span>
-          </div>
-          <div class="info-item">
-            <span class="material-icons">phone</span>
-            <span>(84) 00000-0000</span>
-          </div>
-          <div class="info-item">
-            <span class="material-icons">schedule</span>
-            <span>00:00</span>
-          </div>
+
+  @if (openAvailable) {
+    <app-popup title="Avaliação">
+      <div class="rating-text">
+        <h4>Olá, nome do paciente!</h4>
+        <h5>Faça sua avaliação do {{previousProfessional.name}}:</h5>
+      </div>
+      <div class="rating-container">
+        <h5>Recomendação</h5>
+        <div class="rating-input">
+          <img src="icons/ratingStar.svg" alt="Estrela">
+          <select class="rating-select" [(ngModel)] = 'rating'>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
 
-        <div class="info-group">
-          <div class="info-item">
-            <span class="material-icons">email</span>
-            <span>contato&#64;gmail.com</span>
-          </div>
-          <div class="info-item">
-            <span class="material-icons">home</span>
-            <span>Remoto</span>
-          </div>
-          <div class="info-item">
-            <span class="material-icons">calendar_today</span>
-            <span>31/12/2012</span>
-          </div>
-        </div>
+        @if (error) {
+          <div class="error">É obrigatório informar a classificação.</div>
+        }
       </div>
-      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsDone(selectedPacient)" ></app-button>
+
+      <div class="comment-section">
+        <h5>Faça um comentário</h5>
+        <textarea class="comment-input" placeholder="Comentário" [(ngModel)] = 'comment'></textarea>
+      </div>
+      <div class="button-group">
+        <app-button btnClass="btn main-button" text="Avaliar" (onClick)="toggleConfirmation()" ></app-button>
+        <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleAvailable(previousProfessional)" ></app-button>
+      </div>
     </app-popup>
   }
 
-  @if (openDetailsNext) {
-    <app-popup title="Dados da Consulta">
-      <div class="popup-header">
-        <div class="line"></div>
-        <h5> Paciente </h5>
-        <div class="line"></div>
-      </div>
+  @if (openConfirmation) {
+    <app-popup>
+      <app-confirmation-form (cancelFunction)="toggleConfirmation()" (actionFunction)="sendAvailable($event)">
 
-      <div>
-        <app-default-card btnText="Remover"
-          type='client'
-          btnText="Cancelar Consulta"
-          (onButtonClick)="removePacient()"
-          [name]="selectedPacient?.name"
-          [url_img]="selectedPacient?.url_img"
-          >
-        </app-default-card>
-      </div>
-
-      <div class="popup-header">
-        <div class="line"></div>
-        <h5> Informações </h5>
-        <div class="line"></div>
-      </div>
-
-      <div class="info-container">
-        <div class="info-group">
-          <div class="info-item">
-            <span class="material-icons">email</span>
-            <span>contato&#64;gmail.com</span>
-          </div>
-          <div class="info-item">
-            <span class="material-icons">phone</span>
-            <span>(84) 00000-0000</span>
-          </div>
-        </div>
-
-        <div class="info-group">
-          <div class="info-item">
-            <span class="material-icons">home</span>
-            <span>Remoto</span>
-          </div>
-          <div class="info-item">
-            <span class="material-icons">calendar_today</span>
-            <span>31/12/2012</span>
-          </div>
-        </div>
-      </div>
-
-      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsNext(selectedPacient)" ></app-button>
+      </app-confirmation-form>
     </app-popup>
-  } -->
+  }
+
+  @if (showMessage) {
+    <app-message>
+      {{ message}}
+    </app-message>
+  }
 </main>
