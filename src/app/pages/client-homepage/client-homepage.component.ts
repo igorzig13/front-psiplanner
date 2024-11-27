@@ -94,54 +94,54 @@ export class ClientHomepageComponent {
     //sample data
     clinicsAndProfessionals = [
       {
-        name: 'Clínica 01',
+        name: 'Clínica IMD',
         url_img: 'icons/person.svg',
-        description: 'Olá, somos a Clínica 01',
-        location: 'Localização 01',
+        description: 'Olá, conheça a clínica IMD',
+        location: 'Localização',
         professional_list: [
-          { name: 'Profissional 10', rating: 1},
-          { name: 'Profissional 11', rating: 2},
-          { name: 'Profissional 12', rating: 3},
-          { name: 'Profissional 13', rating: 4},
+          { name: 'Itamir', rating: 5},
+          { name: 'Tonhão', rating: 4.7},
+          { name: 'Thanos', rating: 4.5},
+          { name: 'Girão', rating: 4.4},
         ]
       },
       {
-        name: 'Profissional 01',
+        name: 'Igor Marques',
         url_img: 'icons/person.svg',
-        description: 'Conheça o Profissional 01',
-        location: 'Localização 01',
-        rating: 1,
+        description: 'Conheça Igor Marques',
+        location: 'Localização',
+        rating: 3.9,
         professional_list: []
       },
       {
-        name: 'Clínica 02',
+        name: 'Clínica Fut',
         url_img: 'icons/person.svg',
-        description: 'Bem-vindo à Clínica 02',
-        location: 'Localização 02',
+        description: 'Bem-vindo à Clínica Fut',
+        location: 'Localização',
         professional_list: [
-          {name: 'Profissional 20', rating: 1},
-          {name: 'Profissional 21', rating: 2},
-          {name: 'Profissional 22', rating: 3},
-          {name: 'Profissional 23', rating: 4},
+          {name: 'Pelé', rating: 5},
+          {name: 'Maradona', rating: 2.5},
+          {name: 'Messi', rating: 4},
+          {name: 'Cristiano', rating: 4.1},
         ]
       },
       {
-        name: 'Clínica 03',
+        name: 'Clínica TV',
         url_img: 'icons/person.svg',
-        description: 'Conheça a Clínica 03',
-        location: 'Localização 03',
+        description: 'Conheça a Clínica TV',
+        location: 'Localização',
         professional_list: [
-          {name: 'Profissional 30', rating: 1},
-          {name: 'Profissional 31', rating: 2},
-          {name: 'Profissional 32', rating: 3},
-          {name: 'Profissional 33', rating: 4},
+          {name: 'William', rating: 4.5},
+          {name: 'Silvio', rating: 5},
+          {name: 'Celso', rating: 3.9},
+          {name: 'Ratinho', rating: 4},
         ]
       },
       {
-        name: 'Profissional 02',
+        name: 'Vitor Emanuel',
         url_img: 'icons/person.svg',
-        description: 'Olá, sou o Profissional 02',
-        location: 'Localização 02',
+        description: 'Olá, sou Vitor Emanuel',
+        location: 'Localização',
         professional_list: [],
         rating: 4
       }

@@ -37,15 +37,15 @@ export class ClientConsultsComponent {
   selectedProfessional: any = null;
 
   professionalsNext = [
-    {name: 'Profissional 01', url_img: 'icons/person.svg', description: 'Conheça o Profissional 01', location: 'Localização 01', rating: 1},
-    {name: 'Profissional 02', url_img: 'icons/person.svg', description: 'Conheça o Profissional 02', location: 'Localização 02', rating: 2},
-    {name: 'Profissional 03', url_img: 'icons/person.svg', description: 'Conheça o Profissional 03', location: 'Localização 03', rating: 3}
+    {name: 'Itamir', url_img: 'icons/person.svg', description: 'Conheça Itamir', location: 'Localização', rating: 5},
+    {name: 'João Pedro', url_img: 'icons/person.svg', description: 'Olá, sou João Pedro', location: 'Localização', rating: 2},
+    {name: 'Igor Marques', url_img: 'icons/person.svg', description: 'Olá!', location: 'Localização', rating: 3}
   ]
 
   professionalsDone = [
-    {name: 'Profissional 04', url_img: 'icons/person.svg', description: 'Conheça o Profissional 04', location: 'Localização 04', rating: 4},
-    {name: 'Profissional 05', url_img: 'icons/person.svg', description: 'Conheça o Profissional 05', location: 'Localização 05', rating: 5},
-    {name: 'Profissional 06', url_img: 'icons/person.svg', description: 'Conheça o Profissional 06', location: 'Localização 06', rating: 5}
+    {name: 'Tonhão', url_img: 'icons/person.svg', description: 'Conheça Tonhão', location: 'Localização', rating: 4},
+    {name: 'Aldo Queiroz', url_img: 'icons/person.svg', description: 'Olá, sou Aldo', location: 'Localização', rating: 5},
+    {name: 'Vitor Emanuel', url_img: 'icons/person.svg', description: 'Olá!', location: 'Localização', rating: 5}
   ]
 
   toggleNext() {
