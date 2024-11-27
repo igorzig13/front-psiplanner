@@ -10,7 +10,13 @@
   <app-scheduler></app-scheduler>
 
   <div class="buttons">
-    <app-button btnClass="btn main-button" text="Salvar"></app-button>
+    <app-button btnClass="btn main-button" text="Salvar" (onClick)="toggleMessage()"></app-button>
   </div>
+
+  @if (showMessage) {
+    <app-message>
+      {{ message }}
+    </app-message>
+  }
 </main>
 

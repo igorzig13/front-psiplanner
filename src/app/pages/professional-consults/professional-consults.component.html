@@ -27,7 +27,7 @@
 
     <section>
       <div (click)="toogleDone()" class="title">
-        <h4>Próximas</h4>
+        <h4>Realizadas</h4>
 
         <div class="value_icon">
           <h4> {{ pacientsDone.length }} </h4>
@@ -55,7 +55,7 @@
         <app-default-card btnText="Remover"
           type='client'
           btnText="Cancelar Consulta"
-          (onButtonClick)="removePacient()"
+          (onButtonClick)="toggleConfirmation()"
           [name]="selectedPacient?.name"
           [url_img]="selectedPacient?.url_img"
           >
@@ -131,5 +131,22 @@
       </div>
       <app-button btnClass="btn main-button" text="Voltar" (onClick)="toogleDetailsDone(selectedPacient)" ></app-button>
     </app-popup>
+  }
+
+  @if (openConfirmation) {
+    <app-popup title="Confirmar">
+      <app-confirmation-form (cancelFunction)="toggleConfirmation()"
+                              (actionFunction)="removePacient($event)"
+                              buttonText="Remover"
+                              >
+
+      </app-confirmation-form>
+    </app-popup>
+  }
+
+  @if (showMessage) {
+    <app-message>
+      {{ message }}
+    </app-message>
   }
 </main>

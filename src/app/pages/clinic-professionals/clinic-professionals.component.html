@@ -31,7 +31,7 @@
     <app-popup title="Profissional">
       <div>
         <app-default-card btnText="Remover"
-          (onButtonClick)="removeProfessional()"
+          (onButtonClick)="toggleConfirmation()"
           type='professional'
           [name]="selectedProfessional.name"
           [url_img]="selectedProfessional.url_img"
@@ -111,5 +111,22 @@
         </div>
       </div>
     </app-popup>
+  }
+
+  @if (openConfirmation) {
+    <app-popup title="Confirmar">
+      <app-confirmation-form (cancelFunction)="toggleConfirmation()"
+                              (actionFunction)="removeProfessional($event)"
+                              buttonText="Remover"
+                              >
+
+      </app-confirmation-form>
+    </app-popup>
+  }
+
+  @if (showMessage) {
+    <app-message>
+      {{ message }}
+    </app-message>
   }
 </main>

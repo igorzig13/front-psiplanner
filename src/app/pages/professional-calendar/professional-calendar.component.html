@@ -108,7 +108,7 @@
         <app-default-card btnText="Remover"
           type='client'
           btnText="Cancelar Consulta"
-          (onButtonClick)="removePacient()"
+          (onButtonClick)="toggleConfirmation()"
           [name]="selectedPacient?.name"
           [url_img]="selectedPacient?.url_img"
           >
@@ -147,5 +147,22 @@
 
       <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsNext(selectedPacient)" ></app-button>
     </app-popup>
+  }
+
+  @if (openConfirmation) {
+    <app-popup title="Confirmar">
+      <app-confirmation-form (cancelFunction)="toggleConfirmation()"
+                              (actionFunction)="removePacient($event)"
+                              buttonText="Remover"
+                              >
+
+      </app-confirmation-form>
+    </app-popup>
+  }
+
+  @if (showMessage) {
+    <app-message>
+      {{ message }}
+    </app-message>
   }
 </main>

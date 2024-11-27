@@ -5,11 +5,14 @@ import { PopupComponent } from '../../components/popup/popup.component';
 import { ButtonComponent } from "../../components/button/button.component";
 import { LinkComponent } from "../../components/link/link.component";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmationFormComponent } from '../../components/confirmation-form/confirmation-form.component';
+import { MessageComponent } from '../../components/message/message.component';
 
 @Component({
   selector: 'app-clinic-professionals',
   standalone: true,
-  imports: [NavbarComponent, PopupComponent, DefaultCardComponent, ButtonComponent, LinkComponent, ReactiveFormsModule],
+  imports: [NavbarComponent, PopupComponent, DefaultCardComponent, ButtonComponent, LinkComponent,
+            ReactiveFormsModule, ConfirmationFormComponent, MessageComponent],
   templateUrl: './clinic-professionals.component.html',
   styleUrl: './clinic-professionals.component.css'
 })
@@ -18,6 +21,10 @@ export class ClinicProfessionalsComponent implements OnInit {
 
   openEdit: boolean = false;
   openAdd: boolean = false;
+  openConfirmation: boolean = false;
+  showMessage: boolean = false;
+
+  message: string = '';
 
   selectedProfessional: any = null;
 
@@ -57,13 +64,29 @@ export class ClinicProfessionalsComponent implements OnInit {
     this.openAdd = !this.openAdd;
   }
 
-  removeProfessional () {
-    if (this.selectedProfessional) {
-      const index = this.professionals.findIndex(p => p.name === this.selectedProfessional.name);
+  toggleConfirmation () {
+    this.openConfirmation = !this.openConfirmation;
+  }
 
-      if (index !== -1) {
-        this.professionals.splice(index, 1);
+  toggleMessage() {
+    this.showMessage = !this.showMessage;
+
+    setTimeout(() => {
+      this.showMessage = !this.showMessage;
+      this.message = '';
+    }, 5000);
+  }
+
+  removeProfessional (sucess: boolean) {
+    if (sucess) {
+      if (this.selectedProfessional) {
+        const index = this.professionals.findIndex(p => p.name === this.selectedProfessional.name);
+        if (index !== -1) { this.professionals.splice(index, 1); }
       }
+      this.message = 'Profissional removido com sucesso!';
+      this.toggleMessage();
+      this.toggleConfirmation();
+      this.toogleEdit(this.selectedProfessional);
     }
   }
 

@@ -4,11 +4,13 @@ import { HorizontalCardComponent } from '../../components/horizontal-card/horizo
 import { PopupComponent } from '../../components/popup/popup.component';
 import { ButtonComponent } from "../../components/button/button.component";
 import { DefaultCardComponent } from '../../components/default-card/default-card.component';
+import { ConfirmationFormComponent } from '../../components/confirmation-form/confirmation-form.component';
+import { MessageComponent } from '../../components/message/message.component';
 
 @Component({
   selector: 'app-professional-consults',
   standalone: true,
-  imports: [NavbarComponent, HorizontalCardComponent, PopupComponent, ButtonComponent, DefaultCardComponent],
+  imports: [NavbarComponent, HorizontalCardComponent, PopupComponent, ButtonComponent, DefaultCardComponent, ConfirmationFormComponent, MessageComponent],
   templateUrl: './professional-consults.component.html',
   styleUrl: './professional-consults.component.css'
 })
@@ -19,6 +21,10 @@ export class ProfessionalConsultsComponent {
   showDone: boolean = false;
   showDetailsNext: boolean = false;
   showDetailsDone: boolean = false;
+  openConfirmation: boolean = false;
+  showMessage: boolean = false;
+
+  message: string = '';
 
   selectedPacient: any = null;
 
@@ -56,12 +62,32 @@ export class ProfessionalConsultsComponent {
     else { this.selectedPacient = null; }
   }
 
-  removePacient () {
-    if (this.selectedPacient) {
-      const index = this.pacientsNext.findIndex(p => p.name === this.selectedPacient.name);
+  toggleConfirmation () {
+    this.openConfirmation = !this.openConfirmation;
+  }
 
-      if (index !== -1) {
-        this.pacientsNext.splice(index, 1);
+  toggleMessage() {
+    this.showMessage = !this.showMessage;
+
+    setTimeout(() => {
+      this.showMessage = !this.showMessage;
+      this.message = '';
+    }, 5000);
+  }
+
+  removePacient (sucess: boolean) {
+    if (sucess) {
+      if (this.selectedPacient) {
+        const index = this.pacientsNext.findIndex(p => p.name === this.selectedPacient.name);
+
+        if (index !== -1) {
+          this.pacientsNext.splice(index, 1);
+        }
+
+        this.message = 'Profissional removido com sucesso!';
+        this.toggleMessage();
+        this.toggleConfirmation();
+        this.toogleDetailsNext(this.selectedPacient);
       }
     }
   }
