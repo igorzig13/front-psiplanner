@@ -97,11 +97,11 @@
         <h5>Confirme as alterações</h5>
         <label>Senha</label>
         <div class="password-fields">
-          <input type="text"
+          <input type="password"
                  formControlName="password"
                  style="background-image: url('icons/password.svg');"
                  placeholder="Nova senha">
-          <input type="text"
+          <input type="password"
                  style="background-image: url('icons/password.svg');"
                  placeholder="Confirmar senha">
         </div>
@@ -113,4 +113,10 @@
       </div>
     </form>
   </div>
+
+  @if (showMessage) {
+    <app-message>
+      {{ message }}
+    </app-message>
+  }
 </main>
