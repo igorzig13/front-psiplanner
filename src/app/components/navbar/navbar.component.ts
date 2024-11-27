@@ -31,17 +31,17 @@ export class NavbarComponent {
       links: ['/about', '/register', '/login']};
 
     const nav2 : TextsAndLinks = {
-      texts: ['Início', 'Consultas', 'Calendário', 'Perfil'],
-      links: ['/client', '/client/consultas', '/client/calendario', '/client/perfil']};
+      texts: ['Início', 'Consultas', 'Calendário', 'Perfil', 'Sair'],
+      links: ['/client', '/client/consultas', '/client/calendario', '/client/perfil', '']};
 
     const nav3 : TextsAndLinks = {
-      texts: ['Inicio', 'Profissionais', 'Perfil'],
-      links: ['/clinic', '/clinic/professionals', '/clinic/perfil'],
+      texts: ['Inicio', 'Profissionais', 'Perfil', 'Sair'],
+      links: ['/clinic', '/clinic/professionals', '/clinic/perfil', ''],
     };
 
     const nav4 : TextsAndLinks = {
-      texts: ['Inicio', 'Calendário', 'Consultas', 'Agenda' ,'Perfil'],
-      links: ['/professional', '/professional/calendar', '/professional/consults', "/professional/agenda" , "/professional/perfil"],
+      texts: ['Inicio', 'Calendário', 'Consultas', 'Agenda' ,'Perfil', 'Sair'],
+      links: ['/professional', '/professional/calendar', '/professional/consults', "/professional/agenda" , "/professional/perfil", ''],
     };
 
     this.navbars.set(1, nav1);

@@ -42,7 +42,7 @@
 }
 
 .scheduler td.enabled {
-  background-color: #C8E6C9;
+  background-color: #64dc6a;
   color: #2E7D32;
 }
 
@@ -75,11 +75,11 @@
 }
 
 .legend .enabled {
-  background-color: #c8e6c9;
+  background-color: #64dc6a;
 }
 
 .legend .disabled {
-  background-color: #ffcdd2;
+  background-color: #F97070;
 }
 
 /* Responsividade */
@@ -115,7 +115,7 @@
     align-items: center;
   }
   i {
-    font-size: 0.8  rem;
+    font-size: 0.8rem;
   }
 
   .scheduler {
@@ -125,8 +125,8 @@
     box-shadow:5px 5px 20px rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
     margin-bottom: 1rem;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .lateral {
