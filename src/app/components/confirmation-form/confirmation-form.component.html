@@ -22,7 +22,7 @@
   </div>
 
   <div class="buttons">
-    <app-button btnClass="btn secondary-button" text="Cancelar" (onClick)="cancelFunction.emit()"></app-button>
-    <app-button btnClass="btn main-button" text="Salvar" (onClick)="eventAction()"></app-button>
+    <app-button btnClass="btn secondary-button" text="Voltar" (onClick)="cancelFunction.emit()"></app-button>
+    <app-button btnClass="btn main-button" [text]="buttonText" (onClick)="eventAction()"></app-button>
   </div>
 </form>

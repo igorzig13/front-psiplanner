@@ -10,6 +10,8 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, AbstractControl, Validator
   styleUrl: './confirmation-form.component.css'
 })
 export class ConfirmationFormComponent implements OnInit {
+  @Input() buttonText!: string;
+
   @Output() cancelFunction = new EventEmitter<void>();
   @Output() actionFunction = new EventEmitter<boolean>();
 

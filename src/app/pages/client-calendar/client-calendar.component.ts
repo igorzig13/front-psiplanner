@@ -32,6 +32,7 @@ export class ClientCalendarComponent {
   openDoneConsults: boolean = false;
   openAvailable: boolean = false;
   openConfirmation: boolean = false;
+  openConfirmationFromCancel: boolean = false;
   showMessage: boolean = false;
 
   previousProfessional = { name: 'Aldo Queiroz', url_img: 'https://placehold.co/450', rating: 5 };
@@ -47,6 +48,10 @@ export class ClientCalendarComponent {
 
   toggleAvailable(professional: any) {
     this.openAvailable = !this.openAvailable;
+  }
+
+  toggleConfirmationFromCancel() {
+    this.openConfirmationFromCancel = !this.openConfirmationFromCancel;
   }
 
   toggleConfirmation() {
@@ -87,6 +92,15 @@ export class ClientCalendarComponent {
     }
   }
 
+  cancelConsultPacient (sucess: boolean) {
+    if (sucess) {
+      this.toggleConfirmationFromCancel();
+      this.toggleNextConsults();
+      this.message = 'Consulta cancelada com sucesso!';
+      this.toggleMessage();
+    }
+  }
+
   calendarEventListener(day: CalendarDate) {
 
     const clickedDate = new Date(day.year, day.month, day.day);
@@ -102,12 +116,6 @@ export class ClientCalendarComponent {
       this.toggleDoneConsults();
     } else {
       this.toggleNextConsults();
-    }
-  }
-
-  cancelConsultPacient () {
-    if (this.selectedPacient) {
-      this.nextProfessional = { name: '', url_img: '', rating: 0 };
     }
   }
 }

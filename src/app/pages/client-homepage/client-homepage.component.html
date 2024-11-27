@@ -115,7 +115,10 @@
 
     @if (openConfirmation) {
       <app-popup title="Confirmação">
-        <app-confirmation-form (cancelFunction)="toggleConfirmation()" (actionFunction)="confirmation($event)"></app-confirmation-form>
+        <app-confirmation-form (cancelFunction)="toggleConfirmation()"
+                               (actionFunction)="confirmation($event)"
+                               buttonText="Agendar">
+        </app-confirmation-form>
       </app-popup>
     }
 

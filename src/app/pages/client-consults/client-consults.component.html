@@ -1,196 +1,224 @@
 <app-navbar navIndex="{{navUi}}"></app-navbar>
 
 <main>
-    <div class="popup-header">
+  <div class="popup-header">
+    <div class="line"></div>
+    <i class="material-icons">event</i>
+    <div class="line"></div>
+  </div>
+
+  <div>
+    <section>
+      <div (click)="toggleNext()" class="title">
+        <h4>Próximas</h4>
+        <div class="value_icon">
+          <h4> {{ professionalsNext.length }} </h4>
+          <i class="material-icons"> {{ showNext ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
+        </div>
+      </div>
+      @if (showNext) {
+        @for (professional of professionalsNext; track professional) {
+          <app-horizontal-card [typeCard]="'professional'" [dataClinicOrUser]="professional"
+                               (clickEvent)="toggleDetailsNext(professional)">
+          </app-horizontal-card>
+        }
+      }
+    </section>
+
+    <section>
+      <div (click)="toggleDone()" class="title">
+        <h4>Realizadas</h4>
+        <div class="value_icon">
+          <h4> {{ professionalsDone.length }} </h4>
+          <i class="material-icons"> {{ showDone ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
+        </div>
+      </div>
+
+      @if (showDone) {
+        @for (professional of professionalsDone; track professional) {
+          <app-horizontal-card [typeCard]="'professional'" [dataClinicOrUser]="professional"
+                               (clickEvent)="toggleDetailsDone(professional)">
+          </app-horizontal-card>
+        }
+      }
+
+    </section>
+  </div>
+
+  @if (showDetailsNext) {
+    <app-popup title="Dados da Consulta">
+      <div class="popup-header">
         <div class="line"></div>
-        <i class="material-icons">event</i>
+        <h5> Profissional </h5>
         <div class="line"></div>
-    </div>
-    <div>
-        <section>
-            <div (click)="toggleNext()" class="title">
-                <h4>Próximas</h4>
-                <div class="value_icon">
-                    <h4> {{ professionalsNext.length }} </h4>
-                    <i class="material-icons"> {{ showNext ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
-                </div>
-            </div>
-            @if (showNext) {
-                @for (professional of professionalsNext; track professional) {
-                <app-horizontal-card [typeCard]="'professional'" [dataClinicOrUser]="professional"
-                    (clickEvent)="toggleDetailsNext(professional)">
-                </app-horizontal-card>
-                }
-            }
-        </section>
+      </div>
 
+      <div>
+        <app-default-card btnText="Cancelar consulta"
+            (onButtonClick)="toggleConfirmationFromCancel()"
+            type="professional"
+            [name]="selectedProfessional.name"
+            [url_img]="selectedProfessional.url_img"
+            [rating]="selectedProfessional.rating"
+          >
+        </app-default-card>
+      </div>
 
-        <section>
-            <div (click)="toggleDone()" class="title">
-                <h4>Realizadas</h4>
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Informações </h5>
+        <div class="line"></div>
+      </div>
 
-                <div class="value_icon">
-                  <h4> {{ professionalsDone.length }} </h4>
-                  <i class="material-icons"> {{ showDone ? 'arrow_drop_up' : 'arrow_drop_down' }} </i>
-                </div>
-              </div>
-            @if (showDone) {
-                @for (professional of professionalsDone; track professional) {
-                <app-horizontal-card [typeCard]="'professional'" [dataClinicOrUser]="professional"
-                    (clickEvent)="toggleDetailsDone(professional)">
-                </app-horizontal-card>
-                }
-            }
-
-        </section>
-    </div>
-    @if (showDetailsNext) {
-        <app-popup title="Dados da Consulta">
-          <div class="popup-header">
-            <div class="line"></div>
-            <h5> Profissional </h5>
-            <div class="line"></div>
+      <div class="info-container">
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">person</span>
+            <span>{{ selectedProfessional?.name }}</span>
           </div>
-
-          <div>
-            <app-default-card btnText="Cancelar consulta"
-                (onButtonClick)="test()"
-                type="professional"
-                [name]="selectedProfessional.name"
-                [url_img]="selectedProfessional.url_img"
-                [rating]="selectedProfessional.rating"
-              >
-            </app-default-card>
-
+          <div class="info-item">
+            <span class="material-icons">phone</span>
+            <span>(84) 00000-0000</span>
           </div>
-
-          <div class="popup-header">
-            <div class="line"></div>
-            <h5> Informações </h5>
-            <div class="line"></div>
+          <div class="info-item">
+            <span class="material-icons">schedule</span>
+            <span>00:00</span>
           </div>
+        </div>
 
-          <div class="info-container">
-            <div class="info-group">
-              <div class="info-item">
-                <span class="material-icons">person</span>
-                <span>{{ selectedProfessional?.name }}</span>
-              </div>
-              <div class="info-item">
-                <span class="material-icons">phone</span>
-                <span>(84) 00000-0000</span>
-              </div>
-              <div class="info-item">
-                <span class="material-icons">schedule</span>
-                <span>00:00</span>
-              </div>
-            </div>
-
-            <div class="info-group">
-              <div class="info-item">
-                <span class="material-icons">email</span>
-                <span>contato&#64;gmail.com</span>
-              </div>
-              <div class="info-item">
-                <span class="material-icons">home</span>
-                <span>Remoto</span>
-              </div>
-              <div class="info-item">
-                <span class="material-icons">calendar_today</span>
-                <span>31/12/2012</span>
-              </div>
-            </div>
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">email</span>
+            <span>contato&#64;gmail.com</span>
           </div>
-
-          <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsNext(selectedProfessional)" ></app-button>
-        </app-popup>
-      }
-
-      @if (showDetailsDone) {
-        <app-popup title="Dados da consulta">
-            <div>
-                <app-default-card btnText="Avaliar"
-                    (onButtonClick)="toggleRate(selectedProfessional)"
-                    type="professional"
-                    [name]="selectedProfessional.name"
-                    [url_img]="selectedProfessional.url_img"
-                    [rating]="selectedProfessional.rating"
-                  >
-                </app-default-card>
-
-              </div>
-
-              <div class="popup-header">
-                <div class="line"></div>
-                <h5> Informações </h5>
-                <div class="line"></div>
-              </div>
-
-           <div class="info-container">
-            <div class="info-group">
-              <div class="info-item">
-                <span class="material-icons">person</span>
-                <span>{{ selectedProfessional?.name }}</span>
-              </div>
-              <div class="info-item">
-                <span class="material-icons">phone</span>
-                <span>(84) 00000-0000</span>
-              </div>
-              <div class="info-item">
-                <span class="material-icons">schedule</span>
-                <span>00:00</span>
-              </div>
-            </div>
-
-            <div class="info-group">
-              <div class="info-item">
-                <span class="material-icons">email</span>
-                <span>contato&#64;gmail.com</span>
-              </div>
-              <div class="info-item">
-                <span class="material-icons">home</span>
-                <span>Remoto</span>
-              </div>
-              <div class="info-item">
-                <span class="material-icons">calendar_today</span>
-                <span>31/12/2012</span>
-              </div>
-            </div>
+          <div class="info-item">
+            <span class="material-icons">home</span>
+            <span>Remoto</span>
           </div>
+          <div class="info-item">
+            <span class="material-icons">calendar_today</span>
+            <span>31/12/2012</span>
+          </div>
+        </div>
+      </div>
 
-          <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsDone(selectedProfessional)" ></app-button>
-        </app-popup>
-      }
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsNext(selectedProfessional)" ></app-button>
+    </app-popup>
+  }
 
-      @if (showRate) {
-        <app-popup title="Avaliação">
-          <div class="rating-text">
-            <h4>Olá, nome do paciente!</h4>
-            <h5>Faça sua avaliação do {{selectedProfessional.name}}:</h5>
+  @if (showDetailsDone) {
+    <app-popup title="Dados da consulta">
+      <div>
+        <app-default-card btnText="Avaliar"
+                          (onButtonClick)="toggleRate(selectedProfessional)"
+                          type="professional"
+                          [name]="selectedProfessional.name"
+                          [url_img]="selectedProfessional.url_img"
+                          [rating]="selectedProfessional.rating">
+        </app-default-card>
+      </div>
+
+      <div class="popup-header">
+        <div class="line"></div>
+        <h5> Informações </h5>
+        <div class="line"></div>
+      </div>
+
+      <div class="info-container">
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">person</span>
+            <span>{{ selectedProfessional?.name }}</span>
           </div>
-          <div class="rating-container">
-            <h5>Recomendação</h5>
-            <div class="rating-input">
-              <img src="icons/ratingStar.svg" alt="Estrela">
-              <select class="rating-select">
-                <option value="1">5</option>
-                <option value="2">4</option>
-                <option value="3">3</option>
-                <option value="4">2</option>
-                <option value="5">1</option>
-              </select>
-            </div>
+          <div class="info-item">
+            <span class="material-icons">phone</span>
+            <span>(84) 00000-0000</span>
           </div>
-          
-          <div class="comment-section">
-            <h5>Faça um comentário</h5>
-            <textarea class="comment-input"placeholder="Comentário"></textarea>
+          <div class="info-item">
+            <span class="material-icons">schedule</span>
+            <span>00:00</span>
           </div>
-          <div class="button-group">
-            <app-button btnClass="btn main-button" text="Avaliar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
-            <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
+        </div>
+
+        <div class="info-group">
+          <div class="info-item">
+            <span class="material-icons">email</span>
+            <span>contato&#64;gmail.com</span>
           </div>
-        </app-popup>
-        
-      }
+          <div class="info-item">
+            <span class="material-icons">home</span>
+            <span>Remoto</span>
+          </div>
+          <div class="info-item">
+            <span class="material-icons">calendar_today</span>
+            <span>31/12/2012</span>
+          </div>
+        </div>
+      </div>
+
+      <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetailsDone(selectedProfessional)" ></app-button>
+    </app-popup>
+  }
+
+  @if (showRate) {
+    <app-popup title="Avaliação">
+      <div class="rating-text">
+        <h4>Olá, nome do paciente!</h4>
+        <h5>Faça sua avaliação do {{selectedProfessional.name}}:</h5>
+      </div>
+      <div class="rating-container">
+        <h5>Recomendação</h5>
+        <div class="rating-input">
+          <img src="icons/ratingStar.svg" alt="Estrela">
+          <select class="rating-select" [(ngModel)]="rating">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+        </div>
+
+        @if (error) {
+          <div class="error">É obrigatório informar a classificação.</div>
+        }
+      </div>
+
+      <div class="comment-section">
+        <h5>Faça um comentário</h5>
+        <textarea class="comment-input"placeholder="Comentário" [(ngModel)]="comment"></textarea>
+      </div>
+      <div class="button-group">
+        <app-button btnClass="btn main-button" text="Avaliar" (onClick)="toggleConfirmation()" ></app-button>
+        <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleRate(selectedProfessional)" ></app-button>
+      </div>
+    </app-popup>
+  }
+
+  @if (openConfirmation) {
+    <app-popup title="Confirmar">
+      <app-confirmation-form (cancelFunction)="toggleConfirmation()"
+                              (actionFunction)="sendAvailable($event)"
+                              buttonText="Avaliar"
+                              >
+
+      </app-confirmation-form>
+    </app-popup>
+  }
+
+  @if (openConfirmationFromCancel) {
+    <app-popup title="Confirmar">
+      <app-confirmation-form (cancelFunction)="toggleConfirmationFromCancel()"
+                              (actionFunction)="cancelConsultPacient($event)"
+                              buttonText="Cancelar">
+
+      </app-confirmation-form>
+    </app-popup>
+  }
+
+  @if (showMessage) {
+    <app-message>
+      {{ message}}
+    </app-message>
+  }
 </main>
