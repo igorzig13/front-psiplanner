@@ -30,28 +30,38 @@ export class RegisterComponent implements OnInit {
     this.formClient = this.formBuilder.group({
       name: ['', []],
       surname: ['', []],
+      username: ['', []],
       cpf: ['', []],
+      gender: ['', []],
       email: ['', []],
       telephone: ['', []],
-      password: ['', []]
+      password: ['', []],
+      passwordConfirm: ['', []]
     });
 
     this.formClinic = this.formBuilder.group({
       name: ['', []],
+      username: ['', []],
       cnpj: ['', []],
       email: ['', []],
       telephone: ['', []],
+      description: ['', []],
       location: ['', []],
-      password: ['', []]
+      password: ['', []],
+      passwordConfirm: ['', []],
     });
 
     this.formProfessional = this.formBuilder.group({
       name: ['', []],
+      surname: ['', []],
+      username: ['', []],
+      gender: ['', []],
       crp: ['', []],
       email: ['', []],
       telephone: ['', []],
       approach: ['', []],
-      password: ['', []]
+      password: ['', []],
+      passwordConfirm: ['', []]
     });
   }
 

@@ -12,64 +12,84 @@
     @if (selectForm === 'client') {
       <form [formGroup]="formClient" class="main-form">
         <div class="field-form">
-          <label for="name">Nome</label>
+          <label for="name-client">Nome</label>
           <input type="text"
-                 id="name"
+                 id="name-client"
                  formControlName="name"
-                 style="background-image: url('icons/person.svg');"
+                 style="background-image: url('/icons/person.svg');"
                  placeholder="Digite seu nome">
         </div>
 
         <div class="field-form">
-          <label for="surname">Sobrenome</label>
+          <label for="surname-client">Sobrenome</label>
           <input type="text"
-                 id="surname"
+                 id="surname-client"
                  formControlName="surname"
-                 style="background-image: url('icons/person.svg');"
+                 style="background-image: url('/icons/person.svg');"
+                 placeholder="Digite seu sobrenome">
+        </div>
+
+        <div class="field-form">
+          <label for="username-client">Nome de Usuário</label>
+          <input type="text"
+                 id="username-client"
+                 formControlName="username"
+                 style="background-image: url('/icons/person.svg');"
                  placeholder="Digite seu sobrenome">
         </div>
 
         <div class="field-form">
           <label for="cpf">CPF</label>
-          <input type="number"
+          <input type="text"
                  id="cpf"
                  formControlName="cpf"
-                 style="background-image: url('icons/fingerprint.svg');"
+                 style="background-image: url('/icons/fingerprint.svg');"
                  placeholder="Digite seu CPF (apenas números)">
         </div>
 
         <div class="field-form">
-          <label for="email">Email</label>
+          <label for="gender-client">Gênero</label>
+          <select id="gender-client" formControlName="gender">
+            <option value="" disabled selected>Informe seu gênero</option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+            <option value="other">Outro</option>
+          </select>
+        </div>
+
+        <div class="field-form">
+          <label for="email-client">Email</label>
           <input type="email"
-                 id="email"
+                 id="email-client"
                  formControlName="email"
-                 style="background-image: url('icons/mail.svg');"
+                 style="background-image: url('/icons/mail.svg');"
                  placeholder="Digite seu Email">
         </div>
 
         <div class="field-form">
-          <label for="telephone">Telefone</label>
-          <input type="number"
-                 id="telephone"
+          <label for="telephone-client">Telefone</label>
+          <input type="text"
+                 id="telephone-client"
                  formControlName="telephone"
-                 style="background-image: url('icons/smartphone.svg');"
+                 style="background-image: url('/icons/smartphone.svg');"
                  placeholder="Digite seu telefone (apenas números)">
         </div>
 
         <div class="field-form">
-          <label for="password">Senha</label>
+          <label for="password-client">Senha</label>
           <input type="password"
-                 id="password"
+                 id="password-client"
                  formControlName="password"
-                 style="background-image: url('icons/password.svg');"
+                 style="background-image: url('/icons/password.svg');"
                  placeholder="Digite sua senha">
         </div>
 
         <div class="field-form">
-          <label for="password-confirm">Confirmar senha</label>
+          <label for="password-confirm-client">Confirmar senha</label>
           <input type="password"
-                 id="password-confirm"
-                 style="background-image: url('icons/password.svg');"
+                 id="password-confirm-client"
+                 formControlName="passwordConfirm"
+                 style="background-image: url('/icons/password.svg');"
                  placeholder="Digite sua senha">
         </div>
 
@@ -84,12 +104,21 @@
     @if (selectForm === 'clinic') {
       <form [formGroup]="formClinic" class="main-form">
         <div class="field-form">
-          <label for="name">Nome da empresa</label>
+          <label for="name-clinic">Nome da empresa</label>
           <input type="text"
-                 id="name"
+                 id="name-clinic"
                  formControlName="name"
-                 style="background-image: url('icons/domain.svg');"
+                 style="background-image: url('/icons/domain.svg');"
                  placeholder="Digite o nome da empresa">
+        </div>
+
+        <div class="field-form">
+          <label for="username-clinic">Nome de Usuário da Empresa</label>
+          <input type="text"
+                 id="username-clinic"
+                 formControlName="username"
+                 style="background-image: url('/icons/person.svg');"
+                 placeholder="Digite seu sobrenome">
         </div>
 
         <div class="field-form">
@@ -97,25 +126,25 @@
           <input type="number"
                  id="cnpj"
                  formControlName="cnpj"
-                 style="background-image: url('icons/fingerprint.svg');"
+                 style="background-image: url('/icons/fingerprint.svg');"
                  placeholder="Digite seu CNPJ (apenas números)">
         </div>
 
         <div class="field-form">
-          <label for="email">Email</label>
+          <label for="email-clinic">Email</label>
           <input type="email"
-                 id="email"
+                 id="email-clinic"
                  formControlName="email"
-                 style="background-image: url('icons/mail.svg');"
+                 style="background-image: url('/icons/mail.svg');"
                  placeholder="Digite seu email">
         </div>
 
         <div class="field-form">
-          <label for="telephone">Telefone</label>
-          <input type="number"
-                 id="telephone"
+          <label for="telephone-clinic">Telefone</label>
+          <input type="text"
+                 id="telephone-clinic"
                  formControlName="telephone"
-                 style="background-image: url('icons/smartphone.svg');"
+                 style="background-image: url('/icons/smartphone.svg');"
                  placeholder="Digite seu telefone (apenas números)">
         </div>
 
@@ -124,24 +153,33 @@
           <input type="text"
                  id="location"
                  formControlName="location"
-                 style="background-image: url('icons/location_on.svg');"
+                 style="background-image: url('/icons/location_on.svg');"
                  placeholder="Digite a sua localização">
         </div>
 
         <div class="field-form">
-          <label for="password">Senha</label>
+          <label for="description-clinic">Descrição</label>
+          <textarea id="description-clinic"
+                    formControlName="description"
+                    rows="4"
+                    style="resize: none; border: 1px solid #CCC"></textarea>
+        </div>
+
+        <div class="field-form">
+          <label for="password-clinic">Senha</label>
           <input type="password"
-                 id="password"
+                 id="password-clinic"
                  formControlName="password"
-                 style="background-image: url('icons/password.svg');"
+                 style="background-image: url('/icons/password.svg');"
                  placeholder="Digite sua senha">
         </div>
 
         <div class="field-form">
-          <label for="password-confirm">Confirmar senha</label>
+          <label for="password-confirm-clinic">Confirmar senha</label>
           <input type="password"
-                 id="password-confirm"
-                 style="background-image: url('icons/password.svg');"
+                 id="password-confirm-clinic"
+                 formControlName="passwordConfirm"
+                 style="background-image: url('/icons/password.svg');"
                  placeholder="Digite sua senha">
         </div>
 
@@ -156,38 +194,66 @@
     @if (selectForm === 'professional') {
       <form [formGroup]="formProfessional" class="main-form">
         <div class="field-form">
-          <label for="name">Nome</label>
+          <label for="name-professional">Nome</label>
           <input type="text"
-                 id="name"
+                 id="name-professional"
                  formControlName="name"
-                 style="background-image: url('icons/person.svg');"
+                 style="background-image: url('/icons/person.svg');"
                  placeholder="Digite seu nome">
         </div>
 
         <div class="field-form">
+          <label for="surname-professional">Nome de Usuário</label>
+          <input type="text"
+                 id="surname-professional"
+                 formControlName="surname"
+                 style="background-image: url('/icons/person.svg');"
+                 placeholder="Digite seu sobrenome">
+        </div>
+
+        <div class="field-form">
+          <label for="username-professional">Nome de Usuário</label>
+          <input type="text"
+                 id="username-professional"
+                 formControlName="username"
+                 style="background-image: url('/icons/person.svg');"
+                 placeholder="Digite seu nome de usuário">
+        </div>
+
+        <div class="field-form">
+          <label for="gender-professional">Gênero</label>
+          <select id="gender-professional" formControlName="gender">
+            <option value="" disabled selected>Informe seu gênero</option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+            <option value="other">Outro</option>
+          </select>
+        </div>
+
+        <div class="field-form">
           <label for="crp">CRP</label>
-          <input type="number"
+          <input type="text"
                  id="crp"
                  formControlName="crp"
-                 style="background-image: url('icons/fingerprint.svg');"
+                 style="background-image: url('/icons/fingerprint.svg');"
                  placeholder="Digite seu CRP">
         </div>
 
         <div class="field-form">
-          <label for="email">Email</label>
+          <label for="email-professional">Email</label>
           <input type="email"
-                 id="email"
+                 id="email-professional"
                  formControlName="email"
-                 style="background-image: url('icons/mail.svg');"
+                 style="background-image: url('/icons/mail.svg');"
                  placeholder="Digite seu Email">
         </div>
 
         <div class="field-form">
-          <label for="telephone">Telefone</label>
-          <input type="number"
-                 id="telephone"
+          <label for="telephone-professional">Telefone</label>
+          <input type="text"
+                 id="telephone-professional"
                  formControlName="telephone"
-                 style="background-image: url('icons/call.svg');"
+                 style="background-image: url('/icons/call.svg');"
                  placeholder="Digite seu telefone (apenas números)">
         </div>
 
@@ -196,24 +262,24 @@
           <input type="text"
                  id="approach"
                  formControlName="approach"
-                 style="background-image: url('icons/psychology.svg');"
+                 style="background-image: url('/icons/psychology.svg');"
                  placeholder="Digite sua especialidade">
         </div>
 
         <div class="field-form">
-          <label for="password">Senha</label>
+          <label for="password-professional">Senha</label>
           <input type="password"
-                 id="password"
+                 id="password-professional"
                  formControlName="password"
-                 style="background-image: url('icons/password.svg');"
+                 style="background-image: url('/icons/password.svg');"
                  placeholder="Digite sua senha">
         </div>
 
         <div class="field-form">
-          <label for="password-confirm">Confirmar senha</label>
+          <label for="password-confirm-professional">Confirmar senha</label>
           <input type="password"
-                 id="password-confirm"
-                 style="background-image: url('icons/password.svg');"
+                 id="password-confirm-professional"
+                 style="background-image: url('/icons/password.svg');"
                  placeholder="Digite sua senha">
         </div>
 

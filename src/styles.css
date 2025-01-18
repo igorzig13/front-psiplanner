@@ -57,6 +57,14 @@
   font-size: 0.9rem;
 }
 
+.main-form select {
+  border: 1px solid #CCC;
+  background-color: #FFF;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-top: 0.3rem;
+}
+
 .main-form > .buttons {
   display: flex;
   justify-content: space-around;
