@@ -32,7 +32,7 @@
     @if (openDetails) {
       <app-popup title ="{{selectedClinicOrProfessional.info.firstName + ' ' + selectedClinicOrProfessional.info.lastName}}">
         <div class="professionals-container">
-          @if (selectedClinicOrProfessional.type === "Professional") {
+          @if (selectedClinicOrProfessional.type !== "Professional") {
             @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
               <app-default-card btnText="Agendar"
                                 (onButtonClick)="toggleBookingAppointment()"
