@@ -12,8 +12,8 @@
           <label for="email">E-mail</label>
           <input type="email"
                 id="email"
-                formControlName="email"
-                style="background-image: url('icons/person.svg');"
+                formControlName="usernameOrEmail"
+                style="background-image: url('/icons/person.svg');"
                 placeholder="Digite seu e-mail"
                 [class.is-invalid]="form.get('email')?.errors && form.get('email')?.touched"
                 >
@@ -35,7 +35,7 @@
           <input type="password"
                 id="password"
                 formControlName="password"
-                style="background-image: url('icons/password.svg');"
+                style="background-image: url('/icons/password.svg');"
                 placeholder="Digite sua senha"
                 >
           @if (this.form.get('password')?.touched && this.form.get('password')?.hasError('required')) {

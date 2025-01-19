@@ -15,7 +15,7 @@
           <label for="name-client">Nome</label>
           <input type="text"
                  id="name-client"
-                 formControlName="name"
+                 formControlName="firstName"
                  style="background-image: url('/icons/person.svg');"
                  placeholder="Digite seu nome">
         </div>
@@ -24,7 +24,7 @@
           <label for="surname-client">Sobrenome</label>
           <input type="text"
                  id="surname-client"
-                 formControlName="surname"
+                 formControlName="lastName"
                  style="background-image: url('/icons/person.svg');"
                  placeholder="Digite seu sobrenome">
         </div>
@@ -39,9 +39,9 @@
         </div>
 
         <div class="field-form">
-          <label for="cpf">CPF</label>
+          <label for="cpf-client">CPF</label>
           <input type="text"
-                 id="cpf"
+                 id="cpf-client"
                  formControlName="cpf"
                  style="background-image: url('/icons/fingerprint.svg');"
                  placeholder="Digite seu CPF (apenas números)">
@@ -70,7 +70,7 @@
           <label for="telephone-client">Telefone</label>
           <input type="text"
                  id="telephone-client"
-                 formControlName="telephone"
+                 formControlName="phoneNumber"
                  style="background-image: url('/icons/smartphone.svg');"
                  placeholder="Digite seu telefone (apenas números)">
         </div>
@@ -80,15 +80,6 @@
           <input type="password"
                  id="password-client"
                  formControlName="password"
-                 style="background-image: url('/icons/password.svg');"
-                 placeholder="Digite sua senha">
-        </div>
-
-        <div class="field-form">
-          <label for="password-confirm-client">Confirmar senha</label>
-          <input type="password"
-                 id="password-confirm-client"
-                 formControlName="passwordConfirm"
                  style="background-image: url('/icons/password.svg');"
                  placeholder="Digite sua senha">
         </div>
@@ -107,13 +98,13 @@
           <label for="name-clinic">Nome da empresa</label>
           <input type="text"
                  id="name-clinic"
-                 formControlName="name"
+                 formControlName="clinicName"
                  style="background-image: url('/icons/domain.svg');"
                  placeholder="Digite o nome da empresa">
         </div>
 
         <div class="field-form">
-          <label for="username-clinic">Nome de Usuário da Empresa</label>
+          <label for="username-clinic">Nome de Usuário da Clínica</label>
           <input type="text"
                  id="username-clinic"
                  formControlName="username"
@@ -123,7 +114,7 @@
 
         <div class="field-form">
           <label for="cnpj">CNPJ</label>
-          <input type="number"
+          <input type="text"
                  id="cnpj"
                  formControlName="cnpj"
                  style="background-image: url('/icons/fingerprint.svg');"
@@ -143,15 +134,15 @@
           <label for="telephone-clinic">Telefone</label>
           <input type="text"
                  id="telephone-clinic"
-                 formControlName="telephone"
+                 formControlName="phoneNumber"
                  style="background-image: url('/icons/smartphone.svg');"
                  placeholder="Digite seu telefone (apenas números)">
         </div>
 
         <div class="field-form">
-          <label for="location">Local</label>
+          <label for="location-clinic">Local</label>
           <input type="text"
-                 id="location"
+                 id="location-clinic"
                  formControlName="location"
                  style="background-image: url('/icons/location_on.svg');"
                  placeholder="Digite a sua localização">
@@ -174,15 +165,6 @@
                  placeholder="Digite sua senha">
         </div>
 
-        <div class="field-form">
-          <label for="password-confirm-clinic">Confirmar senha</label>
-          <input type="password"
-                 id="password-confirm-clinic"
-                 formControlName="passwordConfirm"
-                 style="background-image: url('/icons/password.svg');"
-                 placeholder="Digite sua senha">
-        </div>
-
         <div class="buttons">
           <app-button btnClass="btn secondary-button" text="Cancelar" (onClick)="cancel()"></app-button>
           <app-button btnClass="btn main-button" text="Cadastrar" (onClick)="submit()"></app-button>
@@ -197,7 +179,7 @@
           <label for="name-professional">Nome</label>
           <input type="text"
                  id="name-professional"
-                 formControlName="name"
+                 formControlName="firstName"
                  style="background-image: url('/icons/person.svg');"
                  placeholder="Digite seu nome">
         </div>
@@ -206,7 +188,7 @@
           <label for="surname-professional">Nome de Usuário</label>
           <input type="text"
                  id="surname-professional"
-                 formControlName="surname"
+                 formControlName="lastName"
                  style="background-image: url('/icons/person.svg');"
                  placeholder="Digite seu sobrenome">
         </div>
@@ -231,6 +213,15 @@
         </div>
 
         <div class="field-form">
+          <label for="cpf-professional">CPF</label>
+          <input type="text"
+                 id="cpf-professional"
+                 formControlName="cpf"
+                 style="background-image: url('/icons/fingerprint.svg');"
+                 placeholder="Digite seu CPF">
+        </div>
+
+        <div class="field-form">
           <label for="crp">CRP</label>
           <input type="text"
                  id="crp"
@@ -252,7 +243,7 @@
           <label for="telephone-professional">Telefone</label>
           <input type="text"
                  id="telephone-professional"
-                 formControlName="telephone"
+                 formControlName="phoneNumber"
                  style="background-image: url('/icons/call.svg');"
                  placeholder="Digite seu telefone (apenas números)">
         </div>
@@ -267,18 +258,27 @@
         </div>
 
         <div class="field-form">
+          <label for="description-professional">Descrição</label>
+          <textarea id="description-professional"
+                    formControlName="description"
+                    rows="4"
+                    style="resize: none; border: 1px solid #CCC"></textarea>
+        </div>
+
+        <div class="field-form">
+          <label for="location-professional">Local</label>
+          <input type="text"
+                 id="location-professional"
+                 formControlName="location"
+                 style="background-image: url('/icons/location_on.svg');"
+                 placeholder="Digite a sua localização">
+        </div>
+
+        <div class="field-form">
           <label for="password-professional">Senha</label>
           <input type="password"
                  id="password-professional"
                  formControlName="password"
-                 style="background-image: url('/icons/password.svg');"
-                 placeholder="Digite sua senha">
-        </div>
-
-        <div class="field-form">
-          <label for="password-confirm-professional">Confirmar senha</label>
-          <input type="password"
-                 id="password-confirm-professional"
                  style="background-image: url('/icons/password.svg');"
                  placeholder="Digite sua senha">
         </div>

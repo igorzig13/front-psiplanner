@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { ButtonComponent } from "../../components/button/button.component";
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +21,8 @@ export class RegisterComponent implements OnInit {
   formClinic: FormGroup = new FormGroup({});
   formProfessional: FormGroup = new FormGroup({});
 
+  private userService: UserService = inject(UserService);
+
   ngOnInit(): void {
     this.initializeForms();
   }
@@ -28,40 +31,40 @@ export class RegisterComponent implements OnInit {
 
   initializeForms() {
     this.formClient = this.formBuilder.group({
-      name: ['', []],
-      surname: ['', []],
       username: ['', []],
-      cpf: ['', []],
-      gender: ['', []],
+      firstName: ['', []],
+      lastName: ['', []],
       email: ['', []],
-      telephone: ['', []],
       password: ['', []],
-      passwordConfirm: ['', []]
+      cpf: ['', []],
+      phoneNumber: ['', []],
+      gender: ['', []],
     });
 
     this.formClinic = this.formBuilder.group({
-      name: ['', []],
+      clinicName: ['', []],
       username: ['', []],
       cnpj: ['', []],
       email: ['', []],
-      telephone: ['', []],
+      phoneNumber: ['', []],
       description: ['', []],
       location: ['', []],
-      password: ['', []],
-      passwordConfirm: ['', []],
+      password: ['', []]
     });
 
     this.formProfessional = this.formBuilder.group({
-      name: ['', []],
-      surname: ['', []],
+      firstName: ['', []],
+      lastName: ['', []],
       username: ['', []],
       gender: ['', []],
       crp: ['', []],
       email: ['', []],
-      telephone: ['', []],
+      phoneNumber: ['', []],
       approach: ['', []],
+      cpf: ['', []],
       password: ['', []],
-      passwordConfirm: ['', []]
+      location: ['', []],
+      description: ['', []]
     });
   }
 
@@ -70,18 +73,36 @@ export class RegisterComponent implements OnInit {
   setClinicForm() { this.selectForm = 'clinic'; }
 
   cancel() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then();
   }
 
   submit() {
+    let apiCall;
+    let load;
+
     if (this.selectForm === 'client' && this.formClient.valid) {
       console.log("Client register: ", this.formClient.value);
+      load = this.formClient.value;
+      apiCall = this.userService.registerClient(load);
     } else if (this.selectForm === 'clinic' && this.formClinic.valid) {
       console.log("Clinic register: ", this.formClinic.value);
+      load = this.formClinic.value;
+      apiCall = this.userService.registerClinic(load);
     } else if (this.selectForm === 'professional' && this.formProfessional.valid) {
       console.log("Professional register: ", this.formProfessional.value);
+      load = this.formProfessional.value;
+      apiCall = this.userService.registerProfessional(load);
     } else {
       console.log("Form is invalid");
+      return;
     }
+
+    apiCall.subscribe({
+      next: (response) => {
+        console.log(response);
+      }, error: err => {
+        console.log(err);
+      }
+    });
   }
 }

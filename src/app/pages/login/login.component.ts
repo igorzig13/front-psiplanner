@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../components/button/button.component';
 import { LinkComponent } from "../../components/link/link.component";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { Router } from '@angular/router';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,7 @@ export class LoginComponent implements OnInit {
   navUi: number = 1;
   form: FormGroup = new FormGroup({});
 
-  users = [
-    { email: 'cliente@gmail.com', password: '123456', role: 'cliente' },
-    { email: 'profissional@gmail.com', password: '123456', role: 'profissional' },
-    { email: 'clinica@gmail.com', password: '123456', role: 'clinica' }
-  ];
+  authService: AuthService = inject(AuthService);
 
   constructor(private formBuilder: FormBuilder, private router: Router) {  }
 
@@ -31,27 +28,21 @@ export class LoginComponent implements OnInit {
 
   initializeForm() {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      usernameOrEmail: ['', ],
       password: ['', [Validators.required]]
     });
   }
 
   submit() {
     if (this.form.valid) {
-      const { email, password } = this.form.value;
-      const user = this.users.find(u => u.email === email && u.password === password);
-
-      if (user) {
-        if (user.role === 'cliente') {
-          this.router.navigate(['/client']);
-        } else if (user.role === 'profissional') {
-          this.router.navigate(['/professional']);
-        } else if (user.role === 'clinica') {
-          this.router.navigate(['/clinic']);
+      console.log(this.form.value);
+      this.authService.login(this.form.value).subscribe({
+        next: (response) => { 
+          console.log(response);
+        }, error: err => {
+          console.log(err);
         }
-      } else {
-        console.log('Credenciais inválidas');
-      }
+      });
     } else {
       console.log("Formulário inválido");
     }
