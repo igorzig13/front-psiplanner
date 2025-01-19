@@ -94,8 +94,15 @@ export class RegisterComponent implements OnInit {
       apiCall = this.userService.registerProfessional(load);
     } else {
       console.log("Form is invalid");
+      this.formProfessional.reset();
+      this.formClinic.reset();
+      this.formClient.reset();
       return;
     }
+
+    this.formProfessional.reset();
+    this.formClinic.reset();
+    this.formClient.reset();
 
     apiCall.subscribe({
       next: (response) => {

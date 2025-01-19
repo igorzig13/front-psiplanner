@@ -103,6 +103,7 @@ export class ClientHomepageComponent {
     this.clientHomepageService.getClinicsAndProfessionals(token).subscribe({
       next: data => {
         this.clinicAndProfessionals = data;
+        console.log(this.clinicAndProfessionals);
       }, error: error => {
         console.log("Algo deu errado na requisição: ", error);
       }
