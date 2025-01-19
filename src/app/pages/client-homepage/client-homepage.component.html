@@ -30,9 +30,9 @@
     }
 
     @if (openDetails) {
-      <app-popup title ="{{selectedClinicOrProfessional.name}}">
+      <app-popup title ="{{selectedClinicOrProfessional.info.firstName + ' ' + selectedClinicOrProfessional.info.lastName}}">
         <div class="professionals-container">
-          @if (selectedClinicOrProfessional.professional_list.length > 0) {
+          @if (selectedClinicOrProfessional.type === "Professional") {
             @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
               <app-default-card btnText="Agendar"
                                 (onButtonClick)="toggleBookingAppointment()"
