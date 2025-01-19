@@ -6,6 +6,7 @@ import { LinkComponent } from "../../components/link/link.component";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { Router } from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {TokenCookieService} from '../../services/token-cookie.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
   authService: AuthService = inject(AuthService);
+  tokenCookieService: TokenCookieService = inject(TokenCookieService);
 
   constructor(private formBuilder: FormBuilder, private router: Router) {  }
 
@@ -38,12 +40,14 @@ export class LoginComponent implements OnInit {
       console.log(this.form.value);
       this.authService.login(this.form.value).subscribe({
         next: (response) => {
-          // const token = response.token;
+          const token = response.token;
           const roles = response.roles;
 
-          if (roles[0] == "ROLE_CLIENT") {
-            this.router.navigate(['/client']).then();
-          }
+          this.tokenCookieService.setToken(token, 1);
+
+          if (roles[0] == "ROLE_CLIENT") { this.router.navigate(['/client']).then(); }
+          else if (roles[0] == "ROLE_PROFESSIONAL") { this.router.navigate(['/professional']).then(); }
+          else if (roles[0] == "ROLE_CLINIC") { this.router.navigate(['/clinic']).then(); }
         }, error: err => {
           console.log(err);
         }
