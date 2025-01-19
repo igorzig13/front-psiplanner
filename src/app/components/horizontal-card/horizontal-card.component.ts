@@ -13,6 +13,6 @@ export class HorizontalCardComponent {
 
   @Output() clickEvent = new EventEmitter<void>();
 
-  @Input() dataClient!: { name: string, url_img: string, data: string };
-  @Input() dataClinicOrUser!: { name: string, url_img: string, description: string, location: string };
+  @Input() dataClient!: any;
+  @Input() dataClinicOrUser!: any;
 }

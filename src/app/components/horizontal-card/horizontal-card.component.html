@@ -2,23 +2,23 @@
   <div class="card-content">
     <div class="img-container">
       <img
-      [src]="typeCard === 'client' ? dataClient.url_img : dataClinicOrUser.url_img"
+      src="https://placehold.co/400"
       alt="Imagem do Card"
       class="card-image"
       />
     </div>
 
     <div class="details">
-      <h3>{{ typeCard === 'client' ? dataClient.name : dataClinicOrUser.name }}</h3>
-      @if (typeCard === 'client') {
+      <h3>{{ typeCard === 'Client' ? dataClient.firstName : dataClinicOrUser.firstName + " " + dataClinicOrUser.lastName }}</h3>
+      @if (typeCard === 'Client') {
         <p>{{ dataClient.data }}</p>
       }
 
-      @if (typeCard !== 'client') {
+      @if (typeCard !== 'Client') {
         <p>{{ dataClinicOrUser.description }}</p>
       }
 
-      @if (typeCard !== 'client'){
+      @if (typeCard !== 'Client'){
         <div class="location">
           <i class="material-icons">location_on</i>
           <span>{{ dataClinicOrUser.location }}</span>

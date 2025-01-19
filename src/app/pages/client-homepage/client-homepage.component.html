@@ -23,8 +23,8 @@
   <div class="main-container">
     @for (clinicOrProfessional of clinicAndProfessionals; track clinicOrProfessional) {
       <app-horizontal-card
-        [typeCard]="'clinics'"
-        [dataClinicOrUser]="clinicOrProfessional"
+        [typeCard]="clinicOrProfessional.type"
+        [dataClinicOrUser]="clinicOrProfessional.info"
         (clickEvent)="toggleDetails(clinicOrProfessional)">
       </app-horizontal-card>
     }

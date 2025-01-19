@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value);
       this.authService.login(this.form.value).subscribe({
         next: (response) => {
           const token = response.token;
