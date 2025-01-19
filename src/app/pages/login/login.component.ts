@@ -37,14 +37,19 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       console.log(this.form.value);
       this.authService.login(this.form.value).subscribe({
-        next: (response) => { 
-          console.log(response);
+        next: (response) => {
+          // const token = response.token;
+          const roles = response.roles;
+
+          if (roles[0] == "ROLE_CLIENT") {
+            this.router.navigate(['/client']).then();
+          }
         }, error: err => {
           console.log(err);
         }
       });
     } else {
-      console.log("Formulário inválido");
+      console.log("Invalid form");
     }
     this.form.reset();
   }
