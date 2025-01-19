@@ -7,11 +7,11 @@
     </div>
     <form class="form-inline">
       <div class="input-wrapper">
-        <img src="icons/location_on.svg" alt="Location Icon" class="input-icon">
+        <img src="/icons/location_on.svg" alt="Location Icon" class="input-icon">
         <input type="text" placeholder="Localização">
       </div>
       <div class="input-wrapper">
-        <img src="icons/person.svg" alt="Person Icon" class="input-icon">
+        <img src="/icons/person.svg" alt="Person Icon" class="input-icon">
         <input type="text" placeholder="Nome">
       </div>
       <div class="button-wrapper">
@@ -21,7 +21,7 @@
 
   </div>
   <div class="main-container">
-    @for (clinicOrProfessional of clinicsAndProfessionals; track clinicOrProfessional) {
+    @for (clinicOrProfessional of clinicAndProfessionals; track clinicOrProfessional) {
       <app-horizontal-card
         [typeCard]="'clinics'"
         [dataClinicOrUser]="clinicOrProfessional"

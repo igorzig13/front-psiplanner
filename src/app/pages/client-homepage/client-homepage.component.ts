@@ -1,4 +1,4 @@
-import {Component, Input } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { HorizontalCardComponent } from '../../components/horizontal-card/horizontal-card.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
@@ -9,6 +9,8 @@ import {CalendarComponent, CalendarDate} from '../../components/calendar/calenda
 import { DailySchedulerComponent } from "../../components/daily-scheduler/daily-scheduler.component";
 import { ConfirmationFormComponent } from "../../components/confirmation-form/confirmation-form.component";
 import { MessageComponent } from '../../components/message/message.component';
+import {ClientHomepageService} from '../../services/client-homepage.service';
+import {TokenCookieService} from '../../services/token-cookie.service';
 
 @Component({
   selector: 'app-client-homepage',
@@ -21,6 +23,9 @@ import { MessageComponent } from '../../components/message/message.component';
 export class ClientHomepageComponent {
   navUi: number = 2;
 
+  clientHomepageService: ClientHomepageService = inject(ClientHomepageService);
+  tokenServiceCoolie: TokenCookieService = inject(TokenCookieService);
+
   openDetails: boolean = false;
   openBookinAppointment: boolean = false;
   openDailyAppointment: boolean = false;
@@ -29,6 +34,9 @@ export class ClientHomepageComponent {
   message: string = '';
 
   selectedClinicOrProfessional: any = null;
+
+  clinicAndProfessionals: any = [];
+  token: any = null;
 
   selectedDay: CalendarDate = { day: 0, month: 0, year: 0, monthName: '', fullName: '' };
   selectedHour: string = '';
@@ -91,59 +99,20 @@ export class ClientHomepageComponent {
     this.selectedHour = selectedHour;
   }
 
-    //sample data
-    clinicsAndProfessionals = [
-      {
-        name: 'Clínica IMD',
-        url_img: 'icons/person.svg',
-        description: 'Olá, conheça a clínica IMD',
-        location: 'Localização',
-        professional_list: [
-          { name: 'Itamir', rating: 5},
-          { name: 'Tonhão', rating: 4.7},
-          { name: 'Thanos', rating: 4.5},
-          { name: 'Girão', rating: 4.4},
-        ]
-      },
-      {
-        name: 'Igor Marques',
-        url_img: 'icons/person.svg',
-        description: 'Conheça Igor Marques',
-        location: 'Localização',
-        rating: 3.9,
-        professional_list: []
-      },
-      {
-        name: 'Clínica Fut',
-        url_img: 'icons/person.svg',
-        description: 'Bem-vindo à Clínica Fut',
-        location: 'Localização',
-        professional_list: [
-          {name: 'Pelé', rating: 5},
-          {name: 'Maradona', rating: 2.5},
-          {name: 'Messi', rating: 4},
-          {name: 'Cristiano', rating: 4.1},
-        ]
-      },
-      {
-        name: 'Clínica TV',
-        url_img: 'icons/person.svg',
-        description: 'Conheça a Clínica TV',
-        location: 'Localização',
-        professional_list: [
-          {name: 'William', rating: 4.5},
-          {name: 'Silvio', rating: 5},
-          {name: 'Celso', rating: 3.9},
-          {name: 'Ratinho', rating: 4},
-        ]
-      },
-      {
-        name: 'Vitor Emanuel',
-        url_img: 'icons/person.svg',
-        description: 'Olá, sou Vitor Emanuel',
-        location: 'Localização',
-        professional_list: [],
-        rating: 4
+  getClinicsAndProfessionals(token: string) {
+    this.clientHomepageService.getClinicsAndProfessionals(token).subscribe({
+      next: data => {
+        this.clinicAndProfessionals = data;
+      }, error: error => {
+        console.log("Algo deu errado na requisição: ", error);
       }
-    ];
+    });
+  }
+
+  constructor() {
+    if (this.tokenServiceCoolie.getToken() == null) return;
+    this.token = this.tokenServiceCoolie.getToken();
+    console.log(this.token)
+    this.getClinicsAndProfessionals(this.token);
+  }
 }
