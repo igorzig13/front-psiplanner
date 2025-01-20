@@ -15,6 +15,7 @@ import { ProfessionalCalendarComponent } from './pages/professional-calendar/pro
 import { ClientConsultsComponent } from './pages/client-consults/client-consults.component';
 import { ProfessionalScheduleComponent } from './pages/professional-schedule/professional-schedule.component';
 import { ClientCalendarComponent } from './pages/client-calendar/client-calendar.component';
+import {ClinicAddComponent} from './pages/clinic-add/clinic-add.component';
 
 export const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'clinic', component: ClinicHomeComponent },
   { path: 'clinic/professionals', component: ClinicProfessionalsComponent },
+  { path: 'clinic/professionals/add', component: ClinicAddComponent },
   { path: 'clinic/perfil', component: ClinicPerfilComponent },
   { path: 'client', component: ClientHomepageComponent},
   { path: 'client/perfil', component: ClientPerfilComponent },

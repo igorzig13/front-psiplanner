@@ -35,6 +35,6 @@
   </div>
 
   <div class="button">
-    <app-button btnClass="btn main-button expand" text="Detalhes" (onClick)="clickEvent.emit()"></app-button>
+    <app-button btnClass="btn main-button expand" [text]="textButton" (onClick)="clickEvent.emit()"></app-button>
   </div>
 </div>

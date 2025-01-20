@@ -1,0 +1,14 @@
+<app-navbar navIndex="{{navUi}}"></app-navbar>
+
+<main>
+  <div class="main-container">
+    @for (professional of professionals; track professional) {
+      <app-horizontal-card
+        typeCard="Professional"
+        [dataClinicOrUser]="professional"
+        textButton="Cadastrar"
+        (clickEvent)="register(professional)">
+      </app-horizontal-card>
+    }
+  </div>
+</main>

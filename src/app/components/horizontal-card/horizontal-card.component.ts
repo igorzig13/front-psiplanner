@@ -10,6 +10,7 @@ import { ButtonComponent } from "../button/button.component";
 })
 export class HorizontalCardComponent {
   @Input() typeCard!: string;
+  @Input() textButton: string = "Detalhes";
 
   @Output() clickEvent = new EventEmitter<void>();
 

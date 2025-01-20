@@ -24,7 +24,7 @@
   </div>
 
   <div class="button-container">
-    <app-button btnClass="btn main-button" text="Adicionar" (onClick)="toogleAdd()"></app-button>
+    <app-button btnClass="btn main-button" text="Adicionar" (onClick)="toggleAdd()"></app-button>
   </div>
 
   @if (openEdit) {
@@ -88,7 +88,7 @@
             <input type="text"
                    id="crp"
                    formControlName="crp"
-                   style="background-image: url('icons/fingerprint.svg');"
+                   style="background-image: url('/icons/fingerprint.svg');"
                    placeholder="Digite o CRP">
           </div>
 
@@ -97,12 +97,11 @@
             <input type="text"
                    id="email"
                    formControlName="email"
-                   style="background-image: url('icons/mail.svg');"
+                   style="background-image: url('/icons/mail.svg');"
                    placeholder="Digite o email">
           </div>
           <div class="buttons">
-            <app-button btnClass="btn secondary-button" text="Voltar" (onClick)="toogleAdd()"></app-button>
-            <app-button btnClass="btn main-button" text="Cadastrar" (onClick)="registerProfessionar()"></app-button>
+            <app-button btnClass="btn secondary-button" text="Voltar" (onClick)="toggleAdd()"></app-button>
           </div>
         </form>
 

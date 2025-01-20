@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
   authService: AuthService = inject(AuthService);
   tokenCookieService: TokenCookieService = inject(TokenCookieService);
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {  }
+  constructor(private formBuilder: FormBuilder, private router: Router) {
+    localStorage.clear();
+  }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -43,6 +45,8 @@ export class LoginComponent implements OnInit {
           const roles = response.roles;
 
           this.tokenCookieService.setToken(token, 1);
+          localStorage.setItem("userId", response.userId);
+          localStorage.setItem('entityId', response.entityId);
 
           if (roles[0] == "ROLE_CLIENT") { this.router.navigate(['/client']).then(); }
           else if (roles[0] == "ROLE_PROFESSIONAL") { this.router.navigate(['/professional']).then(); }

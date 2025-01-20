@@ -19,7 +19,7 @@ export class ClientHomepageService {
     return this.httpClient.get(`${this.baseUrl}/clinics-and-professionals`, { headers });
   }
 
-  getProfessionals(token: string, clinicId: any = 6): Observable<any> {
+  getProfessionals(token: string, clinicId: any): Observable<any> {
     const headers = new HttpHeaders({ Authorization: token })
     const params = new HttpParams().set('clinicId', clinicId);
     return this.httpClient.get(`${this.baseUrl}/clinic/professionals`, { headers, params });

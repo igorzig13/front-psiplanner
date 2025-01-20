@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { DefaultCardComponent } from "../../components/default-card/default-card.component";
 import { PopupComponent } from '../../components/popup/popup.component';
@@ -7,6 +7,7 @@ import { LinkComponent } from "../../components/link/link.component";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationFormComponent } from '../../components/confirmation-form/confirmation-form.component';
 import { MessageComponent } from '../../components/message/message.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-clinic-professionals',
@@ -17,6 +18,8 @@ import { MessageComponent } from '../../components/message/message.component';
   styleUrl: './clinic-professionals.component.css'
 })
 export class ClinicProfessionalsComponent implements OnInit {
+  router: Router = inject(Router);
+
   navUi: number = 3;
 
   openEdit: boolean = false;
@@ -60,8 +63,8 @@ export class ClinicProfessionalsComponent implements OnInit {
     }
   }
 
-  toogleAdd () {
-    this.openAdd = !this.openAdd;
+  toggleAdd () {
+    this.router.navigate(['clinic/professionals/add']).then();
   }
 
   toggleConfirmation () {
@@ -88,9 +91,5 @@ export class ClinicProfessionalsComponent implements OnInit {
       this.toggleConfirmation();
       this.toogleEdit(this.selectedProfessional);
     }
-  }
-
-  registerProfessionar() {
-    console.log(this.formRegister.value);
   }
 }
