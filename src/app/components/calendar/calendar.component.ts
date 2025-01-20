@@ -71,7 +71,7 @@ export class CalendarComponent {
         isToday: false,
         isPrevMonth: true,
         isNextMonth: false,
-        hasEvent: Math.floor(Math.random()*100) < 10
+        hasEvent: false
       });
     }
 
@@ -82,7 +82,7 @@ export class CalendarComponent {
         isToday: today.getFullYear() === year && today.getMonth() === month && today.getDate() === i,
         isPrevMonth: false,
         isNextMonth: false,
-        hasEvent:  Math.floor(Math.random()*100) < 10 // Define aleatoriamente se terá agendamento
+        hasEvent: false
       });
     }
 
@@ -94,7 +94,7 @@ export class CalendarComponent {
         isToday: false,
         isPrevMonth: false,
         isNextMonth: true,
-        hasEvent:  Math.floor(Math.random()*100) < 10
+        hasEvent: false
       });
     }
 
