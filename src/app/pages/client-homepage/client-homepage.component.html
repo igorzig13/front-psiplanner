@@ -32,13 +32,13 @@
     @if (openDetails) {
       <app-popup title ="{{selectedClinicOrProfessional.info.firstName + ' ' + selectedClinicOrProfessional.info.lastName}}">
         <div class="professionals-container">
-          @if (selectedClinicOrProfessional.type !== "Professional") {
+          @if (selectedClinicOrProfessional.type === "Clinic") {
             @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
               <app-default-card btnText="Agendar"
                                 (onButtonClick)="toggleBookingAppointment()"
                                 type="professional"
-                                [name]="professional.name"
-                                [url_img]="selectedClinicOrProfessional.url_img"
+                                [name]="professional.info.firstName + ' ' + professional.info.lastName"
+                                url_img="https://placehold.co/400"
                                 [rating]="professional.rating"
               ></app-default-card>
             }
@@ -47,9 +47,9 @@
             <app-default-card btnText="Agendar"
                               (onButtonClick)="toggleBookingAppointment()"
                               type="professional"
-                              [name]="selectedClinicOrProfessional.name"
-                              [url_img]="selectedClinicOrProfessional.url_img"
-                              [rating]="selectedClinicOrProfessional.rating"
+                              [name]="selectedClinicOrProfessional.info.firstName + ' ' + selectedClinicOrProfessional.info.lastName"
+                              url_img="https://placehold.co/400"
+                              [rating]="selectedClinicOrProfessional.info.averageRating"
             ></app-default-card>
           }
         </div>
@@ -61,29 +61,29 @@
         </div>
 
         <div class="info-container">
+          {{selectedClinicOrProfessional.info.description}}
+        </div>
+
+        <div class="info-container">
           <div class="info-group">
             <div class="info-item">
               <span class="material-icons">location_on</span>
-              <span>Localização</span>
+              <span>{{selectedClinicOrProfessional.info.location}}</span>
             </div>
             <div class="info-item">
               <span class="material-icons">phone</span>
-              <span>(84) 00000-0000</span>
-            </div>
-            <div class="info-item">
-              <span class="material-icons">home</span>
-              <span>Remoto</span>
+              <span>{{formatPhoneNumber(selectedClinicOrProfessional.info.phoneNumber)}}</span>
             </div>
           </div>
 
           <div class="info-group">
             <div class="info-item">
-              <span class="material-icons">email</span>
-              <span>contato&#64;gmail.com</span>
+              <span class="material-icons">home</span>
+              <span>{{selectedClinicOrProfessional.info.approach}}</span>
             </div>
             <div class="info-item">
-              <span class="material-icons">calendar_today</span>
-              <span>31/12/2012</span>
+              <span class="material-icons">fingerprint</span>
+              <span>{{selectedClinicOrProfessional.info.crp}}</span>
             </div>
           </div>
         </div>

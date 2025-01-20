@@ -49,6 +49,7 @@ export class ClientHomepageComponent {
     } else {
       this.selectedClinicOrProfessional = null;
     }
+    console.log(this.selectedClinicOrProfessional?.info);
   }
 
   toggleBookingAppointment() {
@@ -113,5 +114,10 @@ export class ClientHomepageComponent {
     if (this.tokenServiceCoolie.getToken() == null) return;
     this.token = this.tokenServiceCoolie.getToken();
     this.getClinicsAndProfessionals(this.token);
+  }
+
+  formatPhoneNumber(phone: string): string {
+    const cleaned = phone.replace(/\D/g, '');
+    return cleaned.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
   }
 }
