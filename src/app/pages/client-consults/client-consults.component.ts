@@ -37,15 +37,9 @@ export class ClientConsultsComponent {
   selectedProfessional: any = null;
 
   professionalsNext = [
-    {name: 'Itamir', url_img: 'icons/person.svg', description: 'Conheça Itamir', location: 'Localização', rating: 5},
-    {name: 'João Pedro', url_img: 'icons/person.svg', description: 'Olá, sou João Pedro', location: 'Localização', rating: 2},
-    {name: 'Igor Marques', url_img: 'icons/person.svg', description: 'Olá!', location: 'Localização', rating: 3}
   ]
 
   professionalsDone = [
-    {name: 'Tonhão', url_img: 'icons/person.svg', description: 'Conheça Tonhão', location: 'Localização', rating: 4},
-    {name: 'Aldo Queiroz', url_img: 'icons/person.svg', description: 'Olá, sou Aldo', location: 'Localização', rating: 5},
-    {name: 'Vitor Emanuel', url_img: 'icons/person.svg', description: 'Olá!', location: 'Localização', rating: 5}
   ]
 
   toggleNext() {
