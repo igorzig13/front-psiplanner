@@ -18,7 +18,7 @@ import {TokenCookieService} from '../../services/token-cookie.service';
   templateUrl: './clinic-professionals.component.html',
   styleUrl: './clinic-professionals.component.css'
 })
-export class ClinicProfessionalsComponent implements OnInit {
+export class ClinicProfessionalsComponent {
   private clinicProfessionalsService: ClinicProfessionalsService = inject(ClinicProfessionalsService);
   private tokenService: TokenCookieService = inject(TokenCookieService);
   router: Router = inject(Router);
@@ -37,31 +37,12 @@ export class ClinicProfessionalsComponent implements OnInit {
   selectedProfessional: any = null;
 
   formRegister: FormGroup = new FormGroup({});
-
-  professionals = [
-    { name: 'Vitor Emanuel', url_img: 'https://placehold.co/400', rating: 5 },
-    { name: 'Igor Marques', url_img: 'https://placehold.co/300', rating: 5 },
-    { name: 'João Pedro', url_img: 'https://placehold.co/200', rating: 5 },
-    { name: 'Aldo Queiroz', url_img: 'https://placehold.co/500', rating: 5 }
-  ];
-
   allProfessionals: any =  [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor() {
     this.token = this.tokenService.getToken();
     this.clinicId = localStorage.getItem("entityId");
     this.getAllProfessionals();
-  }
-
-  ngOnInit(): void {
-    this.initializeForm();
-  }
-
-  initializeForm() {
-    this.formRegister = this.formBuilder.group({
-      crp: ['', []],
-      email: ['', []]
-    });
   }
 
   getAllProfessionals() {
@@ -75,15 +56,34 @@ export class ClinicProfessionalsComponent implements OnInit {
   }
 
   removeProfessional (sucess: boolean) {
-    if (sucess) {
-      if (this.selectedProfessional) {
-        const index = this.professionals.findIndex(p => p.name === this.selectedProfessional.name);
-        if (index !== -1) { this.professionals.splice(index, 1); }
-      }
-      this.message = 'Profissional removido com sucesso!';
-      this.toggleMessage();
-      this.toggleConfirmation();
-      this.toogleEdit(this.selectedProfessional);
+    if (sucess && this.selectedProfessional) {
+      const professionalId: any = this.selectedProfessional.id;
+      this.clinicProfessionalsService.deleteProfessional(this.token, this.clinicId, professionalId).subscribe({
+        next: response => {
+          console.log(response);
+          console.log(response.remainingCount);
+          if (response.remainingCount == 0) {
+            window.alert("Sem profissionais sua clinica não é mostrada em pesquisas. Considere adiconar novos.");
+          }
+
+          for (let i = 0; i < this.allProfessionals.length; i++) {
+            if (this.allProfessionals[i].id === professionalId) {
+              this.allProfessionals.splice(i, 1);
+              break;
+            }
+          }
+
+          this.message = 'Profissional removido com sucesso!';
+
+          this.toggleMessage();
+          this.toggleConfirmation();
+          this.toogleEdit(this.selectedProfessional);
+        }, error: error => {
+          console.log(error);
+          this.message = 'Profissional não removido!';
+          this.toggleMessage();
+        }
+      });
     }
   }
 

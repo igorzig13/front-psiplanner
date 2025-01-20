@@ -1,24 +1,6 @@
 <form [formGroup]="formConfirmation" class="main-form">
   <div class="field-form">
-    <label>Senha</label>
-    <div class="password-fields">
-      <input
-        type="password"
-        formControlName="password"
-        style="background-image: url('icons/password.svg');"
-        placeholder="Senha">
-      <input
-        type="password"
-        formControlName="confirm_password"
-        style="background-image: url('icons/password.svg');"
-        placeholder="Confirmar senha">
-    </div>
-
-    @if (formConfirmation.hasError('passwordMismatch')) {
-      <div class="error">
-        As senhas não coincidem.
-      </div>
-    }
+    <label>Tem certeza que deseja concluir a ação?</label>
   </div>
 
   <div class="buttons">

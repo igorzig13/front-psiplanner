@@ -4,9 +4,13 @@
     </div>
     <div class="bottom-side">
       <p class="text-center">{{ name }}</p>
-      <div *ngIf="type === 'professional'" class="rating">
-        <img src="icons/ratingStar.svg" alt="Estrela de Avaliação" class="rating-star" />
-        <span class="rating-text">{{ rating }}/5</span>
+      <div *ngIf="type === 'professional'" class="rating" style="margin-bottom: 1rem">
+        <img src="/icons/ratingStar.svg" alt="Estrela de Avaliação" class="rating-star" />
+        @if (rating != -1) {
+          <span class="rating-text">{{ rating }}/5</span>
+        } @else {
+          <span class="rating-text">Sem avaliações</span>
+        }
       </div>
       <app-button btnClass="btn main-button" text="{{btnText}}" (onClick)="onButtonClick.emit()"></app-button>
     </div>

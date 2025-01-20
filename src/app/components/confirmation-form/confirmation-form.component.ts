@@ -29,25 +29,11 @@ export class ConfirmationFormComponent implements OnInit {
         password: ['', [Validators.required]],
         confirm_password: ['', [Validators.required]]
       },
-      // {
-      //   validators: this.passwordMatchValidator
-      // }
     );
   }
 
-  passwordMatchValidator(group: AbstractControl) {
-    const password = group.get('password')?.value;
-    const confirmPassword = group.get('confirm_password')?.value;
-    return password === confirmPassword ? null : { passwordMismatch: true };
-  }
-
   eventAction() {
-    if (this.formConfirmation.valid) {
-      console.log('Formulário válido');
-      this.actionFunction.emit(true);
-      return;
-    }
-    console.log('Formulário inválido');
-    this.actionFunction.emit(false);
+    this.actionFunction.emit(true);
+    return;
   }
 }

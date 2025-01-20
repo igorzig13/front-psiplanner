@@ -28,4 +28,11 @@ export class ClinicProfessionalsService {
     const headers = new HttpHeaders({Authorization: token})
     return this.httpClient.get(`${this.baseUrl}/list`, {headers, params});
   }
+
+  deleteProfessional(token: string, clinicId: string, professionalId: string): Observable<any> {
+    const params = new HttpParams().set('clinicId', clinicId)
+                                              .set('professionalId', professionalId);
+    const headers = new HttpHeaders({Authorization: token });
+    return this.httpClient.delete(`${this.baseUrl}/remove`, { headers, params });
+  }
 }
