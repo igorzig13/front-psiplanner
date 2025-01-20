@@ -3,6 +3,7 @@ import {NavbarComponent} from '../../components/navbar/navbar.component';
 import {HorizontalCardComponent} from '../../components/horizontal-card/horizontal-card.component';
 import {ClinicProfessionalsService} from '../../services/clinic-professionals.service';
 import {TokenCookieService} from '../../services/token-cookie.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-clinic-add',
@@ -19,6 +20,7 @@ export class ClinicAddComponent {
   id: any;
   navUi: number = 3;
 
+  router: Router = inject(Router);
   clinicProfessionalsService = inject(ClinicProfessionalsService);
   tokenService = inject(TokenCookieService);
 
@@ -47,11 +49,10 @@ export class ClinicAddComponent {
     this.clinicProfessionalsService.addProfessional(this.token, this.id, professional.id).subscribe({
       next: (result) => {
         console.log(result);
+        this.router.navigate(['clinic/professionals']).then();
       }, error: error => {
         console.log(error);
       }
     });
   }
-
-
 }

@@ -9,13 +9,13 @@
     </div>
 
     <section class="wrapper-professionals">
-      @for (professional of professionals; track professional) {
+      @for (professional of allProfessionals; track professional) {
         <app-default-card btnText="Editar"
                           (onButtonClick)="toogleEdit(professional)"
                           type="professional"
-                          [name]="professional.name"
-                          [url_img]="professional.url_img"
-                          [rating]="professional.rating"
+                          [name]="professional.firstName + ' ' + professional.lastName"
+                          url_img="https://placehold.co/400"
+                          [rating]="professional.averageRating"
                           >
 
         </app-default-card>
@@ -33,9 +33,9 @@
         <app-default-card btnText="Remover"
           (onButtonClick)="toggleConfirmation()"
           type='professional'
-          [name]="selectedProfessional.name"
-          [url_img]="selectedProfessional.url_img"
-          [rating]="selectedProfessional.rating"
+          [name]="selectedProfessional.firstName + ' ' + selectedProfessional.lastName"
+          url_img="https://placehold.co/400"
+          [rating]="selectedProfessional.averageRating"
           >
         </app-default-card>
       </div>
@@ -47,68 +47,34 @@
       </div>
 
       <div class="info-container">
+        {{selectedProfessional.description}}
+      </div>
+
+      <div class="info-container">
         <div class="info-group">
           <div class="info-item">
             <span class="material-icons">location_on</span>
-            <span>Localização</span>
+            <span>{{selectedProfessional.location}}</span>
           </div>
           <div class="info-item">
             <span class="material-icons">phone</span>
-            <span>(84) 00000-0000</span>
-          </div>
-          <div class="info-item">
-            <span class="material-icons">home</span>
-            <span>Remoto</span>
+            <span>{{formatPhoneNumber(selectedProfessional.phoneNumber)}}</span>
           </div>
         </div>
 
         <div class="info-group">
+            <div class="info-item">
+              <span class="material-icons">home</span>
+              <span>{{selectedProfessional.approach}}</span>
+            </div>
           <div class="info-item">
-            <span class="material-icons">email</span>
-            <span>contato&#64;gmail.com</span>
-          </div>
-          <div class="info-item">
-            <span class="material-icons">calendar_today</span>
-            <span>31/12/2012</span>
+            <span class="material-icons">fingerprint</span>
+            <span>{{selectedProfessional.crp}}</span>
           </div>
         </div>
       </div>
 
       <app-button btnClass="btn main-button" text="Voltar" (onClick)="toogleEdit(selectedProfessional)"></app-button>
-    </app-popup>
-  }
-
-  @if (openAdd) {
-    <app-popup title="Adicionar profissional">
-      <div class="wrapper">
-        <form [formGroup]="formRegister" class="main-form">
-          <h5>Informe os dados para cadastrar um psicólogo:</h5>
-          <div class="field-form">
-            <label for="crp">CRP</label>
-            <input type="text"
-                   id="crp"
-                   formControlName="crp"
-                   style="background-image: url('/icons/fingerprint.svg');"
-                   placeholder="Digite o CRP">
-          </div>
-
-          <div class="field-form">
-            <label for="email">Email</label>
-            <input type="text"
-                   id="email"
-                   formControlName="email"
-                   style="background-image: url('/icons/mail.svg');"
-                   placeholder="Digite o email">
-          </div>
-          <div class="buttons">
-            <app-button btnClass="btn secondary-button" text="Voltar" (onClick)="toggleAdd()"></app-button>
-          </div>
-        </form>
-
-        <div class="info">
-          <p>O profissional não possui conta? </p> <app-link router="/register" text="Cadastre-se"></app-link>
-        </div>
-      </div>
     </app-popup>
   }
 
