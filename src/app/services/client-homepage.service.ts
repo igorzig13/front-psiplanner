@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -17,5 +17,11 @@ export class ClientHomepageService {
       Authorization: token
     });
     return this.httpClient.get(`${this.baseUrl}/clinics-and-professionals`, { headers });
+  }
+
+  getProfessionals(token: string, clinicId: any = 6): Observable<any> {
+    const headers = new HttpHeaders({ Authorization: token })
+    const params = new HttpParams().set('clinicId', clinicId);
+    return this.httpClient.get(`${this.baseUrl}/clinic/professionals`, { headers, params });
   }
 }

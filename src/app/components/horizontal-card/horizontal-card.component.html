@@ -9,7 +9,14 @@
     </div>
 
     <div class="details">
-      <h3>{{ typeCard === 'Client' ? dataClient.firstName : dataClinicOrUser.firstName + " " + dataClinicOrUser.lastName }}</h3>
+      @if (typeCard === 'Professional') {
+        <h3>{{dataClinicOrUser.firstName + " " + dataClinicOrUser.lastName }}</h3>
+      } @else if (typeCard === 'Clinic') {
+        <h3>{{dataClinicOrUser.name}}</h3>
+      } @else {
+        <h3>{{dataClient.name}}</h3>
+      }
+
       @if (typeCard === 'Client') {
         <p>{{ dataClient.data }}</p>
       }

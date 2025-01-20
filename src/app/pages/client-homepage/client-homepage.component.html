@@ -30,16 +30,16 @@
     }
 
     @if (openDetails) {
-      <app-popup title ="{{selectedClinicOrProfessional.info.firstName + ' ' + selectedClinicOrProfessional.info.lastName}}">
+      <app-popup title ="Detalhes">
         <div class="professionals-container">
           @if (selectedClinicOrProfessional.type === "Clinic") {
-            @for (professional of selectedClinicOrProfessional.professional_list; track professional) {
+            @for (professional of professionals; track professional) {
               <app-default-card btnText="Agendar"
                                 (onButtonClick)="toggleBookingAppointment()"
                                 type="professional"
-                                [name]="professional.info.firstName + ' ' + professional.info.lastName"
+                                [name]="professional.firstName + ' ' + professional.lastName"
                                 url_img="https://placehold.co/400"
-                                [rating]="professional.rating"
+                                [rating]="professional.averageRating"
               ></app-default-card>
             }
           }
@@ -77,17 +77,22 @@
           </div>
 
           <div class="info-group">
-            <div class="info-item">
-              <span class="material-icons">home</span>
-              <span>{{selectedClinicOrProfessional.info.approach}}</span>
-            </div>
+            @if (selectedClinicOrProfessional.type !== "Clinic") {
+              <div class="info-item">
+                <span class="material-icons">home</span>
+                <span>{{selectedClinicOrProfessional.info.approach}}</span>
+              </div>
+            }
             <div class="info-item">
               <span class="material-icons">fingerprint</span>
-              <span>{{selectedClinicOrProfessional.info.crp}}</span>
+              @if (selectedClinicOrProfessional.type !== "Clinic") {
+                <span>{{selectedClinicOrProfessional.info.crp}}</span>
+              } @else {
+                <span>{{selectedClinicOrProfessional.info.cnpj}}</span>
+              }
             </div>
           </div>
         </div>
-
 
         <app-button btnClass="btn main-button" text="Voltar" (onClick)="toggleDetails(selectedClinicOrProfessional)"></app-button>
       </app-popup>

@@ -37,6 +37,7 @@ export class ClientHomepageComponent {
 
   clinicAndProfessionals: any = [];
   token: any = null;
+  professionals: any = [];
 
   selectedDay: CalendarDate = { day: 0, month: 0, year: 0, monthName: '', fullName: '' };
   selectedHour: string = '';
@@ -49,7 +50,10 @@ export class ClientHomepageComponent {
     } else {
       this.selectedClinicOrProfessional = null;
     }
-    console.log(this.selectedClinicOrProfessional?.info);
+
+    if (this.selectedClinicOrProfessional?.type === 'Clinic') {
+      this.getProfessionals(this.token);
+    }
   }
 
   toggleBookingAppointment() {
@@ -110,10 +114,21 @@ export class ClientHomepageComponent {
     });
   }
 
+  getProfessionals(token: string) {
+    this.clientHomepageService.getProfessionals(token, this.selectedClinicOrProfessional?.info.id).subscribe({
+      next: data => {
+        this.professionals = data;
+      }, error: error => {
+        console.log(error);
+      }
+    })
+  }
+
   constructor() {
     if (this.tokenServiceCoolie.getToken() == null) return;
     this.token = this.tokenServiceCoolie.getToken();
     this.getClinicsAndProfessionals(this.token);
+    console.log(this.clinicAndProfessionals);
   }
 
   formatPhoneNumber(phone: string): string {
