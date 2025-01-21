@@ -30,13 +30,10 @@ export class ProfessionalConsultsComponent {
 
   pacientsNext = [
     { name: 'Vitor Emanuel', url_img: 'https://placehold.co/400', data: '27/06/2025' },
-    { name: 'Aldo Queiroz', url_img: 'https://placehold.co/450', data: '12/12/2026' }
+
   ];
 
   pacientsDone = [
-    { name: 'João Pedro', url_img: 'https://placehold.co/200', data: '23/12/2023' },
-    { name: 'Igor Marques', url_img: 'https://placehold.co/300', data: '01/12/2014' },
-    { name: 'Itamir', url_img: 'https://placehold.co/600', data: '01/01/2001' },
   ];
 
 
